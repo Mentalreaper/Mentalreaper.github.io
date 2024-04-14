@@ -1,3 +1,5 @@
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/* Core CSS */
 * {
     -webkit-box-sizing: inherit;
     -moz-box-sizing: inherit;
@@ -21,44 +23,16 @@ body {
     line-height: 1.3;
 }
 
-#header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    background-color: #1a1a1a;
+a,
+a:visited {
+    color: #11cc11;
+    text-decoration: none;
 }
 
-#header h1 {
-    margin: 0;
-    font-size: 24px;
-}
-
-#header ul {
-    list-style: none;
-    margin: 10px 0 0;
-    padding: 0;
-}
-
-#header ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-#header_right {
-    text-shadow: 5px 5px #555;
-    text-align: center;
-}
-
-.menuitem {
-    text-shadow: 4px 4px #444;
-    text-align: center;
-}
-
-#content {
-    max-width: 769px;
-    margin: 20px auto;
-    padding: 0 20px;
+a:active,
+a:hover {
+    color: #00ff00;
+    text-decoration: none;
 }
 
 h3 {
@@ -70,14 +44,6 @@ p {
     line-height: 1.6;
 }
 
-a,
-a:hover,
-a:active,
-a:visited {
-    color: #11cc11;
-    text-decoration: none;
-}
-
 ul>li {
     list-style-type: square;
 }
@@ -87,197 +53,175 @@ ol {
     padding: 0;
 }
 
-#footer {
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/* Header (NavBar) */
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #1a1a1a;
+}
+
+.header-title {
+    margin: 0;
+    font-size: 24px;
+}
+
+.header-list {
+    list-style: none;
+    margin: 10px 0 0;
+    padding: 0;
+}
+
+.header-shadow {
+    text-shadow: 5px 5px #555;
+    text-align: center;
+}
+
+.header-list-item {
+    display: inline;
+    margin: 0 10px;
+    text-shadow: 4px 4px #444;
+    text-align: center;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/* Page Content (Standard Webpage 16:9) */
+
+.content {
+    max-width: 50%;
+    min-width: 400px;
+    margin: 8em auto 1em auto;
+    padding: 0 1em;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/* Footer */
+
+.footer {
     padding: 20px;
     background-color: #1a1a1a;
     font-size: 14px;
 }
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-/* Carousel */
-#carousel {
-    position: relative;
-    /* top: -1em; */
-    width: 100%;
-    height: 400px;
+/* Hamburger Button */
+
+.hamburger {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 9999;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: #333;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/* Hide/Show Header/Hamburger button based on width */
+
+@media only screen and (min-width: 600px) {
+    .header {
+        display: none;
+    }
+    .hamburger {
+        display: inline-block;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .header {
+        display: flex;
+    }
+    .hamburger {
+        display: none;
+    }
 }
 
-#carousel-overlay {
-    position: absolute;
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/* Hamburger Overlay Menu */
+
+.overlay {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    transition: background .3s ease-in-out;
-    z-index: 5;
-}
-
-#carousel:hover #carousel-overlay {
-    background: rgba(0, 0, 0, 0.7);
-}
-
-.theme-switcher-button {
-    position: absolute;
-    top: 0.2em;
-    right: 0.2em;
-}
-
-.carousel-slide {
+    background-color: rgba(0, 0, 0, 0.8);
     display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.carousel-slide.active {
-    display: block;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.carousel-caption {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-weight: bold;
-    font-size: 1.8em;
-    text-align: center;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
-    /* Increase shadow intensity */
-    z-index: 500;
-    -webkit-text-stroke: 0.5px black;
-}
-
-#carousel {
-    /* ... */
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.5) 100%);
-}
-
-#carousel:hover {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.arrow {
-    position: absolute;
-    top: 0;
-    width: 250px;
-    height: 100%;
-    color: white;
-    font-size: 2em;
-    background-color: transparent;
+    z-index: 9997;
+  }
+  
+  .overlay.active {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    z-index: 999;
-}
-
-.arrow-left {
-    left: 0px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 1.0), rgba(0, 0, 0, 0.0));
-}
-
-.arrow-right {
-    right: 0px;
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 1.0), rgba(0, 0, 0, 0.0));
-}
-
-.arrow-icon {
-    z-index: 999;
-}
-
+  }
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-/* Image (portrait) */
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-    .about-me-text-container {
-        padding: 0 5%;
-    }
+/*  */
 
-    .about-me-title {
-        width: 100%;
-        text-align: center;
-    }
-
-    .about-me-aside {
-        padding-top: 2%;
-        max-width: 200px;
-        min-width: 200px;
-    }
-
-    .about-me-aside img {
-        float: left;
-        padding: 2% 6% 2% 2%;
-        width: 100%;
-        height: auto;
-    }
-
-    .about-me-paragraph {
-        width: 100%;
-    }
+.overlay-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #1a1a1a;
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-    .about-me-text-container {
-        padding: 0 5%;
-    }
-
-    .about-me-title {
-        width: 100%;
-        text-align: center;
-    }
-
-    .about-me-aside {
-        padding-top: 2%;
-        max-width: 200px;
-        min-width: 200px;
-    }
-
-    .about-me-aside img {
-        float: left;
-        padding: 2% 6% 2% 2%;
-        width: 100%;
-        height: auto;
-    }
-
-    .about-me-paragraph {
-        width: 100%;
-    }
+.overlay-header-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-    .about-me-text-container {
-        padding: 0 10%;
-    }
-
-    .about-me-title {
-        width: 100%;
-        text-align: center;
-    }
-
-    .about-me-aside {
-        max-width: 250px;
-        min-width: 250px;
-    }
-
-    .about-me-aside img {
-        float: left;
-        padding: 2% 8% 2% 2%;
-        width: 100%;
-        height: auto;
-    }
-
-    .about-me-paragraph {
-        width: 100%;
-    }
+.overlay-header-list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    padding: 1em;
 }
+
+.overlay-header-list-item:last-child {
+    margin-bottom: 0;
+}
+
+.overlay-header-list-item:hover {
+    background-color: #696969;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*  */
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*  */

@@ -10,42 +10,61 @@
     <meta name="og:title" content="Alexander Conn - Home | Game Development Blog">
     <meta name="og:description" content="A game development blog. Indie stuff by an In(d)iot.">
 
-    <title>Alexander Conn - Home | Game Development Blog</title>
+    <title> Home | Alexander Conn</title>
 
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/carousel.css">
 
     <script src="/static/javascript/index.js" defer></script>
+    <script src="/static/javascript/hamburger.js" defer></script>
 
     <link rel="icon" href="static/favicon/favicon.ico" sizes="any">
     <link rel="icon" href="static/favicon/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-    <div id="header">
-        <div id="header_right">
-            <h1>Alexander JD Conn</h1>
-            <ul>
-                <li class="menuitem"><a href="/">home</a></li>
-                <li class="menuitem"><a href="/about-me">about</a></li>
-                <li class="menuitem"><a href="/projects">projects</a></li>
-                <li class="menuitem"><a href="/blog">blog</a></li>
-                <li class="menuitem"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
+    <div class="header">
+        <div id="header-shadow">
+            <h1 class="header-title">Alexander JD Conn</h1>
+            <ul class="header-list">
+                <li class="header-list-item"><a href="/">home</a></li>
+                <li class="header-list-item"><a href="/about-me">about</a></li>
+                <li class="header-list-item"><a href="/projects">projects</a></li>
+                <li class="header-list-item"><a href="/blog">blog</a></li>
+                <li class="header-list-item"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
             </ul>
         </div>
     </div>
-    <div id="content">
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="overlay">
+        <ul class="overlay-header-list">
+            <li class="overlay-header-list-item"><a href="/">home</a></li>
+            <li class="overlay-header-list-item"><a href="/about-me">about</a></li>
+            <li class="overlay-header-list-item"><a href="/projects">projects</a></li>
+            <li class="overlay-header-list-item"><a href="/blog">blog</a></li>
+            <li class="overlay-header-list-item"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
+        </ul>
+    </div>
+    <div class="content">
         <section class="basicAboutMeSection">
             <h3>About Me</h3>
             <p class="main-page-description">
-                <br> Hey there, and welcome to my website!
-    
-                <br><br> Checkout one of the game images above if you wanna read about that, or just got to
-                <a href="projects">~/projects/</a> and have a browse.
-    
-                <br><br> I enjoy RPGs, Card Games, and making those types of games! I'm usually working on some small project and writing way too much world building for the few characters there!
-    
-                <br><br> Currently I'm working on my mini-project: <a href="/404#Blade of Roland">Blade of Roland</a>, a small "souls-like" game (although it's more directly inspired by Sekiro), where Roland is sent by his King (guess which
-                haha) to free&#8212;or kill&#8212;the King of the Fey, who has seemingly become corrupt. The enemies are based on irish, celtic, and old british folklore. The current king of the fey is thought to be Arthur, but a certain germanic elf-king
-                has taken hold! And, Roland might find that the conspiracy goes even further than this unnamed Elven lord.
+                Hey there, and welcome to my website!<br><br>
+
+                I enjoy RPGs, Card Games, and making those types of games! I'm usually working on some small
+                project and writing way too much world building for the few characters there!<br><br>
+
+                I'm currently working on a few "micro" projects, and will update this page as I go. I was working on a
+                project called <a href="404#BladeOfRoland">Blade of Roland</a>, though after a few getting somewhat
+                bored on the project (and realising my lack of animation skill) I have decided to suspend it. Right now
+                I'm working on a "morrowind"-like game, though it's very early into just planning.<br><br>
+
+                Below are some example projects for you to look at and/or play, feel free to take a look! If you want
+                to see other examples of work, then feel free to look at the <a href="/projects/">projects</a> button
+                in the NavBar.
             </p>
         </section>
 
@@ -85,7 +104,7 @@
                 <strong>YouTube: </strong><a href="https://www.youtube.com/@alex-conn">@alex-conn</a></p>
         </section>
     </div>
-    <div id="footer">
+    <div class="footer">
         <span>© Alexander JD Conn 2024 | All rights reserved</span>
     </div>
 </body>
