@@ -3,18 +3,22 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <meta name="og:viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="og:author" content="Alexander Conn">
     <meta name="og:type" content="website">
     <meta name="og:theme-color" content="Canvas">
-    <meta name="og:title" content="Alexander Conn - Home | Game Development Blog">
-    <meta name="og:description" content="A game development blog. Indie stuff by an In(d)iot.">
+    <meta name="og:title" content="Alexander Conn - Projects | Game Development Portfolio">
+    <meta name="og:description" content="A showcase of my game development projects, from indie games to university work.">
 
     <title>Projects | Alexander Conn</title>
 
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/dropdown-nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/projects.css">
 
-    <script src="/static/javascript/index.js" defer></script>
+    <script src="/static/javascript/hamburger.js" defer></script>
+    <script src="/static/javascript/dropdown-nav.js" defer></script>
+    <script src="/static/javascript/theme-toggle.js" defer></script>
 
     <link rel="icon" href="/static/favicon/favicon.ico" sizes="any">
 </head>
@@ -31,6 +35,7 @@
             </ul>
         </div>
     </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
     <div class="hamburger">
         <span></span>
         <span></span>
@@ -48,83 +53,141 @@
 
     <div class="content">
         <div class="projects-main-page">
-            <section class="pre-script for projects">
+            <section class="projects-intro">
+                <h1>My Projects</h1>
+                <p>
+                    A collection of my game development journey, from personal indie projects to university collaborations.
+                    Each project represents a step forward in learning new technologies, design patterns, and creative problem-solving.
+                </p>
             </section>
-            <section class="examples-of-work" style="width: 100%; margin: 0 auto; align-items: center; justify-content: center; display: flex;">
-                <div class="portfolio-project-group-card-university" style="display: block; width: 1000px; align-items: center; justify-content: center;">
-                    <a href="/projects/games">
-                        <div style="width: 500px; border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin: 10px; display: flex; align-items: center; float: right;">
-                            <div style="width: 60%; margin-left: 10px;">
-                                <h2 style="margin: 0 0 10px 0; padding: 0;">Games</h2>
-                                <p style="margin: 0 0 10px 0;">These are projects I worked on with no incentive, nor for any real reason. Just making something I wanted to!</p>
-                            </div>
-                            <div style="width: 40%;">
-                                <img src="https://placehold.co/854x480/red/white" alt="Placeholder image for general game projects" style="width: 75%; height: auto; border-radius: 3px;" />
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/projects/nonGames/">
-                        <div style="width: 500px; border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin: 10px; display: flex; align-items: center; float: left;">
-                            <div style="width: 60%; margin-right: 10px;">
-                                <h2 style="margin: 0 0 10px 0; padding: 0;">Non-Games / Software</h2>
-                                <p style="margin: 0 0 10px 0;">My "Non-Games" projects. A range of things from collection managers to character builders.</p>
-                            </div>
-                            <div style="width: 40%;">
-                                <img src="/static/jpg/pre-uni-4e-builder.jpg" alt="Non-Game Projects Image" style="width: 100%; height: auto; border-radius: 3px;" />
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/projects/gameJams">
-                        <div style="width: 500px; border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin: 10px; display: flex; align-items: center; float: right;">
-                            <div style="width: 60%; margin-right: 10px;">
-                                <h2 style="margin: 0 0 10px 0; padding: 0;">Game Jams</h2>
-                                <p style="margin: 0 0 10px 0;">Mostly un-released/un-submitted Game Jams, just made for myself when I hear the theme and stay within the time limit.</p>
-                            </div>
-                            <div style="width: 40%;">
-                                <img src="https://placehold.co/854x480/red/white" alt="Placeholder image for game jams card" style="width: 75%; height: auto; border-radius: 3px;" />
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/projects/universityYear3">
-                        <div style="width: 500px; border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin: 10px; display: flex; align-items: center; float: left;">
-                            <div style="width: 60%; margin-left: 10px;">
-                                <h2 style="margin: 0 0 10px 0; padding: 0;">University (Final Year)</h2>
-                                <p style="margin: 0 0 10px 0;">When I learned to work together properly, and me and some friends had fun on our final year stuff!</p>
-                                <p style="margin: 0 0 10px 0;"><strong>Dates:</strong> Sep 2019 - Aug 2020</p>
-                            </div>
-                            <div style="width: 40%;">
-                                <img src="/static/gif/medabots-fan-game.gif" alt="Gif of Medabots Fan Game" style="width: 100%; height: auto; border-radius: 3px;" />
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/projects/universityYear2">
-                        <div style="width: 500px; border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin: 10px; display: flex; align-items: center; float: right;">
-                            <div style="width: 60%; margin-right: 10px;">
-                                <h2 style="margin: 0 0 10px 0; padding: 0;">University (2st year)</h2>
-                                <p style="margin: 0 0 10px 0;">Finally able to program well, but still not my best work.</p>
-                                <p style="margin: 0 0 10px 0;"><strong>Dates:</strong> Sep 2018 - Aug 2019</p>
-                            </div>
-                            <div style="width: 40%;">
-                                <img src="/static/gif/bear-grills-wip.gif" alt="Gif of Bear Grills gameplay" style="width: 75%; height: auto; border-radius: 3px;" />
-                            </div>
-                        </div>
-                    </a>
-                    <a href="/projects/universityYear1">
-                        <div style="width: 500px; border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin: 10px; display: flex; align-items: center; float: left;">
-                            <div style="width: 60%; margin-right: 10px;">
-                                <h2 style="margin: 0 0 10px 0; padding: 0;">University (1st year)</h2>
-                                <p style="margin: 0 0 10px 0;">First year of University, simple projects (but more advanced than earlier)</p>
-                                <p style="margin: 0 0 10px 0;"><strong>Dates:</strong> Sep 2017 - Aug 2018</p>
-                            </div>
-                            <div style="width: 40%;">
-                                <img src="/static/jpg/kingston-university-logo.jpg" alt="University Image" style="width: 75%; height: auto; border-radius: 3px;" />
-                            </div>
-                        </div>
-                    </a>
+
+            <section class="project-stats">
+                <div class="stat-item">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">Project Categories</span>
                 </div>
+                <div class="stat-item">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Well Made Games</span>
+                </div>
+            </section>
+
+            <section class="projects-grid">
+                <a href="/projects/liveDemos" class="project-card games" style="border-left-color: #00ff41;">
+                    <div class="project-card-content">
+                        <h2 class="project-card-title">Live Demos</h2>
+                        <p class="project-card-description">
+                            Interactive games and experiences you can play directly in your browser. 
+                            No downloads required—just click and experience my work firsthand.
+                        </p>
+                        <div class="project-card-meta">
+                            <span class="project-card-date">Play Now</span>
+                        </div>
+                    </div>
+                    <div class="project-card-image">
+                        <img src="/static/gif/medabots-fan-game.gif" alt="Live demos showcase">
+                    </div>
+                </a>
+
+                <a href="/projects/games" class="project-card games">
+                    <div class="project-card-content">
+                        <h2 class="project-card-title">Games</h2>
+                        <p class="project-card-description">
+                            Personal game projects created from passion and curiosity. These represent my purest 
+                            creative expressions in game development.
+                        </p>
+                        <div class="project-card-meta">
+                            <span class="project-card-date">Ongoing</span>
+                        </div>
+                    </div>
+                    <div class="project-card-image">
+                        <img src="https://placehold.co/280x200/00ff41/0a0a0a?text=GAMES" alt="Game projects showcase">
+                    </div>
+                </a>
+
+                <a href="/projects/nonGames" class="project-card non-games">
+                    <div class="project-card-content">
+                        <h2 class="project-card-title">Non-Games / Software</h2>
+                        <p class="project-card-description">
+                            Utility applications and tools, including collection managers for trading card games 
+                            and character builders for tabletop RPGs.
+                        </p>
+                        <div class="project-card-meta">
+                            <span class="project-card-date">Various</span>
+                        </div>
+                    </div>
+                    <div class="project-card-image">
+                        <img src="/static/jpg/pre-uni-4e-builder.jpg" alt="Non-game software projects">
+                    </div>
+                </a>
+
+                <a href="/projects/gameJams" class="project-card game-jams">
+                    <div class="project-card-content">
+                        <h2 class="project-card-title">Game Jams</h2>
+                        <p class="project-card-description">
+                            Quick prototypes and experimental games created during game jams. Fast-paced creativity 
+                            and innovative solutions under time constraints.
+                        </p>
+                        <div class="project-card-meta">
+                            <span class="project-card-date">Various Events</span>
+                        </div>
+                    </div>
+                    <div class="project-card-image">
+                        <img src="https://placehold.co/280x200/ff6b35/0a0a0a?text=JAMS" alt="Game jam projects">
+                    </div>
+                </a>
+
+                <a href="/projects/UniversityYear3" class="project-card university">
+                    <div class="project-card-content">
+                        <h2 class="project-card-title">University (Final Year)</h2>
+                        <p class="project-card-description">
+                            Collaborative team projects where I learned to work effectively with others and 
+                            tackle leadership challenges in game development.
+                        </p>
+                        <div class="project-card-meta">
+                            <span class="project-card-date">Sep 2019 - Aug 2020</span>
+                        </div>
+                    </div>
+                    <div class="project-card-image">
+                        <img src="/static/gif/medabots-fan-game.gif" alt="Final year university projects">
+                    </div>
+                </a>
+
+                <a href="/projects/universityYear2" class="project-card university">
+                    <div class="project-card-content">
+                        <h2 class="project-card-title">University (2nd Year)</h2>
+                        <p class="project-card-description">
+                            Building programming competency and exploring more complex game development concepts. 
+                            The foundation years of serious development.
+                        </p>
+                        <div class="project-card-meta">
+                            <span class="project-card-date">Sep 2018 - Aug 2019</span>
+                        </div>
+                    </div>
+                    <div class="project-card-image">
+                        <img src="/static/gif/bear-grills-wip.gif" alt="Second year university projects">
+                    </div>
+                </a>
+
+                <a href="/projects/universityYear1" class="project-card university">
+                    <div class="project-card-content">
+                        <h2 class="project-card-title">University (1st Year)</h2>
+                        <p class="project-card-description">
+                            The beginning of my formal education in computer science and game technology. 
+                            Simple but foundational projects that started my journey.
+                        </p>
+                        <div class="project-card-meta">
+                            <span class="project-card-date">Sep 2017 - Aug 2018</span>
+                        </div>
+                    </div>
+                    <div class="project-card-image">
+                        <img src="/static/jpg/kingston-university-logo.jpg" alt="First year university projects">
+                    </div>
+                </a>
             </section>
         </div>
     </div>
+    
     <div class="footer">
         <span>© Alexander JD Conn 2024 | All rights reserved</span>
     </div>

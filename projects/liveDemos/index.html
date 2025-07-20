@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="og:viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="og:author" content="Alexander Conn">
+    <meta name="og:type" content="website">
+    <meta name="og:theme-color" content="Canvas">
+    <meta name="og:title" content="Live Demos | Alexander Conn - Interactive Game Portfolio">
+    <meta name="og:description" content="Play my games directly in your browser. Interactive demos of game development projects.">
+
+    <title>Live Demos | Alexander Conn</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/dropdown-nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/projects.css">
+
+    <script src="/static/javascript/hamburger.js" defer></script>
+    <script src="/static/javascript/dropdown-nav.js" defer></script>
+    <script src="/static/javascript/theme-toggle.js" defer></script>
+
+    <link rel="icon" href="/static/favicon/favicon.ico" sizes="any">
+</head>
+<body>
+    <div class="header">
+        <div id="header-shadow">
+            <h1 class="header-title">Alexander JD Conn</h1>
+            <ul class="header-list">
+                <li class="header-list-item"><a href="/">home</a></li>
+                <li class="header-list-item"><a href="/about-me">about</a></li>
+                <li class="header-list-item"><a href="/projects">projects</a></li>
+                <li class="header-list-item"><a href="/blog">blog</a></li>
+                <li class="header-list-item"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
+            </ul>
+        </div>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="overlay">
+        <ul class="overlay-header-list">
+            <li class="overlay-header-list-item"><a href="/">home</a></li>
+            <li class="overlay-header-list-item"><a href="/about-me">about</a></li>
+            <li class="overlay-header-list-item"><a href="/projects">projects</a></li>
+            <li class="overlay-header-list-item"><a href="/blog">blog</a></li>
+            <li class="overlay-header-list-item"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="projects-main-page">
+            <section class="projects-intro">
+                <h1>Live Demos</h1>
+                <p>
+                    Interactive games and other stuff that you can play in the browser. All games
+                    that are non-browser, or require a download, are in "downloadables".
+                </p>
+            </section>
+
+            <section class="live-demo-grid">
+                <div class="live-demo-card featured">
+                    <div class="demo-preview">
+                        <div class="terminal-holder">
+                            <div class="terminal">
+                                <span class="prompt-text">$ ~/my_website_as_terminal/</span>
+                                <span class="cursor">_</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <span class="demo-badge">Featured</span>
+                        <h3>Website Terminal</h3>
+                        <p class="demo-description">
+                            I thought it'd be fun to represent my website via a fake terminal-emulator. Right now it uses fake subdirectories, but I plan to make it read the actual website at some point!
+                        </p>
+                        <div class="demo-meta">
+                            <span class="tech-stack">Pure JavaScript</span>
+                            <span class="demo-status available">Browser Ready (Still in Beta)</span>
+                        </div>
+                        <div class="demo-actions">
+                            <a href="#" class="btn-primary">Try it now!</a>
+                            <a href="#" class="btn-secondary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="live-demo-card">
+                    <div class="demo-preview">
+                        <img src="https://placehold.co/400x225/00ff41/0a0a0a?text=COMING+SOON" alt="Upcoming game demo">
+                        <div class="play-overlay">
+                            <div class="play-button">⏳ SOON</div>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <h3>SOULFOOD - Undertale-like game</h3>
+                        <p class="demo-description">
+                            Undertale-like Cooking themed game! Made for the browser (for Mini-Game Jam 191 - Cooking)
+                        </p>
+                        <div class="demo-meta">
+                            <span class="tech-stack">Javascript</span>
+                            <span class="demo-status in-development">Game Jam / In development</span>
+                        </div>
+                        <div class="demo-actions">
+                            <a href="/projects/liveDemos/SOULFOOD/" class="btn-primary">In Progress, Try The Demo</a>
+                            <a href="" class="btn-secondary">Blog Post When Done</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="live-demo-card placeholder">
+                    <div class="demo-preview">
+                        <div class="coming-soon-content">
+                            <div class="terminal-prompt">
+                                <span class="prompt-text">$ create_new_demo</span>
+                                <span class="cursor">_</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <h3>More Demos Coming Soon</h3>
+                        <p class="demo-description">
+                            I'm constantly working on new projects and porting existing games to the browser. 
+                            Check back regularly for new interactive experiences!
+                        </p>
+                        <div class="demo-meta">
+                            <span class="tech-stack">WebGL • JavaScript • Various</span>
+                            <span class="demo-status in-development">In Progress</span>
+                        </div>
+                        <div class="demo-actions">
+                            <a href="/blog" class="btn-primary">Follow Updates</a>
+                            <a href="/projects" class="btn-secondary">All Projects</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="demo-info-section">
+                <h3>About Live Demos</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>🌐 Browser-Based</h4>
+                        <p>All demos run directly in your browser using modern web technologies like WebGL and WebAssembly.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>🎮 Interactive</h4>
+                        <p>Experience the gameplay mechanics and design decisions firsthand rather than just reading about them.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>📱 Cross-Platform</h4>
+                        <p>Most demos work on desktop and mobile devices, though some may require specific inputs or VR hardware.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <span>© Alexander JD Conn 2024 | All rights reserved</span>
+    </div>
+</body>
+</html>

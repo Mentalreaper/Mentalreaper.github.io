@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="og:viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="og:author" content="Alexander Conn">
+    <meta name="og:type" content="website">
+    <meta name="og:theme-color" content="Canvas">
+    <meta name="og:title" content="Alexander Conn - Terminal | Game Development Blog">
+    <meta name="og:description" content="Interactive terminal emulation - explore my portfolio through the command line.">
+
+    <title>Terminal | Alexander Conn</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/dropdown-nav.css">
+    <link rel="stylesheet" type="text/css" href="terminal.css">
+
+    <script src="/static/javascript/hamburger.js" defer></script>
+    <script src="/static/javascript/dropdown-nav.js" defer></script>
+    <script src="/static/javascript/theme-toggle.js" defer></script>
+    <script src="filesystem.js" defer></script>
+    <script src="terminal.js" defer></script>
+
+    <link rel="icon" href="/static/favicon/favicon.ico" sizes="any">
+</head>
+<body>
+    <div class="header">
+        <div id="header-shadow">
+            <h1 class="header-title">Alexander JD Conn</h1>
+            <ul class="header-list">
+                <li class="header-list-item"><a href="/">home</a></li>
+                <li class="header-list-item"><a href="/about-me">about</a></li>
+                <li class="header-list-item"><a href="/projects">projects</a></li>
+                <li class="header-list-item"><a href="/blog">blog</a></li>
+                <li class="header-list-item"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
+            </ul>
+        </div>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="overlay">
+        <ul class="overlay-header-list">
+            <li class="overlay-header-list-item"><a href="/">home</a></li>
+            <li class="overlay-header-list-item"><a href="/about-me">about</a></li>
+            <li class="overlay-header-list-item"><a href="/projects">projects</a></li>
+            <li class="overlay-header-list-item"><a href="/blog">blog</a></li>
+            <li class="overlay-header-list-item"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="terminal-controls">
+                    <span class="terminal-button close"></span>
+                    <span class="terminal-button minimize"></span>
+                    <span class="terminal-button maximize"></span>
+                </div>
+                <div class="terminal-title">alex@portfolio:~</div>
+            </div>
+            <div class="terminal-body" id="terminal">
+                <div class="terminal-output" id="terminal-output">
+                    <div class="welcome-message">
+                        <pre class="ascii-art">
+    ╔══════════════════════════════════════════════════════════════════════════════════════╗
+    ║                                                                                      ║
+    ║    ██████╗  ██████╗ ██████╗ ████████╗███████╗ ██████╗ ██╗     ██╗ ██████╗             ║
+    ║    ██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██╔═══██╗██║     ██║██╔═══██╗            ║
+    ║    ██████╔╝██║   ██║██████╔╝   ██║   █████╗  ██║   ██║██║     ██║██║   ██║            ║
+    ║    ██╔═══╝ ██║   ██║██╔══██╗   ██║   ██╔══╝  ██║   ██║██║     ██║██║   ██║            ║
+    ║    ██║     ╚██████╔╝██║  ██║   ██║   ██║     ╚██████╔╝███████╗██║╚██████╔╝            ║
+    ║    ╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝      ╚═════╝ ╚══════╝╚═╝ ╚═════╝             ║
+    ║                                                                                      ║
+    ║                        Welcome to Alexander Conn's Portfolio Terminal               ║
+    ║                                                                                      ║
+    ║    Version 1.0.0 | Built with passion and too much coffee                          ║
+    ║    Type 'help' to see available commands                                            ║
+    ║                                                                                      ║
+    ╚══════════════════════════════════════════════════════════════════════════════════════╝
+                        </pre>
+                    </div>
+                </div>
+                <div class="terminal-input-line">
+                    <span class="terminal-prompt" id="terminal-prompt">alex@portfolio:~$</span>
+                    <input type="text" id="terminal-input" class="terminal-input" autofocus autocomplete="off" spellcheck="false">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <span>© Alexander JD Conn 2024 | All rights reserved</span>
+    </div>
+</body>
+</html>

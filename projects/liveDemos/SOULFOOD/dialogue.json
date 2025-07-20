@@ -1,0 +1,160 @@
+{
+  "npcs": {
+    "dummy": {
+      "conversations": [
+        [
+          "* Howdy! I'm a training dummy.",
+          "* Want to practice battling?[BATTLE:dummy]",
+          "* (Press ACTION to continue...)"
+        ],
+        [
+          "* Ready for another round?",
+          "* Let's battle again![BATTLE:dummy]"
+        ],
+        [
+          "* You sure like fighting me!",
+          "* Sorry though...",
+          "* I'm a bit too tired to fight anymore :c"
+        ],
+        [
+          "* Hm well, maybe you could buy something?",
+          "* I never wanted to be a training dummy...",
+          "* I've always wanted to be a...",
+          "* Shops mannequinn![SHOP]"
+        ],
+        [
+          "* Welcome back, wanna buy something?[SHOP]"
+        ]
+      ]
+    },
+    "character1": {
+      "conversations": [
+        [
+          "* Bro I fucking hate Undertale",
+          "  fr fr fr fr fr fr fr fr"
+        ],
+        [
+          "* Oh, you're back again?",
+          "* I guess Undertale isn't THAT bad..."
+        ],
+        [
+          "* You really like talking to me, huh?",
+          "* Maybe I should give Undertale another try.",
+          "[GOTO:1]"
+        ]
+      ]
+    }
+  },
+  "savePoint": 
+  {
+    "ruins": 
+    [
+      "* (The shadow of the ruins looms above,",
+      "  filling you with determination.)",
+      "* HP fully restored.",
+      "* File saved![SAVE]"
+    ]
+  },
+  "battle": {
+    "dummy": {
+      "encounter": ["* DUMMY blocks the way!"],
+      "act_talk": {
+        "responses": [
+          [
+            "* You talk to the Dummy.",
+            "* It doesn't seem much for conversation.",
+            "talk:50"
+          ],
+          [
+            "* You talk to the Dummy again.",
+            "* It stares at you blankly.",
+            "talk:30"
+          ],
+          [
+            "* You keep talking to the Dummy.",
+            "* It seems completely uninterested.",
+            "talk:10"
+          ],
+          [
+            "* You're running out of things to say.",
+            "* The Dummy doesn't care.",
+            "talk:5"
+          ]
+        ]
+      },
+      "act_check": {
+        "responses": [
+          [
+            "AT:[GET_AT], DF:[GET_DF], HP:[GET_HP].",
+            "A simple training dummy."
+          ],
+          [
+            "AT:[GET_AT], DF:[GET_DF], HP:[GET_HP].",
+            "Still just a training dummy.",
+            "You've seen this before."
+          ],
+          [
+            "AT:[GET_AT], DF:[GET_DF], HP:[GET_HP].",
+            "Yes, it's definitely a dummy.",
+            "Why do you keep checking?"
+          ]
+        ]
+      },
+      "spare_success": ["* You spared Dummy."],
+      "spare_fail": [
+        "* You spare the Dummy.",
+        "* But it wasn't ready to spare you."
+      ],
+      "victory": [
+        "* You won!",
+        "* You earned 0 EXP and 0 gold."
+      ]
+    }
+  },
+  "menu": {
+    "stats": [
+      "* \"Human\" LV 1",
+      "* HP 20/20",
+      "* AT 10 DF 0",
+      "* GOLD: 0"
+    ],
+    "cell": [
+      "* Dialing...",
+      "* But nobody came."
+    ]
+  },
+  "items": {
+    "monster_candy": {
+      "description": [
+        "* Heals 10 HP",
+        "* Has a distinct, non-licorice flavor."
+      ],
+      "use": [
+        "* You ate the Monster Candy.",
+        "* You recovered 10 HP!"
+      ]
+    },
+    "spider_donut": {
+      "description": [
+        "* Heals 12 HP",
+        "* A donut made with Spider Cider",
+        "  in the batter."
+      ],
+      "use": [
+        "* You ate the Spider Donut.",
+        "* You recovered 12 HP!"
+      ]
+    }
+  },
+  "system": {
+    "game_over": [
+      "* You died...",
+      "* Game Over!"
+    ],
+    "save_complete": ["* Game saved!"],
+    "load_complete": ["* Game loaded!"],
+    "attack_instruction": [
+      "Press ACTION when the bar is in the green!"
+    ]
+  }
+}

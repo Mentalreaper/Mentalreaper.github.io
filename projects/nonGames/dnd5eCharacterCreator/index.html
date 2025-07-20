@@ -3,20 +3,26 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <meta name="og:viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="og:author" content="Alexander Conn">
-    <meta name="og:type" content="website">
-    <meta name="og:theme-color" content="Canvas">
-    <meta name="og:title" content="Alexander Conn - Home | Game Development Blog">
-    <meta name="og:description" content="A game development blog. Indie stuff by an In(d)iot.">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="author" content="Alexander Conn">
+    <meta name="type" content="website">
+    <meta name="theme-color" content="Canvas">
+    <meta name="title" content="D&D 5e Character Creator | Alexander Conn">
+    <meta name="description" content="Create and manage your Dungeons & Dragons 5th Edition characters with this modern web-based character builder.">
 
-    <title>Pre-University | Alexander Conn</title>
+    <title>D&D 5e Character Creator | Alexander Conn</title>
 
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../../static/css/dropdown-nav.css">
+    <link rel="stylesheet" type="text/css" href="css/character-creator.css">
+    <link rel="stylesheet" type="text/css" href="css/print-styles.css" media="print">
 
+    <script src="../../../static/javascript/hamburger.js" defer></script>
+    <script src="../../../static/javascript/dropdown-nav.js" defer></script>
+    <script src="../../../static/javascript/theme-toggle.js" defer></script>
+    <script type="module" src="js/main.js"></script>
 
-
-    <link rel="icon" href="/static/favicon/favicon.ico" sizes="any">
+    <link rel="icon" href="../../../static/favicon/favicon.ico" sizes="any">
 </head>
 <body>
     <div class="header">
@@ -31,6 +37,7 @@
             </ul>
         </div>
     </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
     <div class="hamburger">
         <span></span>
         <span></span>
@@ -45,11 +52,263 @@
             <li class="overlay-header-list-item"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
         </ul>
     </div>
+    
     <div class="content">
+        <div id="character-creator-app">
+            <!-- Character List View -->
+            <div id="character-list-view" class="view active">
+                <section class="creator-header">
+                    <h1>D&D 5e Character Creator</h1>
+                    <p>Create, manage, and print your Dungeons & Dragons 5th Edition characters</p>
+                </section>
 
+                <div class="character-actions">
+                    <button id="new-character-btn" class="primary-btn">
+                        <span class="btn-icon">+</span> Create New Character
+                    </button>
+                    <button id="import-character-btn" class="secondary-btn">
+                        <span class="btn-icon">📥</span> Import Character
+                    </button>
+                </div>
+
+                <div id="character-list" class="character-list">
+                    <div class="empty-state">
+                        <p>No characters yet. Create your first character to get started!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Character Builder View -->
+            <div id="character-builder-view" class="view">
+                <div class="builder-header">
+                    <button id="back-to-list" class="nav-btn">← Back to Characters</button>
+                    <div class="builder-actions">
+                        <button id="save-character" class="save-btn">Save</button>
+                        <button id="export-character" class="export-btn">Export</button>
+                    </div>
+                </div>
+
+                <div class="wizard-container">
+                    <nav class="wizard-nav">
+                        <div class="wizard-step active" data-step="1">
+                            <span class="step-number">1</span>
+                            <span class="step-title">Basic Info</span>
+                        </div>
+                        <div class="wizard-step" data-step="2">
+                            <span class="step-number">2</span>
+                            <span class="step-title">Abilities</span>
+                        </div>
+                        <div class="wizard-step" data-step="3">
+                            <span class="step-number">3</span>
+                            <span class="step-title">Skills</span>
+                        </div>
+                        <div class="wizard-step" data-step="4">
+                            <span class="step-number">4</span>
+                            <span class="step-title">Equipment</span>
+                        </div>
+                        <div class="wizard-step" data-step="5">
+                            <span class="step-number">5</span>
+                            <span class="step-title">Details</span>
+                        </div>
+                    </nav>
+
+                    <div class="wizard-content">
+                        <!-- Step 1: Basic Information -->
+                        <div class="wizard-panel active" data-panel="1">
+                            <h2>Basic Information</h2>
+                            <form id="basic-info-form">
+                                <div class="form-group">
+                                    <label for="character-name">Character Name</label>
+                                    <input type="text" id="character-name" name="name" required>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="character-race">Race</label>
+                                        <select id="character-race" name="race" required>
+                                            <option value="">Select a race</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="character-subrace">Subrace</label>
+                                        <select id="character-subrace" name="subrace">
+                                            <option value="">None</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="character-class">Class</label>
+                                        <select id="character-class" name="class" required>
+                                            <option value="">Select a class</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="character-level">Level</label>
+                                        <input type="number" id="character-level" name="level" min="1" max="20" value="1" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="character-background">Background</label>
+                                        <select id="character-background" name="background" required>
+                                            <option value="">Select a background</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="character-alignment">Alignment</label>
+                                        <select id="character-alignment" name="alignment">
+                                            <option value="">Select alignment</option>
+                                            <option value="lawful-good">Lawful Good</option>
+                                            <option value="neutral-good">Neutral Good</option>
+                                            <option value="chaotic-good">Chaotic Good</option>
+                                            <option value="lawful-neutral">Lawful Neutral</option>
+                                            <option value="true-neutral">True Neutral</option>
+                                            <option value="chaotic-neutral">Chaotic Neutral</option>
+                                            <option value="lawful-evil">Lawful Evil</option>
+                                            <option value="neutral-evil">Neutral Evil</option>
+                                            <option value="chaotic-evil">Chaotic Evil</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Step 2: Ability Scores -->
+                        <div class="wizard-panel" data-panel="2">
+                            <h2>Ability Scores</h2>
+                            <div class="ability-method-selector">
+                                <label>Generation Method:</label>
+                                <div class="method-options">
+                                    <label>
+                                        <input type="radio" name="ability-method" value="point-buy" checked>
+                                        Point Buy
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="ability-method" value="standard-array">
+                                        Standard Array
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="ability-method" value="manual">
+                                        Manual Entry
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div id="ability-scores-container" class="ability-scores">
+                                <!-- Ability scores will be dynamically generated -->
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Skills & Proficiencies -->
+                        <div class="wizard-panel" data-panel="3">
+                            <h2>Skills & Proficiencies</h2>
+                            <div id="skills-container">
+                                <!-- Skills will be dynamically generated -->
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Equipment -->
+                        <div class="wizard-panel" data-panel="4">
+                            <h2>Equipment</h2>
+                            <div id="equipment-container">
+                                <!-- Equipment will be dynamically generated -->
+                            </div>
+                        </div>
+
+                        <!-- Step 5: Character Details -->
+                        <div class="wizard-panel" data-panel="5">
+                            <h2>Character Details</h2>
+                            <form id="character-details-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="character-age">Age</label>
+                                        <input type="text" id="character-age" name="age">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="character-height">Height</label>
+                                        <input type="text" id="character-height" name="height">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="character-weight">Weight</label>
+                                        <input type="text" id="character-weight" name="weight">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="character-eyes">Eye Color</label>
+                                        <input type="text" id="character-eyes" name="eyes">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="character-hair">Hair Color</label>
+                                        <input type="text" id="character-hair" name="hair">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="character-skin">Skin Color</label>
+                                        <input type="text" id="character-skin" name="skin">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="character-personality">Personality Traits</label>
+                                    <textarea id="character-personality" name="personality" rows="3"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="character-ideals">Ideals</label>
+                                    <textarea id="character-ideals" name="ideals" rows="2"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="character-bonds">Bonds</label>
+                                    <textarea id="character-bonds" name="bonds" rows="2"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="character-flaws">Flaws</label>
+                                    <textarea id="character-flaws" name="flaws" rows="2"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="character-backstory">Backstory</label>
+                                    <textarea id="character-backstory" name="backstory" rows="6"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="wizard-navigation">
+                        <button id="wizard-prev" class="nav-btn" disabled>Previous</button>
+                        <button id="wizard-next" class="nav-btn primary">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Character Sheet View -->
+            <div id="character-sheet-view" class="view">
+                <div class="sheet-header">
+                    <button id="back-from-sheet" class="nav-btn">← Back</button>
+                    <div class="sheet-actions">
+                        <button id="edit-character" class="edit-btn">Edit</button>
+                        <button id="print-sheet" class="print-btn">Print</button>
+                        <button id="export-sheet-pdf" class="export-btn">Export PDF</button>
+                    </div>
+                </div>
+                <div id="character-sheet-content" class="character-sheet">
+                    <!-- Character sheet will be rendered here -->
+                </div>
+            </div>
+        </div>
     </div>
+    
     <div class="footer">
         <span>© Alexander JD Conn 2024 | All rights reserved</span>
     </div>
+
+    <!-- Import character file input (hidden) -->
+    <input type="file" id="import-file-input" accept=".json" style="display: none;">
 </body>
 </html>

@@ -1,0 +1,71 @@
+{
+  "id": "ruins_entrance",
+  "name": "Ruins - Entrance Hall",
+  "dimensions": {
+    "width": 320,
+    "height": 240
+  },
+  "background": "#2c1810",
+  "playerStart": {
+    "x": 160,
+    "y": 120,
+    "facing": "down"
+  },
+  "walls": [
+    {"x": 50, "y": 50, "width": 20, "height": 100},
+    {"x": 280, "y": 80, "width": 20, "height": 80},
+    {"x": 150, "y": 200, "width": 100, "height": 20}
+  ],
+  "npcs": [
+    {
+      "x": 100,
+      "y": 100,
+      "width": 16,
+      "height": 16,
+      "dialogueId": "npcs.dummy",
+      "color": "#ff6b6b",
+      "canBattle": true,
+      "enemyId": "dummy",
+      "npcId": "dummy",
+      "overworldSprite": "img/UTCook-GameJam-PancakeEnemy.png",
+      "spriteSize": 24,
+      "colorTint": null,
+      "opacity": 1.0
+    },
+    {
+      "x": 250,
+      "y": 150,
+      "width": 16,
+      "height": 16,
+      "dialogueId": "npcs.character1",
+      "color": "#4ecdc4",
+      "npcId": "character1",
+      "spriteSize": 20,
+      "colorTint": "#4ecdc4",
+      "opacity": 0.9,
+      "canBattle": true,
+      "enemyEncounter": ["dummy", "test_enemy_2", "test_enemy_3"]
+    }
+  ],
+  "savePoints": [
+    {
+      "x": 200,
+      "y": 50,
+      "width": 20,
+      "height": 20,
+      "dialogueId": "savePoint.ruins"
+    }
+  ],
+  "transitions": [
+    {
+      "x": 140,
+      "y": 0,
+      "width": 40,
+      "height": 5,
+      "direction": "north",
+      "toMap": "01_ruins",
+      "toRoom": "room_02_corridor",
+      "toPosition": {"x": 160, "y": 220}
+    }
+  ]
+}

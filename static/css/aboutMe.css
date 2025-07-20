@@ -1,87 +1,320 @@
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-/* Image (portrait) */
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-    .about-me-text-container {
-        padding: 0 5%;
-    }
+/* Modern About Me Page Styles */
 
-    .about-me-title {
-        width: 100%;
-        text-align: center;
-    }
-
-    .about-me-aside {
-        padding-top: 2%;
-        max-width: 200px;
-        min-width: 200px;
-    }
-
-    .about-me-aside img {
-        float: left;
-        padding: 2% 6% 2% 2%;
-        width: 100%;
-        height: auto;
-    }
-
-    .about-me-paragraph {
-        width: 100%;
-    }
+.about-me {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-    .about-me-text-container {
-        padding: 0 5%;
-    }
-
-    .about-me-title {
-        width: 100%;
-        text-align: center;
-    }
-
-    .about-me-aside {
-        padding-top: 2%;
-        max-width: 200px;
-        min-width: 200px;
-    }
-
-    .about-me-aside img {
-        float: left;
-        padding: 2% 6% 2% 2%;
-        width: 100%;
-        height: auto;
-    }
-
-    .about-me-paragraph {
-        width: 100%;
-    }
+.about-me-title {
+  text-align: center;
+  margin-bottom: var(--space-lg);
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-    .about-me-text-container {
-        padding: 0 10%;
-    }
+.about-me-title h1 {
+  font-family: var(--font-mono);
+  color: var(--accent-primary);
+  position: relative;
+  margin: 0;
+}
 
-    .about-me-title {
-        width: 100%;
-        text-align: center;
-    }
+.about-me-title h1::before {
+  content: "$ whoami";
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--space-sm);
+}
 
-    .about-me-aside {
-        max-width: 250px;
-        min-width: 250px;
-    }
+/* Decorative accent bar */
+.red-bar {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  margin: var(--space-md) auto;
+  border-radius: 2px;
+}
 
-    .about-me-aside img {
-        float: left;
-        padding: 2% 8% 2% 2%;
-        width: 100%;
-        height: auto;
-    }
+.about-me-text-container {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: flex-start;
+  margin-top: var(--space-lg);
+}
 
-    .about-me-paragraph {
-        width: 100%;
-    }
+.about-me-aside {
+  flex-shrink: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-normal);
+}
+
+.about-me-aside:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+.about-me-aside img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  display: block;
+  transition: transform var(--transition-normal);
+}
+
+.about-me-aside:hover img {
+  transform: scale(1.02);
+}
+
+.about-me-paragraph {
+  flex: 1;
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: none;
+  margin: 0;
+}
+
+.about-me-paragraph a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.about-me-paragraph a::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent-hover);
+  transition: width var(--transition-fast);
+}
+
+.about-me-paragraph a:hover {
+  color: var(--accent-hover);
+}
+
+.about-me-paragraph a:hover::after {
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-me-text-container {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .about-me-aside {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .about-me-paragraph {
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-me-text-container {
+    padding: 0;
+  }
+  
+  .about-me-aside {
+    max-width: 250px;
+    padding: var(--space-sm);
+  }
+  
+  .about-me-title h1::before {
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (min-width: 769px) {
+  .about-me-aside {
+    width: 280px;
+    min-width: 280px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-me-aside {
+    width: 320px;
+    min-width: 320px;
+  }
+  
+  .about-me-text-container {
+    gap: var(--space-xl);
+  }
+}
+
+/* Text Wrap Classes - Reusable for any image+text combination */
+.text-wrap-container {
+  /* Reset any flex properties */
+  display: block !important;
+  gap: 0 !important;
+}
+
+/* More speci`c selector to override the flex layout */
+.about-me-text-container.text-wrap-container {
+  display: block !important;
+  gap: 0 !important;
+  align-items: initial !important;
+}
+
+.text-wrap-image-left {
+  float: left;
+  margin: 0 var(--space-lg) var(--space-md) 0;
+  max-width: 40%;
+  /* Override any flex properties */
+  flex-shrink: initial;
+}
+
+.text-wrap-image-right {
+  float: right;
+  margin: 0 0 var(--space-md) var(--space-lg);
+  max-width: 40%;
+  /* Override any flex properties */
+  flex-shrink: initial;
+}
+
+/* Ensure the image wrapper maintains its styling while floating */
+.about-me-aside.text-wrap-image-left,
+.about-me-aside.text-wrap-image-right {
+  /* Keep the visual styling but make it work with float */
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-normal);
+}
+
+.text-wrap-image-left img,
+.text-wrap-image-right img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.text-wrap-content {
+  /* Ensure proper text flow */
+  overflow: auto;
+}
+
+/* Clear floats after the container */
+.text-wrap-container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive adjustments for text wrap */
+@media (max-width: 768px) {
+  .text-wrap-image-left,
+  .text-wrap-image-right {
+    float: none;
+    max-width: 300px;
+    margin: 0 auto var(--space-md) auto;
+    display: block;
+  }
+  
+  /* Reset to flex layout on mobile for better spacing */
+  .about-me-text-container.text-wrap-container {
+    display: flex !important;
+    flex-direction: column;
+    gap: var(--space-md) !important;
+    align-items: center !important;
+  }
+}
+
+/* Ensure text wrapping only applies on desktop */
+@media (min-width: 769px) {
+  .about-me-text-container.text-wrap-container {
+    display: block !important;
+    gap: 0 !important;
+    align-items: initial !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .text-wrap-image-left,
+  .text-wrap-image-right {
+    max-width: 35%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .text-wrap-image-left,
+  .text-wrap-image-right {
+    max-width: 320px;
+  }
+}
+
+/* Typography enhancements */
+.about-me-paragraph strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.about-me-paragraph em {
+  color: var(--accent-secondary);
+  font-style: italic;
+}
+
+/* Code-like styling for technical terms */
+.about-me-paragraph code,
+.tech-term {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--bg-tertiary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--accent-secondary);
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .about-me-aside,
+  .about-me-aside img,
+  .about-me-paragraph a::after {
+    transition: none;
+  }
+  
+  .about-me-aside:hover {
+    transform: none;
+  }
+  
+  .about-me-aside:hover img {
+    transform: none;
+  }
+}
+
+/* Focus states for accessibility */
+.about-me-aside:focus-within {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* Loading state */
+.about-me-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.about-me-loading::before {
+  content: "Loading profile...";
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

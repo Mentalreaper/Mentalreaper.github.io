@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <meta name="og:viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="og:author" content="Alexander Conn">
     <meta name="og:type" content="website">
     <meta name="og:theme-color" content="Canvas">
@@ -13,9 +13,12 @@
     <title>About Me | Alexander Conn</title>
 
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/dropdown-nav.css">
     <link rel="stylesheet" type="text/css" href="/static/css/aboutMe.css">
 
-
+    <script src="/static/javascript/hamburger.js" defer></script>
+    <script src="/static/javascript/dropdown-nav.js" defer></script>
+    <script src="/static/javascript/theme-toggle.js" defer></script>
 
     <link rel="icon" href="/static/favicon/favicon.ico" sizes="any">
 </head>
@@ -32,6 +35,7 @@
             </ul>
         </div>
     </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
     <div class="hamburger">
         <span></span>
         <span></span>
@@ -50,63 +54,64 @@
         <section class="about-me">
             <div class="about-me-title"><h1>About Me</h1></div>
             <div class="red-bar"></div>
-            <div class="about-me-text-container">
-                <div class="about-me-aside">
-                    <img src="/static/jpg/portrait (temp).jpg" alt="">
+            <div class="about-me-text-container text-wrap-container">
+                <div class="text-wrap-content">
+                    <div class="about-me-aside text-wrap-image-left">
+                        <img src="/static/jpg/portrait (temp).jpg" alt="">
+                    </div>
+                    <p class="about-me-paragraph">
+                        Hello! I'm Alex, a lifelong gaming enthusiast turned developer, whose love for the craft began with a
+                        Gameboy Advance at age four and culminated in a First-Class &#40;Honours&#41; degree in Computer
+                        Science &#40;Games Technology&#41; from Kingston University.
+                        
+                        <br><br>
+                        
+                        I have loved video games for as long as I can remember. At age 7, I got lucky as my primary school were
+                        upgrading their computers, so they literally gave them away for free. Some of my favourite games while
+                        growing up were generally older games &#40;since it wasn't exactly a strong PC&#41; like Heroes of
+                        Might and Magic 3, Morrowind, and eventually Arcanum: Of Steamworks and Magick Obscura &#40;a full list
+                        of <a href="/blog/gamesIRecommend.html">games I recommend</a>&#41;.
+                        
+                        <br><br>
+
+                        While at Kingston, I honed my game design and programming skills through various projects, like
+                        developing VR game <a href="/404#BearGrills">Bear Grills</a> and mobile game
+                        <a href="/404#Cosmonaut">Cosmonaut</a> (a full list of
+                        <a href="/404#ProjectsIDidAtUniversity">Projects I did at University</a>). Each of these
+                        projects helped me to gain experience in different areas, from learning to collaborate as a team to
+                        tackling the challenges of leadership itself.
+
+                        <br><br>
+
+                        Beyond game development, I've honed my skills through various programming projects (and online
+                        exercises like LeetCode). This includes developing Card Collection Managers for
+                        <a href="/404#MagicTheGathering">Magic the Gathering</a> and
+                        <a href="/404#YuGiOh">Yu-Gi-Oh!</a>, and Character Creators for
+                        <a href="/404#DungeonsandDragons&#40;5th Edition&#41;">Dungeons and Dragons &#40;5th
+                        Edition&#41;</a> and <a href="/404#PathFinder&#40;1stAnd2ndEdition&#41;">PathFinder &#40;
+                        1st and 2nd Edition&#41;</a>. Through these, I've gained proficiency in the Qt framework, and database
+                        scripting with MongoDB and SQLite.
+
+                        <br><br>
+                        
+                        I'm far more passionate about using my skills to create immersive, engaging game experiences however.
+                        My goal is to learn real game design from the experts, and hopefully produce my own indie game. I'm
+                        excited to bring my knowledge and enthusiasm to a professional game studio. I love working on small
+                        indie projects in my spare time, but more than anything I want to experience a proper games development
+                        environment!
+                        
+                        <br><br>
+                        
+                        When I'm not programming, I express my creativity through drawing, writing, and immersing myself in
+                        board/card/video games. These hobbies keep my creative juices flowing and fuel my passion for game
+                        development!
+                        
+                        <br><br>
+                        
+                        Thank you for visiting my <strike>WebZone</strike> Portfolio. I'm looking forward to the next
+                        step in my game dev journey, and hopefully you'll be a part of it!
+                    </p>
                 </div>
-                <!-- <div class="about-me-text-spacer"></div> -->
-                <p class="about-me-paragraph">
-                    Hello! I'm Alex, a lifelong gaming enthusiast turned developer, whose love for the craft began with a
-                    Gameboy Advance at age four and culminated in a First-Class &#40;Honours&#41; degree in Computer
-                    Science &#40;Games Technology&#41; from Kingston University.
-                    
-                    <br><br>
-                    
-                    I have loved video games for as long as I can remember. At age 7, I got lucky as my primary school were
-                    upgrading their computers, so they literally gave them away for free. Some of my favourite games while
-                    growing up were generally older games &#40;since it wasn't exactly a strong PC&#41; like Heroes of
-                    Might and Magic 3, Morrowind, and eventually Arcanum: Of Steamworks and Magick Obscura &#40;a full list
-                    of <a href="/blog/gamesIRecommend.html">games I recommend</a>&#41;.
-                    
-                    <br><br>
-    
-                    While at Kingston, I honed my game design and programming skills through various projects, like
-                    developing VR game <a href="/404#BearGrills">Bear Grills</a> and mobile game
-                    <a href="/404#Cosmonaut">Cosmonaut</a> (a full list of
-                    <a href="/404#ProjectsIDidAtUniversity">Projects I did at University</a>). Each of these
-                    projects helped me to gain experience in different areas, from learning to collaborate as a team to
-                    tackling the challenges of leadership itself.
-    
-                    <br><br>
-    
-                    Beyond game development, I've honed my skills through various programming projects (and online
-                    exercises like LeetCode). This includes developing Card Collection Managers for
-                    <a href="/404#MagicTheGathering">Magic the Gathering</a> and
-                    <a href="/404#YuGiOh">Yu-Gi-Oh!</a>, and Character Creators for
-                    <a href="/404#DungeonsandDragons&#40;5th Edition&#41;">Dungeons and Dragons &#40;5th
-                    Edition&#41;</a> and <a href="/404#PathFinder&#40;1stAnd2ndEdition&#41;">PathFinder &#40;
-                    1st and 2nd Edition&#41;</a>. Through these, I've gained proficiency in the Qt framework, and database
-                    scripting with MongoDB and SQLite.
-    
-                    <br><br>
-                    
-                    I'm far more passionate about using my skills to create immersive, engaging game experiences however.
-                    My goal is to learn real game design from the experts, and hopefully produce my own indie game. I'm
-                    excited to bring my knowledge and enthusiasm to a professional game studio. I love working on small
-                    indie projects in my spare time, but more than anything I want to experience a proper games development
-                    environment!
-                    
-                    <br><br>
-                    
-                    When I'm not programming, I express my creativity through drawing, writing, and immersing myself in
-                    board/card/video games. These hobbies keep my creative juices flowing and fuel my passion for game
-                    development!
-                    
-                    <br><br>
-                    
-                    Thank you for visiting my <strike>WebZone</strike> Portfolio. I'm looking forward to the next
-                    step in my game dev journey, and hopefully you'll be a part of it!
-                </p>
             </div>
         </section>
     </div>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Undertale-Style Game</title>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="320" height="240"></canvas>
+        <div id="resolutionDisplay">1920x1080</div>
+    </div>
+    <div id="ui">
+        <span class="desktop-only">Use ARROW KEYS to move, SPACE to interact/confirm, X to open menu/go back, ESC to pause</span>
+        <span class="mobile-only">Drag joystick to move/navigate menus, ACTION to interact/confirm, MENU to open menu/go back (long press for pause)</span>
+    </div>
+    
+    <div id="mobileControls">
+        <div id="joystickContainer">
+            <div id="joystickBase"></div>
+            <div id="joystickKnob"></div>
+        </div>
+        <div id="actionBtn">ACTION</div>
+        <div id="menuBtn">MENU</div>
+    </div>
+
+</body>
+</html>

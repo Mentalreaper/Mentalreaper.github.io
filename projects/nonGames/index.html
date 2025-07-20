@@ -7,14 +7,18 @@
     <meta name="og:author" content="Alexander Conn">
     <meta name="og:type" content="website">
     <meta name="og:theme-color" content="Canvas">
-    <meta name="og:title" content="Alexander Conn - Home | Game Development Blog">
-    <meta name="og:description" content="A game development blog. Indie stuff by an In(d)iot.">
+    <meta name="og:title" content="Alexander Conn - Non-Games Projects | Software Development">
+    <meta name="og:description" content="Collection of utility applications and software tools for gaming and beyond.">
 
-    <title>Pre-University | Alexander Conn</title>
+    <title>Non-Games Projects | Alexander Conn</title>
 
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/dropdown-nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/project-cards.css">
 
-
+    <script src="/static/javascript/hamburger.js" defer></script>
+    <script src="/static/javascript/dropdown-nav.js" defer></script>
+    <script src="/static/javascript/theme-toggle.js" defer></script>
 
     <link rel="icon" href="/static/favicon/favicon.ico" sizes="any">
 </head>
@@ -31,6 +35,7 @@
             </ul>
         </div>
     </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
     <div class="hamburger">
         <span></span>
         <span></span>
@@ -46,7 +51,54 @@
         </ul>
     </div>
     <div class="content">
+        <section class="projects-intro">
+            <h1>Non-Games / Software Projects</h1>
+            <p>
+                Utility applications and tools that enhance the gaming experience, from character creators to collection managers.
+            </p>
+        </section>
 
+        <section class="project-cards-container">
+            <div class="project-card">
+                <h2>D&D 5e Character Creator</h2>
+                <p>A modern web-based character builder for Dungeons & Dragons 5th Edition. Features include multi-step wizard interface, point buy/standard array ability scores, and printable character sheets.</p>
+                <div class="project-links">
+                    <a href="/projects/nonGames/dnd5eCharacterCreator/" class="project-link">Open App</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h2>Pathfinder 2e Character Creator</h2>
+                <p>Character creation tool for Pathfinder Second Edition. Build complex characters with ancestry, background, and class combinations.</p>
+                <div class="project-links">
+                    <a href="/projects/nonGames/pathfinder2eCharacterCreator/" class="project-link">Coming Soon</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h2>Magic: The Gathering Collection App</h2>
+                <p>Track and organize your MTG card collection. Features deck building, price tracking, and collection statistics.</p>
+                <div class="project-links">
+                    <a href="/projects/nonGames/magicTheGatheringCollectionApp/" class="project-link">Coming Soon</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h2>Yu-Gi-Oh! Collection App</h2>
+                <p>Manage your Yu-Gi-Oh! trading card collection with deck building tools and card database integration.</p>
+                <div class="project-links">
+                    <a href="/projects/nonGames/yugiohCollectionApp/" class="project-link">Coming Soon</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h2>Pathfinder 1e Character Creator</h2>
+                <p>Classic character builder for the original Pathfinder RPG system with full feat and skill tracking.</p>
+                <div class="project-links">
+                    <a href="/projects/nonGames/pathfinderCharacterCreator/" class="project-link">Coming Soon</a>
+                </div>
+            </div>
+        </section>
     </div>
     <div class="footer">
         <span>© Alexander JD Conn 2024 | All rights reserved</span>

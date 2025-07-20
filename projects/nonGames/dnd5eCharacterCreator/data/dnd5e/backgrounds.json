@@ -1,0 +1,172 @@
+{
+  "acolyte": {
+    "name": "Acolyte",
+    "skillProficiencies": ["insight", "religion"],
+    "languages": 2,
+    "feature": "Shelter of the Faithful",
+    "equipment": [
+      "Holy symbol",
+      "Prayer book or prayer wheel",
+      "5 sticks of incense",
+      "Vestments",
+      "Common clothes",
+      "Pouch with 15 gp"
+    ]
+  },
+  "criminal": {
+    "name": "Criminal",
+    "skillProficiencies": ["deception", "stealth"],
+    "toolProficiencies": ["Thieves' tools", "One type of gaming set"],
+    "feature": "Criminal Contact",
+    "equipment": [
+      "Crowbar",
+      "Dark common clothes with hood",
+      "Pouch with 15 gp"
+    ]
+  },
+  "folk-hero": {
+    "name": "Folk Hero",
+    "skillProficiencies": ["animalHandling", "survival"],
+    "toolProficiencies": ["One type of artisan's tools", "Vehicles (land)"],
+    "feature": "Rustic Hospitality",
+    "equipment": [
+      "One type of artisan's tools",
+      "Shovel",
+      "Iron pot",
+      "Common clothes",
+      "Pouch with 10 gp"
+    ]
+  },
+  "noble": {
+    "name": "Noble",
+    "skillProficiencies": ["history", "persuasion"],
+    "toolProficiencies": ["One type of gaming set"],
+    "languages": 1,
+    "feature": "Position of Privilege",
+    "equipment": [
+      "Fine clothes",
+      "Signet ring",
+      "Scroll of pedigree",
+      "Purse with 25 gp"
+    ]
+  },
+  "sage": {
+    "name": "Sage",
+    "skillProficiencies": ["arcana", "history"],
+    "languages": 2,
+    "feature": "Researcher",
+    "equipment": [
+      "Bottle of black ink",
+      "Quill",
+      "Small knife",
+      "Letter from colleague",
+      "Common clothes",
+      "Pouch with 10 gp"
+    ]
+  },
+  "soldier": {
+    "name": "Soldier",
+    "skillProficiencies": ["athletics", "intimidation"],
+    "toolProficiencies": ["One type of gaming set", "Vehicles (land)"],
+    "feature": "Military Rank",
+    "equipment": [
+      "Insignia of rank",
+      "Trophy from enemy",
+      "Deck of cards or dice",
+      "Common clothes",
+      "Pouch with 10 gp"
+    ]
+  },
+  "charlatan": {
+    "name": "Charlatan",
+    "skillProficiencies": ["deception", "sleightOfHand"],
+    "toolProficiencies": ["Disguise kit", "Forgery kit"],
+    "feature": "False Identity",
+    "equipment": [
+      "Fine clothes",
+      "Disguise kit",
+      "Forgery kit",
+      "Pouch with 15 gp"
+    ]
+  },
+  "entertainer": {
+    "name": "Entertainer",
+    "skillProficiencies": ["acrobatics", "performance"],
+    "toolProficiencies": ["Disguise kit", "One type of musical instrument"],
+    "feature": "By Popular Demand",
+    "equipment": [
+      "One musical instrument",
+      "Costume",
+      "Love letter from admirer",
+      "Pouch with 15 gp"
+    ]
+  },
+  "guild-artisan": {
+    "name": "Guild Artisan",
+    "skillProficiencies": ["insight", "persuasion"],
+    "toolProficiencies": ["One type of artisan's tools"],
+    "languages": 1,
+    "feature": "Guild Membership",
+    "equipment": [
+      "One type of artisan's tools",
+      "Letter of introduction from guild",
+      "Traveler's clothes",
+      "Pouch with 15 gp"
+    ]
+  },
+  "hermit": {
+    "name": "Hermit",
+    "skillProficiencies": ["medicine", "religion"],
+    "toolProficiencies": ["Herbalism kit"],
+    "languages": 1,
+    "feature": "Discovery",
+    "equipment": [
+      "Scroll case with notes",
+      "Winter blanket",
+      "Common clothes",
+      "Herbalism kit",
+      "5 gp"
+    ]
+  },
+  "outlander": {
+    "name": "Outlander",
+    "skillProficiencies": ["athletics", "survival"],
+    "toolProficiencies": ["One type of musical instrument"],
+    "languages": 1,
+    "feature": "Wanderer",
+    "equipment": [
+      "Staff",
+      "Hunting trap",
+      "Trophy from animal",
+      "Traveler's clothes",
+      "Pouch with 10 gp"
+    ]
+  },
+  "sailor": {
+    "name": "Sailor",
+    "skillProficiencies": ["athletics", "perception"],
+    "toolProficiencies": ["Navigator's tools", "Vehicles (water)"],
+    "feature": "Ship's Passage",
+    "equipment": [
+      "Belaying pin (club)",
+      "50 feet of silk rope",
+      "Lucky charm",
+      "Common clothes",
+      "Pouch with 10 gp"
+    ]
+  },
+  "urchin": {
+    "name": "Urchin",
+    "skillProficiencies": ["sleightOfHand", "stealth"],
+    "toolProficiencies": ["Disguise kit", "Thieves' tools"],
+    "feature": "City Secrets",
+    "equipment": [
+      "Small knife",
+      "Map of home city",
+      "Pet mouse",
+      "Token from parents",
+      "Common clothes",
+      "Pouch with 10 gp"
+    ]
+  }
+}

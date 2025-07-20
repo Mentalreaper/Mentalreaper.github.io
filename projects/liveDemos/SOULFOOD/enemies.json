@@ -1,0 +1,128 @@
+{
+  "dummy": {
+    "name": "Dummy",
+    "hp": 30,
+    "maxHp": 30,
+    "atk": 4,
+    "def": 0,
+    "acts": ["Check", "Talk"],
+    "dialogueId": "battle.dummy.encounter",
+    "spareCondition": "talk",
+    
+    "_comment": "=== SPRITE SYSTEM ===",
+    "combatSprite": "img/UTCook-GameJam-PancakeEnemy.png",
+    "spriteSize": 180,
+    "overworldSprite": "img/UTCook-GameJam-PancakeDummy_Large.png",
+    "overworldSpriteSize": 16,
+    "colorTint": null,
+    "opacity": 1.0,
+    
+    "_comment_display": "=== MULTI-ENEMY DISPLAY POSITIONING ===",
+    "healthDisplayPos": {"x": 120, "y": 90, "visible": true},
+    "mercyDisplayPos": {"x": 120, "y": 102, "visible": true},
+    "battlePosition": {"x": 160, "y": 50},
+    "displayScale": 1.0,
+    
+    "_comment2": "=== ANIMATION SYSTEM (TODO) ===",
+    "spriteAnimations": {
+      "idle": {"frames": 1, "duration": 1000, "loop": true},
+      "walking": {"frames": 1, "duration": 500, "loop": true},
+      "attacking": {"frames": 1, "duration": 300, "loop": false},
+      "hurt": {"frames": 1, "duration": 200, "loop": false},
+      "defeated": {"frames": 1, "duration": 500, "loop": false}
+    },
+    
+    "_comment3": "=== COMBAT BEHAVIOR === (TODO) ",
+    "movePattern": "basic",
+    "immunities": [],
+    "weaknesses": {},
+    "specialAbilities": [],
+    "bulletPatterns": ["basic_horizontal"],
+    
+    "_comment4": "=== AUDIO & EFFECTS === (TODO) ",
+    "sounds": {
+      "encounter": null,
+      "hurt": null,
+      "attack": null,
+      "death": null,
+      "spare": null
+    },
+    "visualEffects": {
+      "onHit": null,
+      "onDeath": null,
+      "onSpare": null,
+      "onEncounter": null
+    },
+    
+    "_comment5": "=== REWARDS & PROGRESSION === (TODO) ",
+    "expReward": 10,
+    "goldReward": 5,
+    "itemDrops": [],
+    "spareRewards": {
+      "exp": 5,
+      "gold": 2,
+      "items": []
+    },
+    
+    "_comment6": "=== ADVANCED MECHANICS === (TODO) ",
+    "statusEffects": [],
+    "environmentalEffects": {},
+    "formations": null,
+    "evolutionChain": null,
+    
+    "_comment7": "=== DIALOGUE & STORY === (TODO) ",
+    "encounterId": "dummy_001",
+    "sparedDialogue": "npcs.dummy.spared",
+    "multiEncounterBehavior": "friendly"
+  },
+  
+  "test_enemy_2": {
+    "name": "Test Enemy",
+    "hp": 20,
+    "maxHp": 20,
+    "atk": 3,
+    "def": 1,
+    "acts": ["Check", "Encourage"],
+    "dialogueId": "battle.dummy.encounter",
+    "spareCondition": "encourage",
+    
+    "_comment": "=== SPRITE SYSTEM ===",
+    "combatSprite": null,
+    "spriteSize": 60,
+    "overworldSprite": null,
+    "overworldSpriteSize": 16,
+    "colorTint": "#ff0000",
+    "opacity": 1.0,
+    
+    "_comment_display": "=== MULTI-ENEMY DISPLAY POSITIONING ===",
+    "healthDisplayPos": {"x": 60, "y": 90, "visible": true},
+    "mercyDisplayPos": {"x": 60, "y": 102, "visible": true},
+    "battlePosition": {"x": 100, "y": 50},
+    "displayScale": 0.8
+  },
+  
+  "test_enemy_3": {
+    "name": "Another Test",
+    "hp": 15,
+    "maxHp": 15,
+    "atk": 2,
+    "def": 0,
+    "acts": ["Check", "Wave"],
+    "dialogueId": "battle.dummy.encounter",
+    "spareCondition": "wave",
+    
+    "_comment": "=== SPRITE SYSTEM ===",
+    "combatSprite": null,
+    "spriteSize": 50,
+    "overworldSprite": null,
+    "overworldSpriteSize": 16,
+    "colorTint": "#00ff00",
+    "opacity": 1.0,
+    
+    "_comment_display": "=== MULTI-ENEMY DISPLAY POSITIONING ===",
+    "healthDisplayPos": {"x": 200, "y": 90, "visible": true},
+    "mercyDisplayPos": {"x": 200, "y": 102, "visible": true},
+    "battlePosition": {"x": 240, "y": 50},
+    "displayScale": 0.6
+  }
+}

@@ -1,0 +1,351 @@
+/* D&D 5e Character Creator - Print Styles */
+
+@media print {
+    /* Hide non-printable elements */
+    .header, 
+    .footer, 
+    .hamburger, 
+    .theme-toggle,
+    .builder-header,
+    .builder-actions,
+    .sheet-header,
+    .sheet-actions,
+    .wizard-nav,
+    .wizard-navigation,
+    .character-actions,
+    .character-actions-mini,
+    .nav-btn,
+    .edit-btn,
+    .export-btn,
+    .print-btn,
+    #character-list-view,
+    #character-builder-view {
+        display: none !important;
+    }
+    
+    /* Reset page styles */
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+    
+    body {
+        font-family: Arial, sans-serif !important;
+        font-size: 11pt !important;
+        line-height: 1.3 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Page setup */
+    @page {
+        size: letter;
+        margin: 0.5in;
+    }
+    
+    /* Character sheet container */
+    .content {
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    #character-sheet-view {
+        display: block !important;
+    }
+    
+    .character-sheet {
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        page-break-inside: avoid;
+    }
+    
+    /* Typography for print */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: Arial, sans-serif !important;
+        margin-top: 0.5em !important;
+        margin-bottom: 0.25em !important;
+        page-break-after: avoid;
+    }
+    
+    h1 {
+        font-size: 24pt !important;
+        border-bottom: 2px solid black !important;
+        padding-bottom: 0.25em !important;
+    }
+    
+    h2 {
+        font-size: 18pt !important;
+        margin-top: 1em !important;
+    }
+    
+    h3 {
+        font-size: 14pt !important;
+    }
+    
+    /* Character sheet sections */
+    .sheet-section {
+        margin-bottom: 1em !important;
+        page-break-inside: avoid;
+        border: 1px solid #ccc !important;
+        padding: 0.5em !important;
+    }
+    
+    .sheet-header-info {
+        display: flex !important;
+        justify-content: space-between !important;
+        margin-bottom: 1em !important;
+    }
+    
+    .character-name {
+        font-size: 20pt !important;
+        font-weight: bold !important;
+    }
+    
+    .character-basics {
+        font-size: 10pt !important;
+    }
+    
+    /* Ability scores grid */
+    .ability-scores-print {
+        display: grid !important;
+        grid-template-columns: repeat(6, 1fr) !important;
+        gap: 0.5em !important;
+        margin: 1em 0 !important;
+    }
+    
+    .ability-score-box {
+        border: 2px solid black !important;
+        text-align: center !important;
+        padding: 0.5em !important;
+    }
+    
+    .ability-score-name {
+        font-weight: bold !important;
+        font-size: 9pt !important;
+    }
+    
+    .ability-score-value {
+        font-size: 16pt !important;
+        font-weight: bold !important;
+        margin: 0.25em 0 !important;
+    }
+    
+    .ability-score-modifier {
+        font-size: 12pt !important;
+        border-top: 1px solid black !important;
+        padding-top: 0.25em !important;
+    }
+    
+    /* Skills section */
+    .skills-print {
+        columns: 2 !important;
+        column-gap: 1em !important;
+    }
+    
+    .skill-print-item {
+        break-inside: avoid !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        padding: 0.25em 0 !important;
+        border-bottom: 1px dotted #ccc !important;
+    }
+    
+    .skill-proficiency {
+        font-weight: bold !important;
+    }
+    
+    /* Combat stats */
+    .combat-stats {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.5em !important;
+        margin: 1em 0 !important;
+    }
+    
+    .stat-box {
+        border: 1px solid black !important;
+        padding: 0.5em !important;
+        text-align: center !important;
+    }
+    
+    .stat-label {
+        font-size: 9pt !important;
+        font-weight: bold !important;
+    }
+    
+    .stat-value {
+        font-size: 14pt !important;
+        font-weight: bold !important;
+    }
+    
+    /* Equipment section */
+    .equipment-print {
+        margin-top: 1em !important;
+    }
+    
+    .equipment-category {
+        margin-bottom: 0.5em !important;
+    }
+    
+    .equipment-category-title {
+        font-weight: bold !important;
+        border-bottom: 1px solid black !important;
+        padding-bottom: 0.25em !important;
+    }
+    
+    .equipment-list-print {
+        margin-left: 1em !important;
+        font-size: 10pt !important;
+    }
+    
+    /* Features and traits */
+    .features-traits {
+        margin-top: 1em !important;
+    }
+    
+    .feature-item {
+        margin-bottom: 0.5em !important;
+        padding-left: 1em !important;
+    }
+    
+    /* Character details */
+    .character-details-print {
+        margin-top: 1em !important;
+        font-size: 10pt !important;
+    }
+    
+    .detail-row {
+        display: flex !important;
+        justify-content: space-between !important;
+        margin-bottom: 0.25em !important;
+    }
+    
+    .detail-label {
+        font-weight: bold !important;
+    }
+    
+    /* Backstory section */
+    .backstory-print {
+        margin-top: 1em !important;
+        page-break-before: auto;
+    }
+    
+    .backstory-text {
+        white-space: pre-wrap !important;
+        font-size: 10pt !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* Spells section */
+    .spells-print {
+        page-break-before: always;
+    }
+    
+    .spell-level-section {
+        margin-bottom: 1em !important;
+        page-break-inside: avoid;
+    }
+    
+    .spell-level-header {
+        font-weight: bold !important;
+        background: #f0f0f0 !important;
+        padding: 0.25em !important;
+        border: 1px solid black !important;
+    }
+    
+    .spell-list-print {
+        margin-left: 1em !important;
+        font-size: 10pt !important;
+    }
+    
+    .spell-item {
+        display: flex !important;
+        justify-content: space-between !important;
+        padding: 0.25em 0 !important;
+    }
+    
+    /* Tables */
+    table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        margin: 0.5em 0 !important;
+    }
+    
+    th, td {
+        border: 1px solid black !important;
+        padding: 0.25em !important;
+        font-size: 10pt !important;
+    }
+    
+    th {
+        background: #f0f0f0 !important;
+        font-weight: bold !important;
+    }
+    
+    /* Page breaks */
+    .page-break {
+        page-break-before: always;
+    }
+    
+    .no-break {
+        page-break-inside: avoid;
+    }
+    
+    /* Footer info */
+    .print-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 8pt !important;
+        color: #666 !important;
+        padding: 0.25em !important;
+    }
+    
+    /* Form elements for fillable sheets */
+    input.print-fill {
+        border: none !important;
+        border-bottom: 1px solid black !important;
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: inherit !important;
+    }
+    
+    /* Compact mode for single-page sheets */
+    .compact-sheet {
+        font-size: 9pt !important;
+    }
+    
+    .compact-sheet h2 {
+        font-size: 12pt !important;
+        margin-top: 0.5em !important;
+        margin-bottom: 0.25em !important;
+    }
+    
+    .compact-sheet .sheet-section {
+        margin-bottom: 0.5em !important;
+        padding: 0.25em !important;
+    }
+}
+
+/* Specific print layouts */
+@media print and (orientation: portrait) {
+    .ability-scores-print {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media print and (orientation: landscape) {
+    .skills-print {
+        columns: 3 !important;
+    }
+    
+    .combat-stats {
+        grid-template-columns: repeat(6, 1fr) !important;
+    }
+}
