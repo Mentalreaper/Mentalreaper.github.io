@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup System Demo - GREAT DEALS!</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: "MS Sans Serif", "Comic Sans MS", sans-serif;
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+        
+        .demo-container {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: white;
+            padding: 10px;
+            margin: -20px -20px 20px -20px;
+            font-size: 24px;
+        }
+        
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .demo-button {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            padding: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .demo-button:hover {
+            background: #e0e0e0;
+        }
+        
+        .demo-button:active {
+            border-color: #808080 #ffffff #ffffff #808080;
+        }
+        
+        .section {
+            background: #e0e0e0;
+            border: 2px inset #c0c0c0;
+            padding: 10px;
+            margin: 20px 0;
+        }
+        
+        .section h2 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            color: #000080;
+        }
+        
+        .status {
+            background: #000;
+            color: #00ff00;
+            padding: 10px;
+            font-family: "Courier New", monospace;
+            border: 2px inset #808080;
+            margin-top: 20px;
+            font-size: 12px;
+        }
+        
+        .blink {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>🪟 POPUP SYSTEM DEMO - [CLICK EVERYTHING!]</h1>
+        
+        <div class="section">
+            <h2>📦 BASIC POPUPS</h2>
+            <div class="button-grid">
+                <button class="demo-button" onclick="popupSystem.showError('CRITICAL ERROR IN MODULE [DEALS.DLL]')">
+                    ❌ Error Popup
+                </button>
+                <button class="demo-button" onclick="popupSystem.showWarning('Your GARETHCOIN balance is LOW!')">
+                    ⚠️ Warning Popup
+                </button>
+                <button class="demo-button" onclick="popupSystem.createPopup({title: 'Information', message: 'Did you know? GARETHCOIN is the future!', icon: 'ℹ️', buttons: [{text: 'Amazing!'}]})">
+                    ℹ️ Info Popup
+                </button>
+                <button class="demo-button" onclick="popupSystem.createPopup({title: 'Success!', message: 'Transaction failed successfully!', type: 'success', icon: '✅', buttons: [{text: 'Great!'}]})">
+                    ✅ Success Popup
+                </button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🎪 SPECIAL EFFECTS</h2>
+            <div class="button-grid">
+                <button class="demo-button" onclick="popupSystem.showDownload('definitely_not_virus.exe')">
+                    💾 Download Progress
+                </button>
+                <button class="demo-button" onclick="popupSystem.showToolbar()">
+                    📊 Install Toolbar
+                </button>
+                <button class="demo-button" onclick="popupSystem.showGarethCoin()">
+                    ⛏️ Mine GARETHCOIN
+                </button>
+                <button class="demo-button" onclick="popupSystem.showBigShot()">
+                    💰 [BIG SHOT] Deal
+                </button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>💥 CHAOS MODE</h2>
+            <div class="button-grid">
+                <button class="demo-button" onclick="popupSystem.cascade()">
+                    🌊 Cascade (5 popups)
+                </button>
+                <button class="demo-button" onclick="popupSystem.popupBomb()">
+                    💣 Popup Bomb (10 popups)
+                </button>
+                <button class="demo-button" onclick="popupSystem.createRandomPopup()">
+                    🎲 Random Popup
+                </button>
+                <button class="demo-button" onclick="for(let i=0;i<20;i++)setTimeout(()=>popupSystem.createRandomPopup(),i*100)">
+                    🎆 MEGA CHAOS (20 popups)
+                </button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🎨 CUSTOM POPUPS</h2>
+            <div class="button-grid">
+                <button class="demo-button" onclick="popupSystem.createPopup({title: 'Shaking!', message: 'This popup has the shakes!', shake: true, icon: '🫨', buttons: [{text: 'Stop shaking!'}]})">
+                    🫨 Shaking Popup
+                </button>
+                <button class="demo-button" onclick="popupSystem.createPopup({title: 'URGENT!!!', message: 'BLINK BLINK BLINK', blink: true, type: 'warning', icon: '👁️', buttons: [{text: 'MY EYES!'}]})">
+                    👁️ Blinking Popup
+                </button>
+                <button class="demo-button" onclick="popupSystem.createPopup({title: 'Professional Tools', message: 'Look at all these tools!', hasToolbar: true, icon: '🛠️', buttons: [{text: 'So many tools!'}]})">
+                    🛠️ With Toolbar
+                </button>
+                <button class="demo-button" onclick="popupSystem.createPopup({title: 'Uncloseable', message: 'You cannot close this! Muahaha!', closeable: false, icon: '🔒', buttons: [{text: 'Let me out!', action: () => popupSystem.cascade()}]})">
+                    🔒 No Close Button
+                </button>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🎮 CONTROLS</h2>
+            <div class="button-grid">
+                <button class="demo-button" onclick="popupSystem.closeAll()">
+                    ❌ Close All Popups
+                </button>
+                <button class="demo-button" onclick="alert('Keyboard Shortcut: Press Ctrl+Shift+P for popup bomb!')">
+                    ⌨️ Show Shortcuts
+                </button>
+                <button class="demo-button" onclick="console.log('Check console for commands!'); alert('Open browser console (F12) and try:\n\npopupSystem.popupBomb()\npopupSystem.cascade()\npopupSystem.closeAll()')">
+                    💻 Console Commands
+                </button>
+                <button class="demo-button" onclick="location.reload()">
+                    🔄 Reset Everything
+                </button>
+            </div>
+        </div>
+        
+        <div class="status">
+            <span class="blink">▮</span> SYSTEM STATUS: <span id="status">READY FOR [DEALS]</span><br>
+            POPUP COUNT: <span id="popupCount">0</span><br>
+            CPU USAGE: <span id="cpu">420%</span><br>
+            GARETHCOIN MINED: <span id="coins">0</span><br>
+            [HYPERLINK STATUS]: <span style="color: #ff0000;">BLOCKED</span><br>
+            <br>
+            PRESS CTRL+SHIFT+P FOR [SPECIAL SURPRISE]!
+        </div>
+    </div>
+    
+    <!-- Include the popup system -->
+    <script src="/static/javascript/free-garethcoin-popup-system.js"></script>
+    
+    <script>
+        // Update status display
+        let coinCount = 0;
+        setInterval(() => {
+            document.getElementById('popupCount').textContent = popupSystem.activePopups.size;
+            document.getElementById('cpu').textContent = (420 + popupSystem.activePopups.size * 69) + '%';
+            
+            // Mine coins when popups are active
+            if (popupSystem.activePopups.size > 0) {
+                coinCount += popupSystem.activePopups.size;
+                document.getElementById('coins').textContent = coinCount;
+            }
+            
+            // Update status message
+            const statuses = [
+                'READY FOR [DEALS]',
+                'MINING [GARETHCOIN]',
+                '[HYPERLINK BLOCKED]',
+                'DOWNLOADING TOOLBAR...',
+                'SYSTEM OPTIMAL',
+                'VIRUS SCAN: FAILED SUCCESSFULLY'
+            ];
+            if (Math.random() > 0.9) {
+                document.getElementById('status').textContent = statuses[Math.floor(Math.random() * statuses.length)];
+            }
+        }, 1000);
+        
+        // Show welcome popup after 1 second
+        setTimeout(() => {
+            popupSystem.createPopup({
+                title: 'WELCOME!',
+                message: 'Welcome to the POPUP SYSTEM DEMO!\n\nClick any button to test popups!\nPress Ctrl+Shift+P for chaos!',
+                icon: '🎉',
+                buttons: [
+                    { text: 'Show me deals!', action: () => popupSystem.showBigShot() },
+                    { text: 'Just browsing' }
+                ]
+            });
+        }, 1000);
+    </script>
+</body>
+</html>

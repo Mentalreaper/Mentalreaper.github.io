@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GREAT DEALS!!!</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/FreeGarethCoin-styles.css">
-    <script src="/static/javascript/FreeGarethCoin.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/free-garethcoin.css">
+    <script src="/static/javascript/free-garethcoin-v3.js" defer></script>
+    <script src="/static/javascript/free-garethcoin-popup-system.js" defer></script>
 </head>
 <body>
     <!-- preload script -->
@@ -41,12 +42,12 @@
                     <h3 style="text-align: center; margin-bottom: 10px;">
                         <span class="sparkle">✨</span> MENU <span class="sparkle">✨</span>
                     </h3>
-                    <a href="#" class="nav-item" onclick="playSound(); alert('[HYPERLINK BLOCKED]')">MORE DEALS</a>
-                    <a href="#" class="nav-item" onclick="playSound(); alert('MORE [DEALS] COMING SOON!')">FREE GARETHCOIN!!</a>
-                    <a href="#" class="nav-item" onclick="playSound(); alert('please')">HELP</a>
+                    <a href="#" class="nav-item" onclick="playSound(); popupSystem.showError('[HYPERLINK BLOCKED]'); return false;">MORE DEALS</a>
+                    <a href="#" class="nav-item" onclick="playSound(); popupSystem.showError('MORE [DEALS] COMING SOON!'); return false;">FREE GARETHCOIN!!</a>
+                    <a href="#" class="nav-item" onclick="playSound(); popupSystem.showWarning('please'); return false;">HELP</a>
                     <a href="#" class="nav-item" onclick="playSound(); showStory()">📖 STORY!</a>
                     <a href="#" class="nav-item" onclick="playSound(); donate()">DONATE GARETHCOIN</a>
-                    <a href="#" class="nav-item" onclick="playSound(); alert('[HYPERLINK BLOCKED]')">DONATE [SOUL]</a>
+                    <a href="#" class="nav-item" onclick="playSound(); popupSystem.showError('[HYPERLINK BLOCKED]'); return false;">DONATE [SOUL]</a>
                 </div>
 
                 <!-- Product Grid -->

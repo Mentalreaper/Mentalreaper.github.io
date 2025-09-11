@@ -6,7 +6,7 @@ const products = [
         price: "$9999.99",
         salePrice: "$1.99",
         discount: "LOWEST PRICE!",
-        emoji: "💾"
+        emoji: "🎮"
     },
     {
         title: "C.BAR",
@@ -14,7 +14,7 @@ const products = [
         price: "$199.99",
         salePrice: "$0.99",
         discount: "AMAZING DEAL!!",
-        emoji: "💾"
+        emoji: "🎮"
     },
     {
         title: "KEYGEN&VPN",
@@ -22,7 +22,7 @@ const products = [
         price: "$9999.99",
         salePrice: "$1.99",
         discount: "$£!#",
-        emoji: "💾"
+        emoji: "🎮"
     },
     {
         title: "CRYPTOMIN&nbsp;R",
@@ -30,7 +30,7 @@ const products = [
         price: "$9999.99",
         salePrice: "$1.99",
         discount: "NEVER AGAIN",
-        emoji: "💾"
+        emoji: "🎮"
     }
 ];
 
@@ -45,64 +45,130 @@ const guestbookMessages = [
     "MY [SOUL] WAS A FAIR TRADE!"
 ];
 
-// ===== GLITCHY EARTHBOUND BACKGROUND =====
+// ===== OPTIMIZED GLITCHY EARTHBOUND BACKGROUND =====
 const canvas = document.getElementById('glitchCanvas');
 const ctx = canvas.getContext('2d');
+
+// Performance optimization: render at lower resolution
+const SCALE_FACTOR = 4; // Bigger number = more pixelated/better performance
+let offscreenCanvas, offscreenCtx;
+let lastFrameTime = 0;
+const FRAME_DELAY = 500; // Milliseconds between updates (10 FPS is plenty for glitchy effect)
+
+function setupOffscreenCanvas() {
+    offscreenCanvas = document.createElement('canvas');
+    offscreenCanvas.width = Math.ceil(window.innerWidth / SCALE_FACTOR);
+    offscreenCanvas.height = Math.ceil(window.innerHeight / SCALE_FACTOR);
+    offscreenCtx = offscreenCanvas.getContext('2d');
+    offscreenCtx.imageSmoothingEnabled = false;
+}
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    ctx.imageSmoothingEnabled = false;
+    setupOffscreenCanvas();
 }
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
+// Pre-calculate some values for performance
+const colorPalette = [
+    [255, 0, 128], [128, 255, 0], [0, 128, 255],
+    [255, 255, 0], [255, 0, 255], [0, 255, 255],
+    [200, 100, 50], [50, 200, 100], [100, 50, 200]
+];
+
+// Pre-generate some noise patterns for efficiency
+const noisePatterns = [];
+for (let i = 0; i < 10; i++) {
+    noisePatterns.push(Math.floor(Math.random() * 256));
+}
+
 function generateGlitchBackground() {
-    const imageData = ctx.createImageData(canvas.width, canvas.height);
+    const width = offscreenCanvas.width;
+    const height = offscreenCanvas.height;
+    const imageData = offscreenCtx.createImageData(width, height);
     const data = imageData.data;
     
-    // Create base pattern
-    for (let i = 0; i < data.length; i += 4) {
-        const x = (i / 4) % canvas.width;
-        const y = Math.floor((i / 4) / canvas.width);
+    // Use time for animation but cache it
+    const time = Date.now() * 0.001;
+    const timePattern = Math.floor(time * 10) & 255;
+    const noiseIndex = Math.floor(time) % noisePatterns.length;
+    
+    // Simplified pattern generation using bitwise operations (much faster than sin/cos)
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            const i = (y * width + x) * 4;
+            
+            // Fast pattern using bitwise XOR (creates interesting patterns)
+            const pattern = ((x ^ y) * timePattern) & 255;
+            
+            // Use pre-generated noise with some variation
+            const noise = (noisePatterns[noiseIndex] ^ (x * y)) & 127;
+            
+            // Pick color from palette based on pattern
+            const colorIndex = ((pattern >> 4) + (noise >> 5)) % colorPalette.length;
+            const [r, g, b] = colorPalette[colorIndex];
+            
+            // Apply color with pattern variation
+            data[i] = (r * pattern) >> 8;
+            data[i + 1] = (g * pattern) >> 8;
+            data[i + 2] = (b * pattern) >> 8;
+            data[i + 3] = 255;
+        }
+    }
+    
+    // Add glitch blocks (less frequently and more efficiently)
+    const numGlitches = 2 + (Math.random() * 3) | 0;
+    for (let g = 0; g < numGlitches; g++) {
+        const blockX = (Math.random() * width) | 0;
+        const blockY = (Math.random() * height) | 0;
+        const blockW = Math.min(8 + (Math.random() * 8) | 0, width - blockX);
+        const blockH = Math.min(8 + (Math.random() * 8) | 0, height - blockY);
+        const glitchColor = colorPalette[(Math.random() * colorPalette.length) | 0];
         
-        // Create multiple noise layers
-        const noise1 = Math.sin(x * 0.01) * Math.cos(y * 0.01) * 255;
-        const noise2 = Math.sin(x * 0.05 + Date.now() * 0.0001) * 128;
-        const noise3 = Math.random() * 60;
-        
-        // Create pattern
-        const pattern = (x ^ y) * Date.now() * 0.00001;
-        
-        // RGB values with earthbound-style colors
-        data[i] = Math.abs(noise1 + noise3) % 255;     // Red
-        data[i + 1] = Math.abs(noise2 + pattern) % 255; // Green
-        data[i + 2] = Math.abs(noise1 - noise2 + noise3) % 255; // Blue
-        data[i + 3] = 255; // Alpha
-        
-        // Add random glitch blocks
-        if (Math.random() > 0.998) {
-            const blockSize = Math.floor(Math.random() * 50) + 10;
-            for (let bx = 0; bx < blockSize; bx++) {
-                for (let by = 0; by < blockSize; by++) {
-                    const idx = ((y + by) * canvas.width + (x + bx)) * 4;
-                    if (idx < data.length - 3) {
-                        const color = Math.random() * 255;
-                        data[idx] = color;
-                        data[idx + 1] = Math.random() > 0.5 ? color : 0;
-                        data[idx + 2] = Math.random() > 0.5 ? color : 255;
-                    }
+        // More efficient block filling
+        for (let by = 0; by < blockH; by++) {
+            const rowStart = ((blockY + by) * width + blockX) * 4;
+            for (let bx = 0; bx < blockW; bx++) {
+                const i = rowStart + bx * 4;
+                if (i < data.length - 3) {
+                    data[i] = glitchColor[0];
+                    data[i + 1] = glitchColor[1];
+                    data[i + 2] = glitchColor[2];
                 }
             }
         }
     }
     
-    ctx.putImageData(imageData, 0, 0);
+    // Add scanlines for extra CRT effect
+    for (let y = 0; y < height; y += 2) {
+        for (let x = 0; x < width; x++) {
+            const i = (y * width + x) * 4;
+            data[i] = Math.max(0, data[i] - 30);
+            data[i + 1] = Math.max(0, data[i + 1] - 30);
+            data[i + 2] = Math.max(0, data[i + 2] - 30);
+        }
+    }
+    
+    // Put image data to offscreen canvas
+    offscreenCtx.putImageData(imageData, 0, 0);
+    
+    // Scale up to main canvas (this gives us the pixelated look for free!)
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(offscreenCanvas, 0, 0, canvas.width, canvas.height);
 }
 
-// Animate background
-function animateBackground() {
-    if (Math.random() > 0.7) { // Only update sometimes for that glitchy effect
-        generateGlitchBackground();
+// Animate background with throttling
+function animateBackground(currentTime) {
+    // Throttle updates for better performance
+    if (currentTime - lastFrameTime >= FRAME_DELAY) {
+        // Only update 60% of the time for more glitchy feel
+        if (Math.random() > 0.4) {
+            generateGlitchBackground();
+        }
+        lastFrameTime = currentTime;
     }
     requestAnimationFrame(animateBackground);
 }
@@ -248,7 +314,37 @@ setTimeout(() => {
     if (Math.random() > 0.7) {
         alert('[CONGRATULATIONS!]\n[YOU ARE THE 1997TH VISITOR!]\n[CLICK HERE TO CLAIM YOUR [Award Winning Prize]!]\n\n[HYPERLINK BLOCKED]');
     }
+}, 500);
+
+setTimeout(() => {
+    if (Math.random() > 0.7) {
+        alert('[CONGRATULATIONS!]\n[YOU ARE THE 1997TH VISITOR!]\n[CLICK HERE TO CLAIM YOUR [Award Winning Prize]!]\n\n[HYPERLINK BLOCKED]');
+    }
+}, 1000);
+
+setTimeout(() => {
+    if (Math.random() > 0.7) {
+        alert('[CONGRATULATIONS!]\n[YOU ARE THE 1997TH VISITOR!]\n[CLICK HERE TO CLAIM YOUR [Award Winning Prize]!]\n\n[HYPERLINK BLOCKED]');
+    }
+}, 1500);
+
+setTimeout(() => {
+    if (Math.random() > 0.7) {
+        alert('[CONGRATULATIONS!]\n[YOU ARE THE 1997TH VISITOR!]\n[CLICK HERE TO CLAIM YOUR [Award Winning Prize]!]\n\n[HYPERLINK BLOCKED]');
+    }
+}, 2000);
+
+setTimeout(() => {
+    if (Math.random() > 0.7) {
+        alert('[CONGRATULATIONS!]\n[YOU ARE THE 1997TH VISITOR!]\n[CLICK HERE TO CLAIM YOUR [Award Winning Prize]!]\n\n[HYPERLINK BLOCKED]');
+    }
 }, 2500);
+
+setTimeout(() => {
+    if (Math.random() > 0.7) {
+        alert('[CONGRATULATIONS!]\n[YOU ARE THE 1997TH VISITOR!]\n[CLICK HERE TO CLAIM YOUR [Award Winning Prize]!]\n\n[HYPERLINK BLOCKED]');
+    }
+}, 3000);
 
 // ===== KONAMI CODE EASTER EGG =====
 let konamiCode = [];
