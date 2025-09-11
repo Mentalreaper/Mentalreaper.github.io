@@ -7,13 +7,18 @@
     <meta name="og:author" content="Alexander Conn">
     <meta name="og:type" content="website">
     <meta name="og:theme-color" content="Canvas">
-    <meta name="og:title" content="Alexander Conn - Home | Game Development Blog">
-    <meta name="og:description" content="A game development blog. Indie stuff by an In(d)iot.">
+    <meta name="og:title" content="Live Demos | Alexander Conn - Interactive Game Portfolio">
+    <meta name="og:description" content="Play my games directly in your browser. Interactive demos of game development projects.">
 
-    <title>University (Year 2) | Alexander Conn</title>
+    <title>Live Demos | Alexander Conn</title>
 
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/project-card.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/dropdown-nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/projects.css">
+
+    <script src="/static/javascript/hamburger.js" defer></script>
+    <script src="/static/javascript/dropdown-nav.js" defer></script>
+    <script src="/static/javascript/theme-toggle.js" defer></script>
 
     <link rel="icon" href="/static/favicon/favicon.ico" sizes="any">
 </head>
@@ -30,6 +35,7 @@
             </ul>
         </div>
     </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
     <div class="hamburger">
         <span></span>
         <span></span>
@@ -44,61 +50,12 @@
             <li class="overlay-header-list-item"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
         </ul>
     </div>
+
     <div class="content">
-        <div class="card-holder">
-            <div class = "card">
-                <img src="https://images.unsplash.com/photo-1656618020911-1c7a937175fd?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1MzQyNTE&ixlib=rb-1.2.1&q=80" alt="">
-                <div class="card-content">
-                  <h2>
-                    Card Heading
-                  </h2>
-                  <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
-                  </p>
-                  <a href="#" class="button">
-                    Find out more 
-                    <span class="material-symbols-outlined">
-                      arrow_right_alt
-                    </span>
-                  </a>
-                </div>
-            </div>
-            <div class = "card">
-                <img src="https://images.unsplash.com/photo-1656618020911-1c7a937175fd?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1MzQyNTE&ixlib=rb-1.2.1&q=80" alt="">
-                <div class="card-content">
-                  <h2>
-                    Card Heading
-                  </h2>
-                  <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
-                  </p>
-                  <a href="#" class="button">
-                    Find out more 
-                    <span class="material-symbols-outlined">
-                      arrow_right_alt
-                    </span>
-                  </a>
-                </div>
-            </div>
-            <div class = "card">
-                <img src="https://images.unsplash.com/photo-1656618020911-1c7a937175fd?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NTc1MzQyNTE&ixlib=rb-1.2.1&q=80" alt="">
-                <div class="card-content">
-                  <h2>
-                    Card Heading
-                  </h2>
-                  <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt exercitationem iste, voluptatum, quia explicabo laboriosam rem adipisci voluptates cumque, veritatis atque nostrum corrupti ipsa asperiores harum? Dicta odio aut hic.
-                  </p>
-                  <a href="#" class="button">
-                    Find out more 
-                    <span class="material-symbols-outlined">
-                      arrow_right_alt
-                    </span>
-                  </a>
-                </div>
-            </div>
+        <div class="projects-main-page">
         </div>
     </div>
+    
     <div class="footer">
         <span>© Alexander JD Conn 2024 | All rights reserved</span>
     </div>

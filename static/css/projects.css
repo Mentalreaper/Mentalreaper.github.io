@@ -451,6 +451,11 @@
   letter-spacing: 0.5px;
 }
 
+.demo-status.on-hold {
+  background: #ffe6007a;
+  color: #ffe600;
+}
+
 .demo-status.available {
   background: rgba(0, 255, 65, 0.15);
   color: var(--accent-primary);

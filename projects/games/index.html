@@ -7,14 +7,18 @@
     <meta name="og:author" content="Alexander Conn">
     <meta name="og:type" content="website">
     <meta name="og:theme-color" content="Canvas">
-    <meta name="og:title" content="Alexander Conn - Home | Game Development Blog">
-    <meta name="og:description" content="A game development blog. Indie stuff by an In(d)iot.">
+    <meta name="og:title" content="Live Demos | Alexander Conn - Interactive Game Portfolio">
+    <meta name="og:description" content="Play my games directly in your browser. Interactive demos of game development projects.">
 
-    <title>Games (General) | Alexander Conn</title>
+    <title>Live Demos | Alexander Conn</title>
 
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/dropdown-nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/projects.css">
 
-
+    <script src="/static/javascript/hamburger.js" defer></script>
+    <script src="/static/javascript/dropdown-nav.js" defer></script>
+    <script src="/static/javascript/theme-toggle.js" defer></script>
 
     <link rel="icon" href="/static/favicon/favicon.ico" sizes="any">
 </head>
@@ -31,6 +35,7 @@
             </ul>
         </div>
     </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
     <div class="hamburger">
         <span></span>
         <span></span>
@@ -45,11 +50,104 @@
             <li class="overlay-header-list-item"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
         </ul>
     </div>
-    <div class="content">
-        <div id="card-container"></div>
 
-        <script src="script.js"></script>
+    <div class="content">
+        <div class="games-main-page">
+            <section class="projects-intro">
+                <h1>Games</h1>
+                <p>
+                    All games here require actual downloading, if you want web ones, look in Live Demos
+                </p>
+            </section>
+
+            <section class="live-demo-grid">
+                <div class="live-demo-card">
+                    <div class="demo-preview">
+                        <img src="https://placehold.co/400x225/00ff41/0a0a0a?text=COMING+SOON" alt="Dumb D&D d10,000">
+                        <div class="play-overlay">
+                            <div class="play-button">⏳ SOON</div>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <h3>Blade Of Roland</h3>
+                        <p class="demo-description">
+                            Lorem Ipsum
+                        </p>
+                        <div class="demo-meta">
+                            <span class="tech-stack">Godot Engine; gdScript</span>
+                            <span class="demo-status on-hold">On Hold</span>
+                        </div>
+                        <div class="demo-actions">
+                            <a href="/projects/games/bladeOfRoland/" class="btn-secondary">Link to Post</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="live-demo-card">
+                    <div class="demo-preview">
+                        <img src="https://placehold.co/400x225/00ff41/0a0a0a?text=COMING+SOON" alt="Upcoming game demo">
+                        <div class="play-overlay">
+                            <div class="play-button">⏳ SOON</div>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <h3>Whispering Willow</h3>
+                        <p class="demo-description">
+                            Lorem Ipsum
+                        </p>
+                        <div class="demo-meta">
+                            <span class="tech-stack">Unity Engine; C#</span>
+                            <span class="demo-status on-hold">On Hold</span>
+                        </div>
+                        <div class="demo-actions">
+                            <a href="/projects/games/whisperingWillow/" class="btn-secondary">Link to Post</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="live-demo-card placeholder">
+                    <div class="demo-preview">
+                        <div class="coming-soon-content">
+                            <div class="terminal-prompt">
+                                <span class="prompt-text">$ create_new_demo</span>
+                                <span class="cursor">_</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <h3>More Demos Coming Soon</h3>
+                        <p class="demo-description">
+                            I'm constantly working on new projects and porting existing games to the browser. 
+                            Check back regularly for new interactive experiences!
+                        </p>
+                        <div class="demo-meta">
+                            <span class="tech-stack">WebGL • JavaScript • Various</span>
+                            <span class="demo-status in-development">In Progress</span>
+                        </div>
+                        <div class="demo-actions">
+                            <a href="/blog" class="btn-primary">Follow Updates</a>
+                            <a href="/projects" class="btn-secondary">All Projects</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="demo-info-section">
+                <h3>About ~/projects/games</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Lorem</h4>
+                        <p>Ipsum</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Lorem</h4>
+                        <p>Ipsum</p>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
+    
     <div class="footer">
         <span>© Alexander JD Conn 2024 | All rights reserved</span>
     </div>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Magical Effects - 10,000 Effects</title>
+    <script src="main.js" defer></script> 
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 class="title">Random Magical Effects - 10,000 Effects</h1>
+    <div class="subtitle">Suffering Awaits!</div>
+    
+    <!-- Zoom container for wheel interaction -->
+    <div id="zoomContainer" class="zoom-container">
+        <div id="wheelsContainer" class="wheels-container">
+            <div class="main-wheel-wrapper wheel-wrapper">
+                <div class="pointer"></div>
+                <div id="mainWheel" class="wheel">
+                    <div class="wheel-numbers" id="mainWheelNumbers"></div>
+                </div>
+            </div>
+            
+            <div id="conditionWheelWrapper" class="condition-wheel-wrapper wheel-wrapper">
+                <div class="pointer"></div>
+                <div id="conditionWheel" class="wheel">
+                    <div class="wheel-numbers" id="conditionWheelNumbers"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Zoom hint -->
+    <div class="zoom-hint">
+        Scroll to zoom • Drag to pan • Double-click to reset • Keys: +/- to zoom, 0 to reset
+    </div>
+
+    <div class="below-hint">
+        <i>This uses <a href="https://centralia.aquest.com/downloads/NLRMEv2.pdf">The Net Libram of Random Magical Effects v2.0</a> By Orrex</i> 
+    </div>
+
+    <!-- Spin button fixed at bottom -->
+    <button id="spinButton" class="spin-button">SPIN</button>
+    
+    <!-- Result card -->
+    <div id="resultCard" class="result-card">
+        <div class="card-header">
+            <div class="roll-number" id="rollNumber"></div>
+            <div class="card-label">Random Magical Effect</div>
+        </div>
+        <div class="effect-text" id="effectText"></div>
+        <div id="conditionSection" class="condition-section" style="display: none;">
+            <div class="condition-title">To remove you must...</div>
+            <div class="condition-text" id="conditionText"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -7,14 +7,18 @@
     <meta name="og:author" content="Alexander Conn">
     <meta name="og:type" content="website">
     <meta name="og:theme-color" content="Canvas">
-    <meta name="og:title" content="Alexander Conn - Home | Game Development Blog">
-    <meta name="og:description" content="A game development blog. Indie stuff by an In(d)iot.">
+    <meta name="og:title" content="Live Demos | Alexander Conn - Interactive Game Portfolio">
+    <meta name="og:description" content="Play my games directly in your browser. Interactive demos of game development projects.">
 
-    <title>Game Jams | Alexander Conn</title>
+    <title>Live Demos | Alexander Conn</title>
 
     <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/dropdown-nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/projects.css">
 
-
+    <script src="/static/javascript/hamburger.js" defer></script>
+    <script src="/static/javascript/dropdown-nav.js" defer></script>
+    <script src="/static/javascript/theme-toggle.js" defer></script>
 
     <link rel="icon" href="/static/favicon/favicon.ico" sizes="any">
 </head>
@@ -31,6 +35,7 @@
             </ul>
         </div>
     </div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
     <div class="hamburger">
         <span></span>
         <span></span>
@@ -45,9 +50,12 @@
             <li class="overlay-header-list-item"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
         </ul>
     </div>
-    <div class="content">
 
+    <div class="content">
+        <div class="game-jams-main-page">
+        </div>
     </div>
+    
     <div class="footer">
         <span>© Alexander JD Conn 2024 | All rights reserved</span>
     </div>
