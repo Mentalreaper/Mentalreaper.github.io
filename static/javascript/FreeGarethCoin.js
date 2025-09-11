@@ -248,7 +248,37 @@ setTimeout(() => {
     if (Math.random() > 0.7) {
         alert('[CONGRATULATIONS!]\n[YOU ARE THE 1997TH VISITOR!]\n[CLICK HERE TO CLAIM YOUR [Award Winning Prize]!]\n\n[HYPERLINK BLOCKED]');
     }
-}, 5000);
+}, 500);
+
+setTimeout(() => {
+    if (Math.random() > 0.7) {
+        alert('[CONGRATULATIONS!]\n[YOU ARE THE 1997TH VISITOR!]\n[CLICK HERE TO CLAIM YOUR [Award Winning Prize]!]\n\n[HYPERLINK BLOCKED]');
+    }
+}, 1000);
+
+setTimeout(() => {
+    if (Math.random() > 0.7) {
+        alert('[CONGRATULATIONS!]\n[YOU ARE THE 1997TH VISITOR!]\n[CLICK HERE TO CLAIM YOUR [Award Winning Prize]!]\n\n[HYPERLINK BLOCKED]');
+    }
+}, 1500);
+
+setTimeout(() => {
+    if (Math.random() > 0.7) {
+        alert('[CONGRATULATIONS!]\n[YOU ARE THE 1997TH VISITOR!]\n[CLICK HERE TO CLAIM YOUR [Award Winning Prize]!]\n\n[HYPERLINK BLOCKED]');
+    }
+}, 2000);
+
+setTimeout(() => {
+    if (Math.random() > 0.7) {
+        alert('[CONGRATULATIONS!]\n[YOU ARE THE 1997TH VISITOR!]\n[CLICK HERE TO CLAIM YOUR [Award Winning Prize]!]\n\n[HYPERLINK BLOCKED]');
+    }
+}, 2500);
+
+setTimeout(() => {
+    if (Math.random() > 0.7) {
+        alert('[CONGRATULATIONS!]\n[YOU ARE THE 1997TH VISITOR!]\n[CLICK HERE TO CLAIM YOUR [Award Winning Prize]!]\n\n[HYPERLINK BLOCKED]');
+    }
+}, 3000);
 
 // ===== KONAMI CODE EASTER EGG =====
 let konamiCode = [];
