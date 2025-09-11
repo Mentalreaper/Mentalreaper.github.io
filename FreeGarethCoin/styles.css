@@ -1,0 +1,373 @@
+/* ===== CUSTOMIZABLE VARIABLES ===== */
+:root {
+    --main-bg-color: #c0c0c0;
+    --window-bg: #dfdfdf;
+    --border-color: #000;
+    --highlight-color: #fff;
+    --shadow-color: #808080;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+body {
+    font-family: "MS Sans Serif", "Comic Sans MS", sans-serif;
+    background: #000;
+    overflow-x: auto;
+    cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA7AAAAOwBeShxvQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAESSURBVCiRY2AYBaNgFAyEABMDw4HGBgYGhv8M/xkYGP4zMDD8Z2Bg+M/AwPCfgYHhPwMDw38GBob/DAwM/xkYGP4zMDD8Z2Bg+M8ABf8ZGBj+I8FRDQwMDP8ZGBj+MzAw/GdgYPjPwMDwn4GB4T8DA8N/BgaG/wwMDP8ZGBj+MzAw/GdgYPjPwMDwn4GB4T8DA8N/BgaG/wwMDP8ZGBj+MzAw/GdgYPjPwMDwn4GB4T8DA8N/BgaG/wwMDAAAAAA=='), auto;
+}
+
+/* Glitchy Earthbound Background Canvas */
+#glitchCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+/* Windows 95 Style Window */
+.window-frame {
+    background: var(--window-bg);
+    border: 2px solid;
+    border-color: var(--highlight-color) var(--shadow-color) var(--shadow-color) var(--highlight-color);
+    box-shadow: 1px 1px 0 #000;
+    margin: 10px auto;
+    max-width: 1024px;
+    position: relative;
+}
+
+.title-bar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: white;
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.title-bar-buttons {
+    margin-left: auto;
+    display: flex;
+    gap: 2px;
+}
+
+.title-bar-button {
+    width: 16px;
+    height: 14px;
+    background: var(--window-bg);
+    border: 1px solid;
+    border-color: var(--highlight-color) var(--shadow-color) var(--shadow-color) var(--highlight-color);
+    font-size: 10px;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Main Container */
+.container {
+    padding: 10px;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAEklEQVQImWNgYGD4z0AswK4SAFXuAf8EPy+xAAAAAElFTkSuQmCC') repeat;
+}
+
+/* Rainbow Title */
+@keyframes rainbow {
+    0% { color: #ff0000; }
+    17% { color: #ff8800; }
+    33% { color: #ffff00; }
+    50% { color: #00ff00; }
+    67% { color: #0088ff; }
+    83% { color: #ff00ff; }
+    100% { color: #ff0000; }
+}
+
+.big-title {
+    font-size: 72px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 
+        3px 3px 0 #000,
+        -3px -3px 0 #000,
+        3px -3px 0 #000,
+        -3px 3px 0 #000,
+        5px 5px 10px rgba(0,0,0,0.5);
+    animation: rainbow 2s linear infinite;
+    margin: 20px 0;
+    font-family: "Impact", "Arial Black", sans-serif;
+    letter-spacing: 4px;
+}
+
+/* Blinking Text */
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+.blink {
+    animation: blink 1s infinite;
+}
+
+/* Layout */
+.main-layout {
+    display: flex;
+    gap: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    background: linear-gradient(180deg, #e0e0e0, #c0c0c0);
+    border: 2px inset #dfdfdf;
+    padding: 10px;
+}
+
+.nav-item {
+    display: block;
+    padding: 8px;
+    margin: 5px 0;
+    background: linear-gradient(180deg, #fff, #e0e0e0);
+    border: 2px outset #dfdfdf;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.nav-item:hover {
+    background: linear-gradient(180deg, #e0e0e0, #c0c0c0);
+    border: 2px inset #dfdfdf;
+}
+
+.nav-item:active {
+    transform: translateY(1px);
+}
+
+/* Product Grid */
+.product-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.product-card {
+    background: #c0c0c0;
+    border: 3px ridge #dfdfdf;
+    padding: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    z-index: 10;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+}
+
+.product-card:active {
+    transform: scale(0.98);
+}
+
+.product-image {
+    width: 100%;
+    height: 150px;
+    background: #808080;
+    border: 2px inset #dfdfdf;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.product-title {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+    background: #000080;
+    color: white;
+    padding: 2px 5px;
+}
+
+.product-price {
+    font-size: 18px;
+    color: #ff0000;
+    font-weight: bold;
+    text-decoration: line-through;
+}
+
+.product-sale {
+    font-size: 24px;
+    color: #00ff00;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #000;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transform: rotate(-15deg);
+    background: #ff0000;
+    padding: 5px;
+    border: 2px solid #ffff00;
+    animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: rotate(-15deg) scale(1); }
+    to { transform: rotate(-15deg) scale(1.1); }
+}
+
+/* Marquee */
+.marquee-container {
+    background: #000;
+    color: #ffff00;
+    padding: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 20px 0;
+    border: 3px ridge #ff0000;
+}
+
+.marquee {
+    display: inline-block;
+    animation: scroll 10s linear infinite;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 #ff0000;
+}
+
+@keyframes scroll {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
+
+/* Visitor Counter */
+.visitor-counter {
+    background: #000;
+    color: #00ff00;
+    font-family: "Courier New", monospace;
+    padding: 10px;
+    border: 2px inset #808080;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+/* Guestbook */
+.guestbook {
+    background: #fff;
+    border: 2px inset #dfdfdf;
+    padding: 10px;
+    margin: 20px 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.guestbook-entry {
+    border-bottom: 1px dotted #808080;
+    padding: 5px 0;
+    font-size: 12px;
+}
+
+.guestbook-form {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.guestbook-input {
+    flex: 1;
+    border: 2px inset #dfdfdf;
+    padding: 4px;
+    font-family: inherit;
+}
+
+.button-95 {
+    background: #c0c0c0;
+    border: 2px outset #dfdfdf;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button-95:active {
+    border: 2px inset #dfdfdf;
+}
+
+/* Animated GIFs */
+.gif-decoration {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.gif-decoration.flame {
+    width: 30px;
+    height: 40px;
+    background: url('data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==');
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* MIDI Controls */
+.midi-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #c0c0c0;
+    border: 2px outset #dfdfdf;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.midi-button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    background: linear-gradient(180deg, #fff, #c0c0c0);
+    border: 2px outset #dfdfdf;
+}
+
+.midi-button:active {
+    border: 2px inset #dfdfdf;
+}
+
+/* Sound Effects */
+.sound-effect {
+    display: none;
+}
+
+/* Extra 90s Effects */
+.construction {
+    display: inline-block;
+    animation: swing 2s ease-in-out infinite;
+}
+
+@keyframes swing {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+.sparkle {
+    display: inline-block;
+    animation: sparkle 1s linear infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
