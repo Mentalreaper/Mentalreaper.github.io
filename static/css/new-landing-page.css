@@ -15,6 +15,23 @@
     --bg-dark: #0a0e27;
     --bg-darker: #151931;
     --bg-panel: rgba(0, 20, 40, 0.9);
+
+    --bg-card: #040718;
+    --border-color: #333333;
+    --border-radius-lg: 12px;
+    --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 3rem);
+    --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --transition-normal: 0.3s ease-out;
+    --border-hover: #555555;
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    --accent-secondary: #00ffff;
+    --font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+    --space-md: clamp(1rem, 0.8rem + 1vw, 2rem);
+}
+
+html, body {
+    height: 100%;
 }
 
 body {
@@ -90,45 +107,12 @@ body::before {
     position: relative;
     z-index: 2;
     margin: 0 auto;
-    height: 100%;
+    min-height: 100vh;
     padding: 5rem;
+    display: flexbox;
+    flex-direction: column;
 }
 
-/* Header with enhanced styling */
-.header {
-    background: linear-gradient(135deg, rgba(0, 20, 30, 0.9) 0%, rgba(0, 30, 40, 0.8) 100%);
-    border: 1px solid var(--primary-cyan);
-    padding: 20px;
-    margin-bottom: 30px;
-    position: relative;
-    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-    box-shadow: 
-        0 0 20px rgba(0, 255, 204, 0.2),
-        inset 0 0 20px rgba(0, 255, 204, 0.05);
-    overflow: hidden;
-}
-
-.header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--primary-cyan), transparent);
-    animation: scan-line 4s linear infinite;
-}
-
-.header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
-    animation: scan-line-reverse 4s linear infinite;
-}
 
 @keyframes scan-line {
     0% { left: -100%; }
@@ -140,67 +124,9 @@ body::before {
     100% { right: 100%; }
 }
 
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    position: relative;
-}
 
-.header-content::before,
-.header-content::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 1px solid rgba(0, 255, 204, 0.3);
-    pointer-events: none;
-}
 
-.header-content::before {
-    top: -10px;
-    left: -10px;
-    border-right: none;
-    border-bottom: none;
-}
 
-.header-content::after {
-    bottom: -10px;
-    right: -10px;
-    border-left: none;
-    border-top: none;
-}
-
-.logo {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 28px;
-    font-weight: 900;
-    letter-spacing: 3px;
-    color: var(--primary-cyan);
-    text-shadow: 
-        0 0 20px rgba(0, 255, 204, 0.8),
-        0 0 40px rgba(0, 255, 204, 0.4);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    animation: subtle-glitch 8s infinite;
-    position: relative;
-}
-
-.logo::before {
-    content: 'NEO-GRID SYSTEMS';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    color: var(--primary-green);
-    animation: glitch-1 0.5s infinite;
-    animation-delay: 8s;
-}
 
 @keyframes subtle-glitch {
     0%, 100% { 
@@ -231,12 +157,7 @@ body::before {
     50% { opacity: 0.3; transform: translateX(2px); }
 }
 
-.logo-icon {
-    width: 40px;
-    height: 40px;
-    position: relative;
-    animation: rotate 10s linear infinite;
-}
+
 
 @keyframes rotate {
     0% { transform: rotate(0deg) scale(1); }
@@ -244,126 +165,24 @@ body::before {
     100% { transform: rotate(360deg) scale(1); }
 }
 
-.nav {
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-}
 
-.nav-item {
-    color: var(--primary-cyan);
-    text-decoration: none;
-    padding: 10px 18px;
-    border: 1px solid rgba(0, 255, 204, 0.2);
-    position: relative;
-    transition: all 0.3s;
-    background: linear-gradient(135deg, rgba(0, 30, 40, 0.6) 0%, rgba(0, 20, 30, 0.4) 100%);
-    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
-    overflow: hidden;
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 2px;
-}
-
-.nav-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 255, 204, 0.1), transparent);
-    transition: width 0.3s;
-}
-
-.nav-item::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: var(--primary-cyan);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s;
-}
-
-.nav-item:hover::before {
-    width: 100%;
-}
-
-.nav-item:hover::after {
-    transform: scaleX(1);
-}
-
-.nav-item:hover {
-    background: linear-gradient(135deg, rgba(0, 255, 204, 0.1) 0%, rgba(0, 255, 204, 0.05) 100%);
-    border-color: rgba(0, 255, 204, 0.5);
-    color: var(--primary-green);
-    text-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
-    transform: translateY(-1px);
-    box-shadow: 
-        0 2px 10px rgba(0, 255, 204, 0.2),
-        inset 0 0 10px rgba(0, 255, 204, 0.05);
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 10px 18px;
-    border: 1px solid rgba(0, 255, 204, 0.2);
-    background: linear-gradient(135deg, rgba(0, 30, 40, 0.6) 0%, rgba(0, 20, 30, 0.4) 100%);
-    position: relative;
-    overflow: hidden;
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.user-info::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 100%;
-    background: var(--primary-green);
-    animation: blink 2s infinite;
-}
-
-.user-info::after {
-    content: 'AUTHENTICATED';
-    position: absolute;
-    top: -18px;
-    right: 0;
-    font-size: 8px;
-    color: var(--primary-green);
-    opacity: 0.5;
-    letter-spacing: 2px;
-}
-
-.user-status {
-    width: 10px;
-    height: 10px;
-    background: var(--primary-green);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-    box-shadow: 0 0 10px var(--primary-green);
-}
-
-@keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7), 0 0 10px var(--primary-green); }
-    50% { box-shadow: 0 0 0 10px rgba(0, 255, 0, 0), 0 0 20px var(--primary-green); }
-}
 
 /* Main Content Grid */
 .main-grid {
     display: grid;
-    grid-template-columns: 280px 1fr 280px;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
-    margin-bottom: 30px;
+    flex: 1;  /* This makes it grow to fill available space */
+    margin-bottom: 20px;
+    height: 100%;  /* Use full height of flex container */
+}
+
+/* Remove fixed heights from grid children and make them flexible */
+.main-grid > * {
+    min-height: 0;  /* Remove the 600px min-height */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 @media (max-width: 1024px) {
@@ -463,7 +282,9 @@ body::before {
     background: linear-gradient(180deg, rgba(0, 10, 20, 0.95) 0%, rgba(0, 20, 30, 0.95) 100%);
     border: 2px solid var(--primary-cyan);
     padding: 20px;
-    min-height: 500px;
+    min-height: 0;
+    flex: 1;
+    display: flex;
     position: relative;
     overflow: hidden;
     box-shadow: 
@@ -538,8 +359,9 @@ body::before {
     color: var(--primary-green);
     font-size: 14px;
     line-height: 1.6;
-    max-height: 350px;
     overflow-y: auto;
+    flex: 1;
+    min-height: 0;
     padding-right: 10px;
 }
 
@@ -698,6 +520,7 @@ body::before {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
+    flex-shrink: 0;
 }
 
 .footer-text {
@@ -723,41 +546,6 @@ body::before {
     100% { transform: translateX(100%) translateY(-50%); }
 }
 
-/* Vector decorations */
-.vector-decor {
-    position: fixed;
-    pointer-events: none;
-    opacity: 0.5;
-    animation: vector-pulse 4s ease-in-out infinite;
-}
-
-@keyframes vector-pulse {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.1); }
-}
-
-.vector-decor.top-left {
-    top: 20px;
-    left: 20px;
-}
-
-.vector-decor.bottom-right {
-    bottom: 20px;
-    right: 20px;
-    transform: rotate(180deg);
-}
-
-.vector-decor.top-right {
-    top: 20px;
-    right: 20px;
-    transform: rotate(90deg);
-}
-
-.vector-decor.bottom-left {
-    bottom: 20px;
-    left: 20px;
-    transform: rotate(270deg);
-}
 
 /* HUD Elements */
 .hud-element {
@@ -822,14 +610,7 @@ body::before {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .nav {
-        justify-content: center;
-    }
+
     
     .main-grid {
         grid-template-columns: 1fr;
@@ -847,3 +628,148 @@ body::before {
         order: 3;
     }
 }
+/* Additional styles for two-column layout */
+.content-panel {
+    overflow-y: auto;
+    /* max-height: 600px; */
+    max-height: none;  /* Remove the 600px max-height */
+    flex: 1;  /* Allow it to grow/shrink */
+}
+
+.content-panel::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content-panel::-webkit-scrollbar-track {
+    background: rgba(0, 255, 204, 0.1);
+}
+
+.content-panel::-webkit-scrollbar-thumb {
+    background: var(--primary-cyan);
+    border-radius: 4px;
+}
+
+.content-section {
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 12px;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Ensure both columns have equal height */
+.main-grid > * {
+    position: fixed;
+    top: 16.5vh; right: 7.5vh; bottom: 12.75vh; left: 7.5vh;
+}
+/* CSS Fixes for horizontal scrollbar issues */
+
+/* Fix 1: Prevent panel scan lines from causing overflow */
+.panel {
+    overflow: hidden !important; /* Clips the scan animation */
+}
+
+
+
+/* Fix 2: Content panel specific - allow vertical scroll but prevent horizontal */
+.content-panel {
+    overflow-x: hidden !important; /* No horizontal scroll */
+    overflow-y: auto !important; /* Keep vertical scroll */
+    right: 50.15%;
+}
+
+/* Better hover effect without horizontal overflow */
+.status-item:hover {
+    background: rgba(0, 255, 204, 0.1);
+    transform: none !important;
+    padding-left: 15px; /* Increase padding instead of translate */
+}
+
+.project-card:hover {
+    background: rgba(0, 255, 204, 0.1);
+    border-color: var(--primary-cyan);
+    transform: scale(1.02) !important; /* Scale slightly instead of translate */
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+}
+
+/* Fix 4: Ensure project card animations don't overflow */
+.project-card {
+    overflow: hidden !important; /* Clips the internal scan line */
+}
+
+/* Fix 5: Terminal should also clip overflow */
+.terminal {
+    overflow: hidden !important;
+    left: 50.15%;
+}
+
+/* Fix 6: Ensure the grid container doesn't show scrollbars */
+.main-grid {
+    overflow: visible !important;
+}
+
+.footer {
+    position: fixed;
+    top: 88%; right: 7.5vh; bottom: 7.5vh; left: 7.5vh;
+}
+
+/* Fix 7: Container should not cause overflow */
+.container {
+    overflow-x: hidden;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/* Contact Section */
+.contact-me-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-normal);
+}
+
+.contact-me-section:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+.contact-me-section strong {
+  font-family: var(--font-mono);
+  color: var(--accent-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* Contact section mobile optimization */
+.contact-me-section {
+padding: var(--space-md);
+}
+
+.contact-me-section>br {
+line-height: 1.2;
+}
+
+.contact-me-section>a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.contact-me-section>a:hover {
+  color: var(--accent-hover);
+}
+
+.contact-me-section>a:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+

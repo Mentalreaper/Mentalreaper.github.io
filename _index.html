@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <!-- PROPS -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Landing Page</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="og:author" content="Alexander JD Conn">
+    <meta name="og:type" content="website">
+    <meta name="og:theme-color" content="Canvas">
+    <meta name="og:title" content="Alexander Conn - Home | Game Development Blog">
+    <meta name="og:description" content="A game development blog. Indie stuff by an Idiot (an Indiot).">
 
+    <!-- ADDITIONAL -->
+    <title>Home | Alexander Conn</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/static/css/carousel.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/new-landing-page-v3.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/new-landing-page.css">
     <link rel="stylesheet" href="/static/css/scrollbar-styles.css">
 
-    <script src="/static/javascript/new-landing-page-v2.js" defer></script>
+    <!-- JS -->
+    <script src="/static/javascript/new-landing-page.js" defer></script>
     <script src="/static/javascript/carousel.js" defer></script>
 </head>
 <body>
-    <!-- Loading Overlay -->
-    <div class="loading-overlay">
-        <div class="loading-text">INITIALIZING...</div>
-    </div>
-    
     <!-- Particle Effects -->
     <div class="particle-container" id="particles"></div>
     
     <!-- Vector Decorations -->
-    <svg class="vector-decor top-left" width="100" height="100" viewBox="0 0 100 100">
+    <svg class="vector-decor top-left top-left-vector" width="100" height="100" viewBox="0 0 100 100">
         <path d="M 0 50 L 50 50 L 50 0" stroke="#00ffcc" stroke-width="2" fill="none"/>
         <circle cx="50" cy="50" r="3" fill="#00ffcc">
             <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
         </circle>
     </svg>
     
-    <svg class="vector-decor bottom-right" width="100" height="100" viewBox="0 0 100 100">
+    <svg class="vector-decor bottom-right bottom-right-vector" width="100" height="100" viewBox="0 0 100 100">
         <path d="M 0 50 L 50 50 L 50 0" stroke="#00ffcc" stroke-width="2" fill="none"/>
         <circle cx="50" cy="50" r="3" fill="#00ffcc">
             <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
         </circle>
     </svg>
     
-    <svg class="vector-decor top-right" width="100" height="100" viewBox="0 0 100 100">
+    <svg class="vector-decor top-right top-right-vector" width="100" height="100" viewBox="0 0 100 100">
         <path d="M 0 50 L 50 50 L 50 0" stroke="#00ccff" stroke-width="2" fill="none"/>
         <circle cx="50" cy="50" r="3" fill="#00ccff">
             <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
         </circle>
     </svg>
     
-    <svg class="vector-decor bottom-left" width="100" height="100" viewBox="0 0 100 100">
+    <svg class="vector-decor bottom-left bottom-left-vector" width="100" height="100" viewBox="0 0 100 100">
         <path d="M 0 50 L 50 50 L 50 0" stroke="#ff00cc" stroke-width="2" fill="none"/>
         <circle cx="50" cy="50" r="3" fill="#ff00cc">
             <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
@@ -52,7 +58,7 @@
     
     <!-- HUD Elements -->
     <div class="hud-element hud-top">[ SYSTEM ONLINE ]</div>
-    <div class="hud-element hud-bottom">[ QUANTUM ENCRYPTION ACTIVE ]</div>
+    <div class="hud-element hud-bottom">[ ACE (AC ENCRYPTION) ACTIVE ]</div>
     
     <div class="container">
         <!-- Header -->
@@ -72,11 +78,11 @@
                 </div>
                 
                 <nav class="nav">
-                    <a href="#" class="nav-item">/home/</a>
-                    <a href="#" class="nav-item">/about-me/</a>
-                    <a href="#" class="nav-item">/project/</a>
-                    <a href="#" class="nav-item">/blog/</a>
-                    <a href="#" class="nav-item">linktr.ee</a>
+                    <a href="/" class="nav-item">/home/</a>
+                    <a href="/about-me/" class="nav-item">/about-me/</a>
+                    <a href="/projects/" class="nav-item">/project/</a>
+                    <a href="/blog/" class="nav-item">/blog/</a>
+                    <a href="https://linktr.ee/alexanderconn" class="nav-item">linktr.ee</a>
                 </nav>
                 
                 <div class="user-info">
@@ -86,25 +92,27 @@
             </div>
         </header>
         
-        <!-- Main Grid - Now Two Equal Columns -->
+        <!-- Main Grid -->
         <div class="main-grid">
             <!-- Content Panel -->
             <aside class="panel content-panel">
                 <h2 class="panel-title" data-subtitle="v0.1.09">// About Me</h2>
                 <div class="content-section">
-                    <p>Hey there, and welcome to my website!</p>
-                    <br>
-                    <p>I enjoy RPGs, Card Games, and making those types of games! I'm usually working on some small 
-                        project and writing way too much world building for the few characters there!</p>
-                    <br>
-                    <p>I'm currently working on a few "micro" projects, and will update this page as I go. I was 
-                        working on a project called Blade of Roland, though after a few getting somewhat bored on the 
-                        project (and realising my lack of animation skill) I have decided to suspend it. Right now I'm
-                        working on a "morrowind"-like game, though it's very early into just planning.</p>
-                    <br>
-                    <p>Below are some example projects for you to look at and/or play, feel free to take a look! If you
-                        want to see other examples of work, then feel free to look at the projects button in the
-                        NavBar.</p>
+                    <p>
+                        Hey there, and welcome to my website!<br><br>
+
+                        I enjoy RPGs, Card Games, and making those types of games! I'm usually working on some small
+                        project and writing way too much world building for the few characters there!<br><br>
+
+                        I'm currently working on a few "micro" projects, and will update this page as I go. I was working on a
+                        project called <a href="404#BladeOfRoland">Blade of Roland</a>, though after a few getting somewhat
+                        bored on the project (and realising my lack of animation skill) I have decided to suspend it. Right now
+                        I'm working on a "morrowind"-like game, though it's very early into just planning.<br><br>
+
+                        Below are some example projects for you to look at and/or play, feel free to take a look! If you want
+                        to see other examples of work, then feel free to look at the <a href="/projects/">projects</a> button
+                        in the NavBar.
+                    </p>
                 </div>
                 <!-- Projects Section -->
                 <h2 class="panel-title" data-subtitle="v0.1.09">// Projects</h2>
@@ -115,7 +123,7 @@
                                 <img src="/static/gif/medabots-fan-game.gif">
                                 <div id="carousel-overlay"></div>
                                 <div class="carousel-caption">
-                                    <a href="#BattleRots">
+                                    <a href="/projects/games/battlerots/">
                                         <h2>Battlerots</h2>
                                         <p>A university group project for a multiplayer game. Made in Unity</p>
                                     </a>
@@ -125,8 +133,10 @@
                                 <img src="/static/gif/bear-grills-wip.gif">
                                 <div id="carousel-overlay"></div>
                                 <div class="carousel-caption">
-                                    <h2>Bear Grills</h2>
-                                    <p>VR Group project at University, a bear chef grills for his robo customers</p>
+                                    <a href="/projects/games/bearGrills/">
+                                        <h2>Bear Grills</h2>
+                                        <p>VR Group project at University, a bear chef grills for his robo customers</p>
+                                    </a>
                                 </div>
                             </div>
                             <div class="arrow arrow-left" onclick="previousSlide()"></div>
@@ -161,18 +171,15 @@
                 
                 <div class="terminal-prompt">
                     <span class="prompt-symbol">></span>
-                    <input type="text" class="terminal-input" id="terminal-input" placeholder="█" autocomplete="off" />
+                    <input type="text" class="terminal-input" id="terminal-input" placeholder="█" autocomplete="on" />
                 </div>
             </main>
         </div>
         
         <!-- Footer -->
         <footer class="footer">
-            <div class="data-stream">
-                ◄ DATASTREAM ACTIVE // TRANSMISSION PROTOCOL: SIGMA-7 // LINK STRENGTH: 98% // PACKETS: 1,337,420 // ENCRYPTION: ENABLED // NODE: ALPHA-7 // QUANTUM ENTANGLEMENT: STABLE ►
-            </div>
             <div class="footer-text">
-                GRID STATUS: OPERATIONAL // UPTIME: 99.97% // NODES: 1,024 ACTIVE
+                WEBSITE STATUS: OPERATIONAL // GAMES RELEASED: 0 // CURRENT_PROJECTS: X // CURRENT_BLOG_POSTS: Y // COPYRIGHT: © Alexander JD Conn 2024~2025 | All rights reserved
             </div>
         </footer>
     </div>

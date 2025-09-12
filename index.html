@@ -1,114 +1,137 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="dark" prefix="og: https://ogp.me/ns#">
+<html lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- PROPS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="og:author" content="Alexander Conn">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="og:author" content="Alexander JD Conn">
     <meta name="og:type" content="website">
     <meta name="og:theme-color" content="Canvas">
     <meta name="og:title" content="Alexander Conn - Home | Game Development Blog">
-    <meta name="og:description" content="A game development blog. Indie stuff by an In(d)iot.">
+    <meta name="og:description" content="A game development blog. Indie stuff by an Idiot (an Indiot).">
 
-    <title> Home | Alexander Conn</title>
+    <!-- ADDITIONAL -->
+    <title>Home | Alexander Conn</title>
 
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/static/css/carousel.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/dropdown-nav.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/new-landing-page.css">
+    <link rel="stylesheet" href="/static/css/scrollbar-styles.css">
 
-    <script src="/static/javascript/hamburger.js" defer></script>
+    <!-- JS -->
+    <script src="/static/javascript/new-landing-page.js" defer></script>
     <script src="/static/javascript/carousel.js" defer></script>
-    <script src="/static/javascript/dropdown-nav.js" defer></script>
-    <script src="/static/javascript/theme-toggle.js" defer></script>
 
-    <link rel="icon" href="/static/favicon/favicon.ico" sizes="any">
+    <!-- Components -->
+    <script src="/static/javascript/components/header.js" defer></script>
+    <script src="/static/javascript/components/vector-corner-top-left.js" defer></script>
+    <script src="/static/javascript/components/vector-corner-top-right.js" defer></script>
+    <script src="/static/javascript/components/vector-corner-bottom-left.js" defer></script>
+    <script src="/static/javascript/components/vector-corner-bottom-right.js" defer></script>
+    <script src="/static/javascript/components/footer.js" defer></script>
 </head>
 <body>
-    <div class="header">
-        <div id="header-shadow">
-            <h1 class="header-title">Alexander JD Conn</h1>
-            <ul class="header-list">
-                <li class="header-list-item"><a href="/">home</a></li>
-                <li class="header-list-item"><a href="/about-me">about</a></li>
-                <li class="header-list-item"><a href="/projects">projects</a></li>
-                <li class="header-list-item"><a href="/blog">blog</a></li>
-                <li class="header-list-item"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
-            </ul>
-        </div>
-    </div>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
-    <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="overlay">
-        <ul class="overlay-header-list">
-            <li class="overlay-header-list-item"><a href="/">home</a></li>
-            <li class="overlay-header-list-item"><a href="/about-me">about</a></li>
-            <li class="overlay-header-list-item"><a href="/projects">projects</a></li>
-            <li class="overlay-header-list-item"><a href="/blog">blog</a></li>
-            <li class="overlay-header-list-item"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
-        </ul>
-    </div>
-    <div class="content">
-        <section class="basicAboutMeSection">
-            <h3>About Me</h3>
-            <p class="main-page-description">
-                Hey there, and welcome to my website!<br><br>
+    <!-- Particle Effects -->
+    <div class="particle-container" id="particles"></div>
+    
+    <!-- Vector Decorations -->
+    <vc-top-left></vc-top-left>
+    <vc-top-right></vc-top-right>
+    <vc-bottom-left></vc-bottom-left>
+    <vc-bottom-right></vc-bottom-right>
+    
+    <!-- HUD Elements -->
+    <div class="hud-element hud-top">[ SYSTEM ONLINE ]</div>
+    <div class="hud-element hud-bottom">[ ACE (AC ENCRYPTION) ACTIVE ]</div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header-component></header-component>
 
-                I enjoy RPGs, Card Games, and making those types of games! I'm usually working on some small
-                project and writing way too much world building for the few characters there!<br><br>
+        <!-- Main Grid -->
+        <div class="main-grid">
+            <!-- Content Panel -->
+            <aside class="panel content-panel">
+                <h2 class="panel-title" data-subtitle="v0.1.09">// About Me</h2>
+                <div class="content-section">
+                    <p>
+                        Hey there, and welcome to my website!<br><br>
 
-                I'm currently working on a few "micro" projects, and will update this page as I go. I was working on a
-                project called <a href="404#BladeOfRoland">Blade of Roland</a>, though after a few getting somewhat
-                bored on the project (and realising my lack of animation skill) I have decided to suspend it. Right now
-                I'm working on a "morrowind"-like game, though it's very early into just planning.<br><br>
+                        I enjoy RPGs, Card Games, and making those types of games! I'm usually working on some small
+                        project and writing way too much world building for the few characters there!<br><br>
 
-                Below are some example projects for you to look at and/or play, feel free to take a look! If you want
-                to see other examples of work, then feel free to look at the <a href="/projects/">projects</a> button
-                in the NavBar.
-            </p>
-        </section>
+                        I'm currently working on a few "micro" projects, and will update this page as I go. I was working on a
+                        project called <a href="404#BladeOfRoland">Blade of Roland</a>, though after a few getting somewhat
+                        bored on the project (and realising my lack of animation skill) I have decided to suspend it. Right now
+                        I'm working on a "morrowind"-like game, though it's very early into just planning.<br><br>
 
-        <section class="projectSection">
-            <h3>Projects</h3>
-            <div class="carousel-section">
-                <div id="carousel">
-                    <div class="carousel-slide active">
-                        <img src="/static/gif/medabots-fan-game.gif">
-                        <div id="carousel-overlay"></div>
-                        <div class="carousel-caption">
-                            <a href="#BattleRots">
-                                <h2>Battlerots</h2>
-                                <p>A university group project for a multiplayer game. Made in Unity</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="/static/gif/bear-grills-wip.gif">
-                        <div id="carousel-overlay"></div>
-                        <div class="carousel-caption">
-                            <h2>Bear Grills</h2>
-                            <p>VR Group project at University, a bear chef grills for his robo customers</p>
-                        </div>
-                    </div>
-                    <div class="arrow arrow-left" onclick="previousSlide()"></div>
-                    <div class="arrow arrow-right" onclick="nextSlide()"></div>
+                        Below are some example projects for you to look at and/or play, feel free to take a look! If you want
+                        to see other examples of work, then feel free to look at the <a href="/projects/">projects</a> button
+                        in the NavBar.
+                    </p>
                 </div>
-            </div>
-        </section>
+                <!-- Projects Section -->
+                <h2 class="panel-title" data-subtitle="v0.1.09">// Projects</h2>
+                <div class="projectSection">
+                    <div class="carousel-section">
+                        <div id="carousel">
+                            <div class="carousel-slide active">
+                                <img src="/static/gif/medabots-fan-game.gif">
+                                <div id="carousel-overlay"></div>
+                                <div class="carousel-caption">
+                                    <a href="/projects/games/battlerots/">
+                                        <h2>Battlerots</h2>
+                                        <p>A university group project for a multiplayer game. Made in Unity</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="/static/gif/bear-grills-wip.gif">
+                                <div id="carousel-overlay"></div>
+                                <div class="carousel-caption">
+                                    <a href="/projects/games/bearGrills/">
+                                        <h2>Bear Grills</h2>
+                                        <p>VR Group project at University, a bear chef grills for his robo customers</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="arrow arrow-left" onclick="previousSlide()"></div>
+                            <div class="arrow arrow-right" onclick="nextSlide()"></div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <!-- Contact Me Box -->
+                <div class="contact-me-section">
+                    <h2 class="panel-title" data-subtitle="v0.1.09">// CONTACT</h2>
+                    <strong>Email: </strong><a href="mailto:work@alexanderconn.com">work@alexanderconn.com</a><br>
+                    <strong>Twitter: </strong><a href="https://twitter.com/MentalReaper_GD">@MentalReaper_GD</a><br>
+                    <strong>GitHub: </strong><a href="https://github.com/Mentalreaper">Mentalreaper</a><br>
+                    <strong>YouTube: </strong><a href="https://www.youtube.com/@alex-conn">@alex-conn</a></p>
+                </div>
 
-        <section class="contactMeSection">
-            <h3>Contact</h3>
-                <strong>Email: </strong><a href="mailto:work@alexanderconn.com">work@alexanderconn.com</a><br>
-                <strong>Twitter: </strong><a href="https://twitter.com/MentalReaper_GD">@MentalReaper_GD</a><br>
-                <strong>GitHub: </strong><a href="https://github.com/Mentalreaper">Mentalreaper</a><br>
-                <strong>YouTube: </strong><a href="https://www.youtube.com/@alex-conn">@alex-conn</a></p>
-        </section>
-    </div>
-    <div class="footer">
-        <span>© Alexander JD Conn 2024 | All rights reserved</span>
+            </aside>
+            
+            <!-- Terminal -->
+            <main class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-title">//TERMINAL_v0.1.09</div>
+                </div>
+                
+                <div class="terminal-content" id="terminal-output">
+                    <!-- Terminal content will be added by JavaScript -->
+                </div>
+                
+                <div class="terminal-prompt">
+                    <span class="prompt-symbol">></span>
+                    <input type="text" class="terminal-input" id="terminal-input" placeholder="█" autocomplete="on" />
+                </div>
+            </main>
+        </div>
+        
+        <!-- Footer -->
+        <footer-component></footer-component>
     </div>
 </body>
 </html>

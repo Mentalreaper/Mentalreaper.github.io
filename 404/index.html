@@ -1,63 +1,81 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="dark" prefix="og: https://ogp.me/ns#">
+<html lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- PROPS -->
     <meta charset="utf-8">
-    <meta name="og:viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="og:author" content="Alexander Conn">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="og:author" content="Alexander JD Conn">
     <meta name="og:type" content="website">
     <meta name="og:theme-color" content="Canvas">
-    <meta name="og:title" content="Alexander Conn - Home | Game Development Blog">
-    <meta name="og:description" content="A game development blog. Indie stuff by an In(d)iot.">
+    <meta name="og:title" content="Alexander Conn - 404 | Game Development Blog">
+    <meta name="og:description" content="A game development blog. Indie stuff by an Idiot (an Indiot).">
 
+    <!-- ADDITIONAL -->
     <title>404 | Alexander Conn</title>
 
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/dropdown-nav.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/projects.css">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/css/new-landing-page.css">
+    <link rel="stylesheet" href="/static/css/scrollbar-styles.css">
 
+    <!-- JS -->
+    <script src="/static/javascript/new-landing-page.js" defer></script>
     <script src="/static/javascript/404.js" defer></script>
-    <script src="/static/javascript/hamburger.js" defer></script>
-    <script src="/static/javascript/dropdown-nav.js" defer></script>
-    <script src="/static/javascript/theme-toggle.js" defer></script>
 
-    <link rel="icon" href="/static/favicon/favicon.ico" sizes="any">
+    <!-- Components -->
+    <script src="/static/javascript/components/header.js" defer></script>
+    <script src="/static/javascript/components/vector-corner-top-left.js" defer></script>
+    <script src="/static/javascript/components/vector-corner-top-right.js" defer></script>
+    <script src="/static/javascript/components/vector-corner-bottom-left.js" defer></script>
+    <script src="/static/javascript/components/vector-corner-bottom-right.js" defer></script>
+    <script src="/static/javascript/components/footer.js" defer></script>
 </head>
 <body>
-    <div class="header">
-        <div id="header-shadow">
-            <h1 class="header-title">Alexander JD Conn</h1>
-            <ul class="header-list">
-                <li class="header-list-item"><a href="/">home</a></li>
-                <li class="header-list-item"><a href="/about-me">about</a></li>
-                <li class="header-list-item"><a href="/projects">projects</a></li>
-                <li class="header-list-item"><a href="/blog">blog</a></li>
-                <li class="header-list-item"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
-            </ul>
-        </div>
-    </div>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
-    <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="overlay">
-        <ul class="overlay-header-list">
-            <li class="overlay-header-list-item"><a href="/">home</a></li>
-            <li class="overlay-header-list-item"><a href="/about-me">about</a></li>
-            <li class="overlay-header-list-item"><a href="/projects">projects</a></li>
-            <li class="overlay-header-list-item"><a href="/blog">blog</a></li>
-            <li class="overlay-header-list-item"><a href="https://linktr.ee/alexanderconn">linktr.ee</a></li>
-        </ul>
-    </div>
-
-    <div class="content">
-        <div class="404-error-text"></div>
-    </div>
+    <script></script>
+    <!-- Particle Effects -->
+    <div class="particle-container" id="particles"></div>
     
-    <div class="footer">
-        <span>© Alexander JD Conn 2024 | All rights reserved</span>
+    <!-- Vector Decorations -->
+    <vc-top-left></vc-top-left>
+    <vc-top-right></vc-top-right>
+    <vc-bottom-left></vc-bottom-left>
+    <vc-bottom-right></vc-bottom-right>
+    
+    <!-- HUD Elements -->
+    <div class="hud-element hud-top">[ SYSTEM ONLINE ]</div>
+    <div class="hud-element hud-bottom">[ ACE (AC ENCRYPTION) ACTIVE ]</div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header-component></header-component>
+
+        <!-- Main Grid -->
+        <div class="main-grid">
+            <!-- Content Panel -->
+            <aside class="panel content-panel">
+                <h2 class="panel-title" data-subtitle="v0.1.09">// 404 [ERROR MISSING PAGE]</h2>
+                <div class="404-error-text"></div>
+            </aside>
+            
+            <!-- Terminal -->
+            <main class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-title">//TERMINAL_v0.1.09</div>
+                </div>
+                
+                <div class="terminal-content" id="terminal-output">
+                    <!-- Terminal content will be added by JavaScript -->
+                </div>
+                
+                <div class="terminal-prompt">
+                    <span class="prompt-symbol">></span>
+                    <input type="text" class="terminal-input" id="terminal-input" placeholder="█" autocomplete="on" />
+                </div>
+            </main>
+        </div>
+        
+        <!-- Footer -->
+        <footer-component></footer-component>
     </div>
 </body>
 </html>

@@ -1,333 +1,268 @@
-/**
- * Browser Performance Monitor
- * Monitors RAM usage and estimates CPU usage within browser constraints
- * Note: Browser security restrictions limit access to system resources
- */
-
-class BrowserPerformanceMonitor {
-  constructor() {
-    this.isMemoryAPIAvailable = this.checkMemoryAPI();
-    this.cpuEstimationRunning = false;
-    this.lastCPUCheck = null;
-  }
-
-  /**
-   * Check if the browser supports the memory API
-   */
-  checkMemoryAPI() {
-    return typeof performance !== 'undefined' && 
-           performance.memory && 
-           typeof performance.memory.usedJSHeapSize !== 'undefined';
-  }
-
-  /**
-   * Get RAM usage information
-   * Note: Only works in Chrome/Chromium-based browsers with proper flags
-   * @returns {Object|null} Memory usage data or null if not available
-   */
-  getRAMUsage() {
-    if (!this.isMemoryAPIAvailable) {
-      console.warn('Memory API not available in this browser');
-      return null;
+// Initialize particles
+function createParticles() {
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+        container.appendChild(particle);
     }
+}
 
-    const memory = performance.memory;
-    
-    return {
-      // All values are in bytes
-      usedJSHeapSize: memory.usedJSHeapSize,
-      totalJSHeapSize: memory.totalJSHeapSize,
-      jsHeapSizeLimit: memory.jsHeapSizeLimit,
-      
-      // Formatted values
-      usedJSHeapSizeMB: (memory.usedJSHeapSize / 1048576).toFixed(2),
-      totalJSHeapSizeMB: (memory.totalJSHeapSize / 1048576).toFixed(2),
-      jsHeapSizeLimitMB: (memory.jsHeapSizeLimit / 1048576).toFixed(2),
-      
-      // Usage percentage
-      usagePercentage: ((memory.usedJSHeapSize / memory.jsHeapSizeLimit) * 100).toFixed(2)
-    };
-  }
+// Terminal functionality
+const terminalOutput = document.getElementById('terminal-output');
+const terminalInput = document.getElementById('terminal-input');
+let commandHistory = [];
+let historyIndex = -1;
 
-  /**
-   * Estimate CPU usage by measuring computation time
-   * This is an approximation, not actual CPU usage
-   * @param {number} duration - How long to measure (in milliseconds)
-   * @returns {Promise<number>} Estimated CPU load percentage
-   */
-  async estimateCPUUsage(duration = 1000) {
-    if (this.cpuEstimationRunning) {
-      console.warn('CPU estimation already running');
-      return null;
+const bootSequence = [
+    { text: '//INITIATING CONNECTION...', class: 'info' },
+    { text: 'ESTABLISHING SECURE LINK TO MAINFRAME_01...', class: 'info' },
+    { text: '> Authentication required...', class: 'warning' },
+    { text: '> Biometric scan... [OK]', class: 'success' },
+    { text: '> Quantum key exchange... [OK]', class: 'success' },
+    { text: 'CONNECTION ESTABLISHED', class: 'success' },
+    { text: '', class: 'info' },
+    { text: 'Welcome to AJDC SYSTEMS Terminal v0.1.09', class: 'info' },
+    { text: 'Type "help" for available commands', class: 'info' },
+    { text: '', class: 'info' }
+];
+
+const commands = {
+    help: () => {
+        return [
+            { text: 'Available Commands:', class: 'info' },
+            { text: '  help     - Show this help message', class: 'success' },
+            { text: '  about    - About this portfolio', class: 'success' },
+            { text: '  projects - List all projects', class: 'success' },
+            { text: '  skills   - Display technical skills', class: 'success' },
+            { text: '  contact  - Contact information', class: 'success' },
+            { text: '  clear    - Clear terminal', class: 'success' },
+            { text: '  matrix   - Enter the matrix', class: 'success' },
+            { text: '  hack     - Initialize hack sequence', class: 'success' },
+            { text: '  status   - System status report', class: 'success' },
+            { text: '  date     - Current system date', class: 'success' }
+        ];
+    },
+    about: () => {
+        return [
+            { text: '╔════════════════════════════════════╗', class: 'info' },
+            { text: '║     PORTFOLIO SYSTEM v3.4.78      ║', class: 'info' },
+            { text: '╚════════════════════════════════════╝', class: 'info' },
+            { text: '', class: 'info' },
+            { text: 'Welcome to my digital workspace.', class: 'success' },
+            { text: 'I am a creative technologist specializing in:', class: 'success' },
+            { text: '  • Full-stack development', class: 'info' },
+            { text: '  • UI/UX design', class: 'info' },
+            { text: '  • Creative coding', class: 'info' },
+            { text: '  • Digital experiences', class: 'info' }
+        ];
+    },
+    projects: () => {
+        return [
+            { text: 'Loading project database...', class: 'info' },
+            { text: '', class: 'info' },
+            { text: '[1] PROJECT ECHO - Neural network visualization', class: 'success' },
+            { text: '[2] DATA CONDUIT - Real-time data pipeline', class: 'success' },
+            { text: '[3] CHRONOS ARCHIVE - Time-series analysis tool', class: 'success' },
+            { text: '[4] NEURAL BRIDGE - AI-human interface', class: 'success' },
+            { text: '[5] QUANTUM MESH - Distributed computing framework', class: 'success' }
+        ];
+    },
+    skills: () => {
+        return [
+            { text: 'Technical Skills Matrix:', class: 'info' },
+            { text: '', class: 'info' },
+            { text: 'LANGUAGES:', class: 'warning' },
+            { text: '  JavaScript/TypeScript [████████░░] 80%', class: 'success' },
+            { text: '  Python               [███████░░░] 70%', class: 'success' },
+            { text: '  Rust                 [██████░░░░] 60%', class: 'success' },
+            { text: '', class: 'info' },
+            { text: 'FRAMEWORKS:', class: 'warning' },
+            { text: '  React/Next.js        [█████████░] 90%', class: 'success' },
+            { text: '  Node.js              [████████░░] 80%', class: 'success' },
+            { text: '  Three.js             [███████░░░] 70%', class: 'success' }
+        ];
+    },
+    contact: () => {
+        return [
+            { text: 'Establishing secure communication channel...', class: 'info' },
+            { text: '', class: 'info' },
+            { text: 'CONTACT PROTOCOLS:', class: 'warning' },
+            { text: '  Email: commander@neogrid.systems', class: 'success' },
+            { text: '  GitHub: github.com/commander7', class: 'success' },
+            { text: '  Signal: +1-555-NEOGRID', class: 'success' }
+        ];
+    },
+    clear: () => {
+        terminalOutput.innerHTML = '';
+        return [];
+    },
+    matrix: () => {
+        return [
+            { text: 'Follow the white rabbit...', class: 'success' },
+            { text: 'Wake up, Neo...', class: 'warning' },
+            { text: 'The Matrix has you...', class: 'error' }
+        ];
+    },
+    hack: () => {
+        return [
+            { text: 'INITIALIZING HACK SEQUENCE...', class: 'warning' },
+            { text: 'Bypassing firewall... [████████░░] 80%', class: 'info' },
+            { text: 'Injecting payload... [██████████] 100%', class: 'success' },
+            { text: 'ACCESS GRANTED', class: 'success' },
+            { text: 'Just kidding! This is a portfolio site :)', class: 'info' }
+        ];
+    },
+    status: () => {
+        const uptime = Math.floor(Math.random() * 1000) + 1000;
+        return [
+            { text: 'SYSTEM STATUS REPORT:', class: 'info' },
+            { text: `Uptime: ${uptime} hours`, class: 'success' },
+            { text: `Active connections: ${Math.floor(Math.random() * 100) + 50}`, class: 'success' },
+            { text: `CPU Load: ${Math.floor(Math.random() * 50) + 30}%`, class: 'success' },
+            { text: `Memory Usage: ${(Math.random() * 2 + 1).toFixed(1)}GB / 4.0GB`, class: 'success' },
+            { text: 'All systems operational', class: 'success' }
+        ];
+    },
+    date: () => {
+        const now = new Date();
+        return [
+            { text: `System Date: ${now.toLocaleDateString()}`, class: 'info' },
+            { text: `System Time: ${now.toLocaleTimeString()}`, class: 'info' }
+        ];
     }
+};
 
-    this.cpuEstimationRunning = true;
-    
-    const iterations = 1000000;
-    const samples = [];
-    const sampleCount = Math.floor(duration / 100); // Sample every 100ms
-    
-    // Baseline: measure how long iterations take on idle
-    const baselineStart = performance.now();
-    for (let i = 0; i < iterations; i++) {
-      Math.sqrt(i);
-    }
-    const baselineTime = performance.now() - baselineStart;
-    
-    // Take multiple samples over the duration
-    for (let s = 0; s < sampleCount; s++) {
-      const start = performance.now();
-      for (let i = 0; i < iterations; i++) {
-        Math.sqrt(i);
-      }
-      const elapsed = performance.now() - start;
-      
-      // Calculate load as ratio of current time to baseline
-      const load = Math.min(100, (elapsed / baselineTime - 1) * 100);
-      samples.push(Math.max(0, load));
-      
-      // Wait before next sample
-      await new Promise(resolve => setTimeout(resolve, 100));
-    }
-    
-    this.cpuEstimationRunning = false;
-    
-    // Return average of samples
-    const avgLoad = samples.reduce((a, b) => a + b, 0) / samples.length;
-    return parseFloat(avgLoad.toFixed(2));
-  }
+function addLine(text, className = '') {
+    const line = document.createElement('div');
+    line.className = `terminal-line ${className}`;
+    line.textContent = text;
+    line.style.animationDelay = '0s';
+    terminalOutput.appendChild(line);
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
 
-  /**
-   * Alternative CPU measurement using requestAnimationFrame
-   * Measures how well the browser maintains 60 FPS
-   * @param {number} duration - How long to measure (in milliseconds)
-   * @returns {Promise<Object>} Frame rate statistics
-   */
-  measureFrameRate(duration = 3000) {
-    return new Promise((resolve) => {
-      const frames = [];
-      let startTime = null;
-      let frameCount = 0;
-      
-      const measureFrame = (timestamp) => {
-        if (!startTime) {
-          startTime = timestamp;
+function processCommand(input) {
+    const cmd = input.toLowerCase().trim();
+    addLine(`> ${input}`, 'info');
+    
+    if (commands[cmd]) {
+        const output = commands[cmd]();
+        output.forEach((line, index) => {
+            setTimeout(() => {
+                addLine(line.text, line.class);
+            }, index * 50);
+        });
+    } else if (cmd === '') {
+        // Empty command, do nothing
+    } else {
+        addLine(`Command not found: ${cmd}`, 'error');
+        addLine('Type "help" for available commands', 'warning');
+    }
+}
+
+// Terminal input handling
+terminalInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        const input = terminalInput.value;
+        if (input.trim()) {
+            commandHistory.push(input);
+            historyIndex = commandHistory.length;
+            processCommand(input);
         }
-        
-        frameCount++;
-        frames.push(timestamp);
-        
-        if (timestamp - startTime < duration) {
-          requestAnimationFrame(measureFrame);
+        terminalInput.value = '';
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (historyIndex > 0) {
+            historyIndex--;
+            terminalInput.value = commandHistory[historyIndex];
+        }
+    } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (historyIndex < commandHistory.length - 1) {
+            historyIndex++;
+            terminalInput.value = commandHistory[historyIndex];
         } else {
-          // Calculate statistics
-          const elapsed = timestamp - startTime;
-          const avgFPS = (frameCount / elapsed) * 1000;
-          
-          // Calculate frame time variations
-          const frameTimes = [];
-          for (let i = 1; i < frames.length; i++) {
-            frameTimes.push(frames[i] - frames[i - 1]);
-          }
-          
-          const avgFrameTime = frameTimes.reduce((a, b) => a + b, 0) / frameTimes.length;
-          const maxFrameTime = Math.max(...frameTimes);
-          const minFrameTime = Math.min(...frameTimes);
-          
-          // Estimate CPU load based on frame drops
-          // If maintaining 60 FPS perfectly, load is low
-          // As FPS drops, estimated load increases
-          const targetFPS = 60;
-          const estimatedLoad = Math.min(100, Math.max(0, 
-            ((targetFPS - avgFPS) / targetFPS) * 100
-          ));
-          
-          resolve({
-            averageFPS: avgFPS.toFixed(2),
-            frameCount: frameCount,
-            duration: elapsed.toFixed(2),
-            avgFrameTime: avgFrameTime.toFixed(2),
-            maxFrameTime: maxFrameTime.toFixed(2),
-            minFrameTime: minFrameTime.toFixed(2),
-            estimatedCPULoad: estimatedLoad.toFixed(2)
-          });
+            historyIndex = commandHistory.length;
+            terminalInput.value = '';
         }
-      };
-      
-      requestAnimationFrame(measureFrame);
+    }
+});
+
+// Project loading
+function loadProject(projectName) {
+    addLine(`Loading project: ${projectName.toUpperCase()}...`, 'info');
+    setTimeout(() => {
+        addLine(`Project ${projectName.toUpperCase()} loaded successfully`, 'success');
+    }, 500);
+}
+
+// Terminal control functions
+function clearTerminal() {
+    terminalOutput.innerHTML = '';
+    addLine('Terminal cleared', 'info');
+}
+
+function minimizeTerminal() {
+    document.querySelector('.terminal').style.minHeight = '100px';
+    document.querySelector('.terminal-content').style.display = 'none';
+    document.querySelector('.terminal-prompt').style.display = 'none';
+}
+
+function maximizeTerminal() {
+    document.querySelector('.terminal').style.minHeight = '500px';
+    document.querySelector('.terminal-content').style.display = 'block';
+    document.querySelector('.terminal-prompt').style.display = 'flex';
+}
+
+// Update system stats
+function updateStats() {
+    const cpuEl = document.getElementById('cpu');
+    const memoryEl = document.getElementById('memory');
+    const latencyEl = document.getElementById('latency');
+    const packetsEl = document.getElementById('packets');
+    
+    if (cpuEl) cpuEl.textContent = `${Math.floor(Math.random() * 30) + 40}%`;
+    if (memoryEl) memoryEl.textContent = `${(Math.random() * 1.5 + 1.5).toFixed(1)}GB`;
+    if (latencyEl) latencyEl.textContent = `${Math.floor(Math.random() * 20) + 8}ms`;
+    if (packetsEl) packetsEl.textContent = `${(Math.random() * 0.5 + 1.3).toFixed(3)}M`;
+}
+
+// Initialize
+window.addEventListener('load', () => {
+    createParticles();
+    
+    // Boot sequence
+    bootSequence.forEach((line, index) => {
+        setTimeout(() => {
+            addLine(line.text, line.class);
+        }, index * 200);
     });
-  }
-
-  /**
-   * Get all available performance metrics
-   * @returns {Promise<Object>} Combined performance data
-   */
-  async getAllMetrics() {
-    const metrics = {
-      timestamp: new Date().toISOString(),
-      memory: this.getRAMUsage(),
-      navigation: this.getNavigationTiming(),
-      resources: this.getResourceCount()
-    };
-
-    // Add frame rate measurement
-    console.log('Measuring frame rate (3 seconds)...');
-    metrics.frameRate = await this.measureFrameRate();
     
-    return metrics;
-  }
-
-  /**
-   * Get navigation timing information
-   * @returns {Object} Page load performance data
-   */
-  getNavigationTiming() {
-    if (!performance.timing) {
-      return null;
-    }
-
-    const timing = performance.timing;
-    const navigation = {
-      // Page load times
-      domContentLoaded: timing.domContentLoadedEventEnd - timing.domContentLoadedEventStart,
-      loadComplete: timing.loadEventEnd - timing.loadEventStart,
-      domInteractive: timing.domInteractive - timing.domLoading,
-      
-      // Network times
-      fetchTime: timing.responseEnd - timing.fetchStart,
-      dnsTime: timing.domainLookupEnd - timing.domainLookupStart,
-      tcpTime: timing.connectEnd - timing.connectStart,
-      
-      // Total time
-      totalLoadTime: timing.loadEventEnd - timing.navigationStart
-    };
-
-    return navigation;
-  }
-
-  /**
-   * Get count of loaded resources
-   * @returns {Object} Resource statistics
-   */
-  getResourceCount() {
-    if (!performance.getEntriesByType) {
-      return null;
-    }
-
-    const resources = performance.getEntriesByType('resource');
-    const byType = {};
+    // Update stats periodically
+    setInterval(updateStats, 3000);
     
-    resources.forEach(resource => {
-      const type = resource.initiatorType || 'other';
-      byType[type] = (byType[type] || 0) + 1;
-    });
+    // Focus terminal input
+    terminalInput.focus();
+});
 
-    return {
-      total: resources.length,
-      byType: byType
-    };
-  }
+// Easter egg: Konami code
+let konamiCode = [];
+const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 
-  /**
-   * Start continuous monitoring
-   * @param {number} interval - Update interval in milliseconds
-   * @param {Function} callback - Function to call with metrics
-   * @returns {Function} Stop monitoring function
-   */
-  startMonitoring(interval = 5000, callback) {
-    const monitor = async () => {
-      const metrics = {
-        timestamp: new Date().toISOString(),
-        memory: this.getRAMUsage()
-      };
-      
-      // Only estimate CPU occasionally as it takes time
-      if (!this.lastCPUCheck || Date.now() - this.lastCPUCheck > 10000) {
-        metrics.estimatedCPU = await this.estimateCPUUsage(500);
-        this.lastCPUCheck = Date.now();
-      }
-      
-      callback(metrics);
-    };
-
-    // Initial call
-    monitor();
+document.addEventListener('keydown', (e) => {
+    konamiCode.push(e.key);
+    konamiCode = konamiCode.slice(-10);
     
-    // Set up interval
-    const intervalId = setInterval(monitor, interval);
-    
-    // Return stop function
-    return () => clearInterval(intervalId);
-  }
-}
-
-// Example usage and utility functions
-const performanceMonitor = new BrowserPerformanceMonitor();
-
-/**
- * Simple function to get current RAM usage
- */
-function getRAMUsage() {
-  return performanceMonitor.getRAMUsage();
-}
-
-/**
- * Simple function to estimate CPU usage
- */
-async function getCPUUsage() {
-  return await performanceMonitor.estimateCPUUsage();
-}
-
-/**
- * Demo function to show all capabilities
- */
-async function demo() {
-  console.log('=== Browser Performance Monitor Demo ===\n');
-  
-  // Check RAM usage
-  console.log('RAM Usage:');
-  const ram = getRAMUsage();
-  if (ram) {
-    console.log(`  Used: ${ram.usedJSHeapSizeMB} MB`);
-    console.log(`  Total: ${ram.totalJSHeapSizeMB} MB`);
-    console.log(`  Limit: ${ram.jsHeapSizeLimitMB} MB`);
-    console.log(`  Usage: ${ram.usagePercentage}%`);
-  } else {
-    console.log('  Not available (Chrome/Edge only)');
-  }
-  
-  console.log('\nEstimating CPU usage...');
-  const cpu = await getCPUUsage();
-  console.log(`  Estimated Load: ${cpu}%`);
-  
-  console.log('\nMeasuring frame rate...');
-  const frameStats = await performanceMonitor.measureFrameRate(2000);
-  console.log(`  Average FPS: ${frameStats.averageFPS}`);
-  console.log(`  Estimated CPU Load: ${frameStats.estimatedCPULoad}%`);
-  
-  console.log('\n=== Starting continuous monitoring (5 second intervals) ===');
-  const stopMonitoring = performanceMonitor.startMonitoring(5000, (metrics) => {
-    console.log(`\n[${new Date(metrics.timestamp).toLocaleTimeString()}]`);
-    if (metrics.memory) {
-      console.log(`  RAM: ${metrics.memory.usedJSHeapSizeMB} MB (${metrics.memory.usagePercentage}%)`);
+    if (konamiCode.join(',') === konamiPattern.join(',')) {
+        document.body.style.animation = 'glitch 0.5s infinite';
+        addLine('KONAMI CODE ACTIVATED!', 'success');
+        addLine('UNLOCKING HIDDEN FEATURES...', 'warning');
+        setTimeout(() => {
+            document.body.style.animation = '';
+        }, 5000);
     }
-    if (metrics.estimatedCPU !== undefined) {
-      console.log(`  CPU: ~${metrics.estimatedCPU}%`);
-    }
-  });
-  
-  // Stop after 20 seconds
-  setTimeout(() => {
-    stopMonitoring();
-    console.log('\n=== Monitoring stopped ===');
-  }, 20000);
-}
-
-// Export for use in modules
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    BrowserPerformanceMonitor,
-    getRAMUsage,
-    getCPUUsage
-  };
-}
+});
