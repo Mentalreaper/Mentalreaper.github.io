@@ -1,0 +1,309 @@
+/* Global Scrollbar Styles - Webkit Browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 20, 40, 0.8);
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, 
+        rgba(0, 20, 40, 0.8) 0%, 
+        rgba(0, 30, 50, 0.6) 100%);
+    border: 1px solid rgba(0, 255, 204, 0.1);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, 
+        rgba(0, 255, 204, 0.6) 0%, 
+        rgba(0, 204, 255, 0.4) 100%);
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    border-radius: 2px;
+    box-shadow: 
+        0 0 5px rgba(0, 255, 204, 0.3),
+        inset 0 0 3px rgba(0, 255, 204, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, 
+        rgba(0, 255, 204, 0.8) 0%, 
+        rgba(0, 204, 255, 0.6) 100%);
+    border-color: rgba(0, 255, 204, 0.6);
+    box-shadow: 
+        0 0 10px rgba(0, 255, 204, 0.5),
+        inset 0 0 5px rgba(0, 255, 204, 0.3);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(135deg, 
+        rgba(0, 255, 204, 1) 0%, 
+        rgba(0, 204, 255, 0.8) 100%);
+    box-shadow: 
+        0 0 15px rgba(0, 255, 204, 0.7),
+        inset 0 0 8px rgba(0, 255, 204, 0.4);
+}
+
+/* Corner where scrollbars meet */
+::-webkit-scrollbar-corner {
+    background: rgba(0, 20, 40, 0.9);
+    border: 1px solid rgba(0, 255, 204, 0.1);
+}
+
+/* Terminal Content Specific Scrollbar */
+.terminal-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.terminal-content::-webkit-scrollbar-track {
+    background: rgba(0, 10, 20, 0.9);
+    border-left: 1px solid rgba(0, 255, 204, 0.2);
+    position: relative;
+}
+
+/* Animated scan line effect for terminal scrollbar */
+.terminal-content::-webkit-scrollbar-track::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(0, 255, 204, 0.5), 
+        transparent);
+    animation: terminal-scroll-scan 3s linear infinite;
+}
+
+@keyframes terminal-scroll-scan {
+    0% { transform: translateY(-100px); }
+    100% { transform: translateY(calc(100vh + 100px)); }
+}
+
+.terminal-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, 
+        rgba(0, 255, 0, 0.6) 0%, 
+        rgba(0, 255, 0, 0.3) 100%);
+    border: 1px solid rgba(0, 255, 0, 0.4);
+    border-radius: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.terminal-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, 
+        rgba(0, 255, 0, 0.8) 0%, 
+        rgba(0, 255, 0, 0.5) 100%);
+    box-shadow: 
+        0 0 10px rgba(0, 255, 0, 0.5),
+        inset 0 0 5px rgba(0, 255, 0, 0.3);
+}
+
+/* Content Panel Specific Scrollbar */
+.content-panel::-webkit-scrollbar {
+    width: 10px;
+}
+
+.content-panel::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, 
+        rgba(0, 20, 40, 0.7) 0%, 
+        rgba(0, 30, 50, 0.5) 100%);
+    border-left: 1px solid rgba(0, 255, 204, 0.15);
+}
+
+.content-panel::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, 
+        rgba(0, 204, 255, 0.6) 0%, 
+        rgba(0, 255, 204, 0.4) 100%);
+    border: 1px solid rgba(0, 204, 255, 0.3);
+    border-radius: 1px;
+}
+
+.content-panel::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, 
+        rgba(0, 204, 255, 0.8) 0%, 
+        rgba(0, 255, 204, 0.6) 100%);
+    border-color: rgba(0, 204, 255, 0.5);
+    box-shadow: 
+        0 0 8px rgba(0, 204, 255, 0.4),
+        inset 0 0 4px rgba(0, 204, 255, 0.2);
+}
+
+/* Firefox Scrollbar Support */
+/* Note: Firefox has limited scrollbar customization */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 255, 204, 0.5) rgba(0, 20, 40, 0.8);
+}
+
+.terminal-content {
+    scrollbar-color: rgba(0, 255, 0, 0.5) rgba(0, 10, 20, 0.9);
+}
+
+.content-panel {
+    scrollbar-color: rgba(0, 204, 255, 0.5) rgba(0, 20, 40, 0.7);
+}
+
+/* Special Effects for Main Document Scrollbar */
+html::-webkit-scrollbar {
+    width: 14px;
+}
+
+html::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, 
+        rgba(10, 14, 39, 0.9) 0%, 
+        rgba(21, 25, 49, 0.9) 100%);
+    border: 1px solid rgba(0, 255, 204, 0.1);
+    box-shadow: 
+        inset 0 0 10px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(0, 255, 204, 0.05);
+}
+
+html::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, 
+        rgba(0, 255, 204, 0.7) 0%, 
+        rgba(255, 0, 204, 0.3) 50%,
+        rgba(0, 204, 255, 0.5) 100%);
+    border: 1px solid rgba(0, 255, 204, 0.4);
+    border-radius: 2px;
+    box-shadow: 
+        0 0 10px rgba(0, 255, 204, 0.4),
+        inset 0 0 5px rgba(0, 255, 204, 0.2);
+    position: relative;
+}
+
+/* Glowing pulse effect on main scrollbar */
+html::-webkit-scrollbar-thumb::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px;
+    height: 80%;
+    background: rgba(0, 255, 204, 0.8);
+    border-radius: 2px;
+    animation: scrollbar-pulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollbar-pulse {
+    0%, 100% { 
+        opacity: 0.3;
+        box-shadow: 0 0 3px rgba(0, 255, 204, 0.5);
+    }
+    50% { 
+        opacity: 0.8;
+        box-shadow: 0 0 8px rgba(0, 255, 204, 0.8);
+    }
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, 
+        rgba(0, 255, 204, 0.9) 0%, 
+        rgba(255, 0, 204, 0.5) 50%,
+        rgba(0, 204, 255, 0.7) 100%);
+    border-color: rgba(0, 255, 204, 0.6);
+    box-shadow: 
+        0 0 15px rgba(0, 255, 204, 0.6),
+        inset 0 0 8px rgba(0, 255, 204, 0.3);
+}
+
+/* Horizontal Scrollbars (if needed) */
+::-webkit-scrollbar:horizontal {
+    height: 12px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background: linear-gradient(90deg, 
+        rgba(0, 255, 204, 0.6) 0%, 
+        rgba(0, 204, 255, 0.4) 100%);
+}
+
+/* Custom Selection to Match Theme */
+::selection {
+    background: rgba(0, 255, 204, 0.3);
+    color: var(--primary-green);
+    text-shadow: 0 0 3px rgba(0, 255, 0, 0.5);
+}
+
+::-moz-selection {
+    background: rgba(0, 255, 204, 0.3);
+    color: var(--primary-green);
+    text-shadow: 0 0 3px rgba(0, 255, 0, 0.5);
+}
+
+/* Optional: Scrollbar buttons (arrows) - hidden by default */
+::-webkit-scrollbar-button {
+    display: none; /* Hide scrollbar buttons for cleaner look */
+}
+
+/* If you want to show styled scrollbar buttons, uncomment below */
+
+::-webkit-scrollbar-button {
+    background: rgba(0, 20, 40, 0.8);
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    height: 15px;
+    width: 15px;
+}
+
+::-webkit-scrollbar-button:hover {
+    background: rgba(0, 30, 50, 0.9);
+    border-color: rgba(0, 255, 204, 0.4);
+}
+
+::-webkit-scrollbar-button:vertical:decrement {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><polygon points="7.5,3 12,10 3,10" fill="%2300ffcc"/></svg>');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+::-webkit-scrollbar-button:vertical:increment {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><polygon points="7.5,12 3,5 12,5" fill="%2300ffcc"/></svg>');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* Add subtle animation to scrollbar on page load */
+@keyframes scrollbar-intro {
+    0% {
+        opacity: 0;
+        transform: scaleX(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+::-webkit-scrollbar-thumb {
+    animation: scrollbar-intro 0.5s ease-out;
+}
+
+/* Glitch effect for scrollbar (activate with class) */
+.glitch-scrollbar::-webkit-scrollbar-thumb {
+    animation: scrollbar-glitch 0.3s infinite;
+}
+
+@keyframes scrollbar-glitch {
+    0%, 100% { 
+        transform: translateX(0);
+        filter: hue-rotate(0deg);
+    }
+    20% { 
+        transform: translateX(-2px);
+        filter: hue-rotate(90deg);
+    }
+    40% { 
+        transform: translateX(2px);
+        filter: hue-rotate(180deg);
+    }
+    60% { 
+        transform: translateX(-1px);
+        filter: hue-rotate(270deg);
+    }
+    80% { 
+        transform: translateX(1px);
+        filter: hue-rotate(360deg);
+    }
+}
