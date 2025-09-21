@@ -507,9 +507,9 @@ function renderEffects() {
                 <span class="effect-category ${effect.category}">${effect.category}</span>
             </div>
             <div class="effect-text">${effect.text}</div>
-            ${effect.hasCondition && effect.condition ? `
+            ${effect.condition ? `
                 <div class="effect-condition">
-                    <strong>To Remove:</strong> ${effect.condition}
+                    <strong>Duration/How To Remove:</strong> ${effect.condition}
                 </div>
             ` : ''}
             <div class="effect-duration">
