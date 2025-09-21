@@ -318,7 +318,7 @@ async function instantSpin() {
     }
 
     // Show result immediately with brief visual feedback
-    showToast('⚡ Instant result!', 'success');
+    showToast(' Instant result!', 'success');
     setTimeout(() => {
         showResult(effect);
         AppState.isSpinning = false;
