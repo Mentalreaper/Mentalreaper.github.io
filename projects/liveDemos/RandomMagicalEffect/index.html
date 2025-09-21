@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Random Magical Effects - 10,000 Effects</title>
-    <script src="/static/javascript/random-magical-effect.js" defer></script> 
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="og:viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="og:author" content="Alexander Conn">
+    <meta name="og:type" content="website">
+    <meta name="og:theme-color" content="Canvas">
+    <meta name="og:title" content="Alexander Conn - Random Magical Effects | Game Development Blog">
+    <meta name="og:description" content="Random Magical Effects - d10,000 possibilities, based on .">
+
+    <title>Alexander Conn - Random Magical Effects | Game Development Blog</title>
+    
     <link rel="stylesheet" href="/static/css/random-magical-effect.css">
+
+    <script src="/static/javascript/random-magical-effect.js" defer></script> 
+    <script type="module" src="/static/javascript/back-button.js"></script>
+
+    <link rel="icon" href="/static/favicon/favicon.ico" sizes="any">
 </head>
 <body>
     <script defer></script>
     <div id="starfield"></div>
-    
+
+    <back-button size="lg" href="/projects/liveDemos/" delta="-1" longdelta="-3" hotkey="Alt+ArrowLeft" confirm="" hrefonly></back-button>
+
     <div class="container">
         <!-- Header -->
         <div class="header">
@@ -38,10 +52,16 @@
             <!-- File Selector -->
             <div class="file-selector">
                 <label class="file-label" style="color: var(--text-dim); font-size: 0.85rem;">Effect Set:</label>
-                <select class="file-select" id="effectSetSelect" onchange="changeEffectSet(this.value)">
-                    <option value="1">v1.2 (d10,000)</option>
-                    <option value="2">v2.0 (d10,000)</option>
-                </select>
+                <div class="custom-dropdown" id="customDropdown">
+                    <div class="dropdown-selected" id="dropdownSelected" onclick="toggleDropdown()">
+                        <span id="selectedText">v1.2 (d10,000)</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </div>
+                    <div class="dropdown-options" id="dropdownOptions">
+                        <div class="dropdown-option" data-value="1" onclick="selectOption(1, 'v1.2 (d10,000)')">v1.2 (d10,000)</div>
+                        <div class="dropdown-option" data-value="2" onclick="selectOption(2, 'v2.0 (d10,000)')">v2.0 (d10,000)</div>
+                    </div>
+                </div>
             </div>
 
             <div class="spinner-container">
@@ -72,6 +92,10 @@
             </div>
             <div class="effects-list" id="effectsList"></div>
         </div>
+
+        <div class="below-hint">
+            <i>This uses 'The Net Libram of Random Magical Effects <a href="https://centralia.aquest.com/downloads/NLRMEv2.pdf">v1.20</a> and <a href="https://centralia.aquest.com/downloads/NLRMEv12.pdf">v2.00</a> By Orrex'</i> 
+        </div>
     </div>
 
     <!-- Character Modal -->
@@ -101,6 +125,46 @@
         <div class="modal-footer" style="justify-content: center;">
             <button class="btn btn-primary" onclick="addEffectToCharacter()">Add to Character</button>
             <button class="btn btn-outline" onclick="closeResultModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Import Modal -->
+    <div class="modal-overlay" id="importModalOverlay" onclick="closeImportModal()"></div>
+    <div class="modal" id="importModal">
+        <div class="modal-header">Import Characters</div>
+        <div class="modal-body">
+            <div class="import-summary">
+                <div class="import-info-box">
+                    <div class="import-stats">
+                        <span class="import-stat-label">Characters to import:</span>
+                        <span class="import-stat-value" id="importCharCount">0</span>
+                    </div>
+                    <div class="import-stats">
+                        <span class="import-stat-label">Total effects:</span>
+                        <span class="import-stat-value" id="importEffectCount">0</span>
+                    </div>
+                </div>
+                <div class="import-character-list" id="importCharacterList">
+                    <!-- Character names will be listed here -->
+                </div>
+                <div class="import-warning">
+                    <div class="import-option-description">
+                        <strong>Merge:</strong> Add imported characters to your existing ones<br>
+                        <strong>Replace:</strong> Delete all existing characters and use imported ones only
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer" style="justify-content: center; gap: 10px;">
+            <button class="btn btn-primary" onclick="confirmImport('merge')">
+                <span style="font-size: 1.1rem;"></span> Merge
+            </button>
+            <button class="btn btn-accent" onclick="confirmImport('replace')">
+                <span style="font-size: 1.1rem;"></span> Replace
+            </button>
+            <button class="btn btn-outline" onclick="closeImportModal()">
+                Cancel
+            </button>
         </div>
     </div>
 

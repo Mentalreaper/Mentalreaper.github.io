@@ -399,9 +399,20 @@ function selectCharacter(id) {
     saveData();
 }
 
-function deleteCharacter(id) {
-    if (!confirm('Delete this character?')) return;
-    
+function showDeleteConfirmation(id) {
+    // Clear any existing delete modes
+    document.querySelectorAll('.character-item').forEach(item => {
+        item.classList.remove('delete-mode');
+    });
+
+    // Show confirmation for this character
+    const characterItem = document.querySelector(`[data-character-id="${id}"]`);
+    if (characterItem) {
+        characterItem.classList.add('delete-mode');
+    }
+}
+
+function confirmDeleteCharacter(id) {
     const index = AppState.characters.findIndex(c => c.id === id);
     if (index > -1) {
         AppState.characters.splice(index, 1);
@@ -415,6 +426,12 @@ function deleteCharacter(id) {
     }
 }
 
+function hideDeleteConfirmation() {
+    document.querySelectorAll('.character-item').forEach(item => {
+        item.classList.remove('delete-mode');
+    });
+}
+
 function renderCharacters() {
     const list = document.getElementById('characterList');
     list.innerHTML = '';
@@ -426,10 +443,12 @@ function renderCharacters() {
             item.classList.add('active');
         }
         
+        item.setAttribute('data-character-id', char.id);
         item.innerHTML = `
             <div class="character-name">${char.name}</div>
             <div class="character-stats">${char.effects.length} active effects</div>
-            <button class="character-delete" onclick="event.stopPropagation(); deleteCharacter('${char.id}')">×</button>
+            <button class="character-delete" onclick="event.stopPropagation(); showDeleteConfirmation('${char.id}')">×</button>
+            <button class="character-confirm" onclick="event.stopPropagation(); confirmDeleteCharacter('${char.id}')">✓</button>
         `;
         
         item.onclick = () => selectCharacter(char.id);
@@ -758,6 +777,9 @@ function importData() {
     fileInput.click();
 }
 
+// Store import data temporarily
+let pendingImportData = null;
+
 function processImportedData(data) {
     try {
         // Validate data structure
@@ -772,63 +794,114 @@ function processImportedData(data) {
             return;
         }
 
-        // Ask user for import mode (merge vs replace)
-        const shouldReplace = confirm(`Import ${importedCharacters.length} character(s)?\n\nOK = Merge with existing characters\nCancel = Replace all characters`);
+        // Store data for modal
+        pendingImportData = data;
 
-        if (!shouldReplace) {
-            // Replace mode - clear existing characters
-            if (!confirm('This will delete all existing characters. Are you sure?')) {
-                return;
-            }
-            AppState.characters = [];
-            AppState.activeCharacter = null;
-        }
-
-        // Import characters with new IDs to avoid conflicts
-        let importedCount = 0;
-        const timestamp = Date.now();
-
-        importedCharacters.forEach((char, index) => {
-            if (validateCharacterData(char)) {
-                const newCharacter = {
-                    id: `${timestamp}_${index}`, // Generate new unique ID
-                    name: char.name || 'Imported Character',
-                    effects: char.effects ? char.effects.map((effect, effectIndex) => ({
-                        id: `${timestamp}_${index}_${effectIndex}`, // Generate new effect ID
-                        rollNumber: effect.rollNumber || 0,
-                        text: effect.text || 'Unknown effect',
-                        hasCondition: effect.hasCondition || false,
-                        condition: effect.condition || '',
-                        duration: effect.duration || { value: 0, unit: 'turns' },
-                        category: effect.category || 'neutral',
-                        timestamp: effect.timestamp || new Date().toISOString()
-                    })) : [],
-                    created: char.created || new Date().toISOString()
-                };
-
-                AppState.characters.push(newCharacter);
-                importedCount++;
-
-                // Set as active character if none is active
-                if (!AppState.activeCharacter) {
-                    AppState.activeCharacter = newCharacter.id;
-                }
-            }
-        });
-
-        if (importedCount > 0) {
-            renderCharacters();
-            renderEffects();
-            saveData();
-            showToast(`Successfully imported ${importedCount} character(s)!`, 'success');
-        } else {
-            showToast('No valid characters found to import', 'error');
-        }
+        // Show import modal with character info
+        showImportModal(importedCharacters);
 
     } catch (error) {
         showToast('Error processing import data', 'error');
         console.error('Import processing error:', error);
     }
+}
+
+function showImportModal(characters) {
+    // Update character count
+    document.getElementById('importCharCount').textContent = characters.length;
+
+    // Calculate total effects
+    let totalEffects = 0;
+    characters.forEach(char => {
+        if (char.effects && Array.isArray(char.effects)) {
+            totalEffects += char.effects.length;
+        }
+    });
+    document.getElementById('importEffectCount').textContent = totalEffects;
+
+    // Display character list
+    const charList = document.getElementById('importCharacterList');
+    charList.innerHTML = '';
+
+    characters.forEach(char => {
+        const charItem = document.createElement('div');
+        charItem.className = 'import-character-item';
+        charItem.innerHTML = `
+            <span class="import-character-name">${char.name || 'Unnamed Character'}</span>
+            <span class="import-character-effects">${(char.effects || []).length} effects</span>
+        `;
+        charList.appendChild(charItem);
+    });
+
+    // Show modal
+    document.getElementById('importModalOverlay').classList.add('active');
+    document.getElementById('importModal').classList.add('active');
+}
+
+function closeImportModal() {
+    document.getElementById('importModalOverlay').classList.remove('active');
+    document.getElementById('importModal').classList.remove('active');
+    pendingImportData = null;
+}
+
+function confirmImport(mode) {
+    if (!pendingImportData) {
+        closeImportModal();
+        return;
+    }
+
+    const importedCharacters = pendingImportData.characters || [];
+
+    if (mode === 'replace') {
+        // Replace mode - clear existing characters
+        AppState.characters = [];
+        AppState.activeCharacter = null;
+    }
+    // mode === 'merge' keeps existing characters
+
+    // Import characters with new IDs to avoid conflicts
+    let importedCount = 0;
+    const timestamp = Date.now();
+
+    importedCharacters.forEach((char, index) => {
+        if (validateCharacterData(char)) {
+            const newCharacter = {
+                id: `${timestamp}_${index}`, // Generate new unique ID
+                name: char.name || 'Imported Character',
+                effects: char.effects ? char.effects.map((effect, effectIndex) => ({
+                    id: `${timestamp}_${index}_${effectIndex}`, // Generate new effect ID
+                    rollNumber: effect.rollNumber || 0,
+                    text: effect.text || 'Unknown effect',
+                    hasCondition: effect.hasCondition || false,
+                    condition: effect.condition || '',
+                    duration: effect.duration || { value: 0, unit: 'turns' },
+                    category: effect.category || 'neutral',
+                    timestamp: effect.timestamp || new Date().toISOString()
+                })) : [],
+                created: char.created || new Date().toISOString()
+            };
+
+            AppState.characters.push(newCharacter);
+            importedCount++;
+
+            // Set as active character if none is active
+            if (!AppState.activeCharacter) {
+                AppState.activeCharacter = newCharacter.id;
+            }
+        }
+    });
+
+    if (importedCount > 0) {
+        renderCharacters();
+        renderEffects();
+        saveData();
+        const action = mode === 'merge' ? 'merged' : 'replaced with';
+        showToast(`Successfully ${action} ${importedCount} character(s)!`, 'success');
+    } else {
+        showToast('No valid characters found to import', 'error');
+    }
+
+    closeImportModal();
 }
 
 function validateImportData(data) {
@@ -966,11 +1039,61 @@ document.addEventListener('keydown', (e) => {
 
 // Update Effect Set Selector
 function updateEffectSetSelector() {
-    const selector = document.getElementById('effectSetSelect');
-    if (selector) {
-        selector.value = AppState.effectSet.toString();
+    // Update custom dropdown to show current effect set
+    const selectedText = document.getElementById('selectedText');
+    if (selectedText) {
+        if (AppState.effectSet === 1) {
+            selectedText.textContent = 'v1.2 (d10,000)';
+        } else if (AppState.effectSet === 2) {
+            selectedText.textContent = 'v2.0 (d10,000)';
+        }
     }
+
+    // Update selected state in dropdown options
+    document.querySelectorAll('.dropdown-option').forEach(option => {
+        if (option.dataset.value === AppState.effectSet.toString()) {
+            option.classList.add('selected');
+        } else {
+            option.classList.remove('selected');
+        }
+    });
 }
+
+// Custom dropdown functions
+function toggleDropdown() {
+    const dropdown = document.getElementById('customDropdown');
+    dropdown.classList.toggle('open');
+}
+
+function selectOption(value, text) {
+    const dropdown = document.getElementById('customDropdown');
+    const selectedText = document.getElementById('selectedText');
+
+    selectedText.textContent = text;
+    dropdown.classList.remove('open');
+
+    // Update selected state
+    document.querySelectorAll('.dropdown-option').forEach(option => {
+        if (option.dataset.value === value.toString()) {
+            option.classList.add('selected');
+        } else {
+            option.classList.remove('selected');
+        }
+    });
+
+    // Trigger the effect set change
+    changeEffectSet(value);
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.custom-dropdown')) {
+        const dropdown = document.getElementById('customDropdown');
+        if (dropdown) {
+            dropdown.classList.remove('open');
+        }
+    }
+});
 
 // Mobile-specific optimizations
 function setupMobileOptimizations() {
@@ -1040,4 +1163,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setupMobileOptimizations();
     monitorPerformance();
     init();
+
+    // Hide delete confirmation when clicking outside character items
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.character-item')) {
+            hideDeleteConfirmation();
+        }
+    });
 });
