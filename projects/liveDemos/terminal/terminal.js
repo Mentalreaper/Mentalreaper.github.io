@@ -185,9 +185,9 @@ Special:
   exit               Close terminal
 
 Navigation Tips:
-  - Use 'cd projects' to explore my work
+  - Use 'cd projects'
   - Try 'cat about.txt' to learn more about me
-  - Use Tab for auto-completion
+  - Use Tab for auto-completion (half implemented)
   - Use ↑/↓ arrows for command history
   - Use Ctrl+L to clear screen
 
@@ -310,8 +310,7 @@ now.toString(),
     echoCommand(args)
     {
         return{
-            output:
-args.join(' '), 
+            output:args.join(' '), 
             type: 'success' 
         };
     }
@@ -323,16 +322,6 @@ args.join(' '),
             output:
 this.fileSystem.currentPath + '/\n' + tree, 
             type: 'info' 
-        };
-    }
-
-    matrixCommand()
-    {
-        this.createMatrixEffect();
-        return{
-            output:
-'The Matrix has you... 🔴💊\nFollow the white rabbit.\n\n> Wake up, Neo...', 
-            type: 'success' 
         };
     }
 
@@ -356,10 +345,7 @@ Try 'sudo help' for more information.
 `[sudo] password for alex: ********
 
 Permission granted! Executing: ${command}
-Just kidding! This is a simulated terminal. 😄
-All commands here run with 'user' privileges only.
-
-But hey, nice try! 🕵️`,
+jk lol. All commands here run with 'user' privileges only.`,
             type: 'warning'
         };
     }
@@ -368,12 +354,12 @@ But hey, nice try! 🕵️`,
     {
         return{
             output:
-`Goodbye! 👋
+`see ya!
 
 Thanks for exploring my portfolio terminal!
 
 To continue browsing:
-• Visit my main website: https://alexanderconn.com
+• Visit the rest of my site!
 • Check out my projects: https://alexanderconn.com/projects
 • Contact me: work@alexanderconn.com
 
@@ -387,7 +373,7 @@ Connection to portfolio-terminal closed.`,
         return {
             output: 
 `                    ╭─────────────────────────────╮
-     ██████╗        │ alex@portfolio-terminal     │
+     ██████╗         │ alex@portfolio-terminal     │
    ██╔═════██╗      │ ─────────────────────────── │
   ██╔═══════██║     │ OS: Portfolio Linux v1.0   │
  ██╔═════════██║    │ Kernel: JavaScript-Engine  │
@@ -395,10 +381,10 @@ Connection to portfolio-terminal closed.`,
  ██╔═════════██║    │ Shell: portfolio-bash       │
   ██╔═══════██╔╝    │ Terminal: web-terminal      │
    ██╔═════██╔╝     │ CPU: Creativity Processor   │
-     ██████╔╝       │ Memory: ∞ GB (imagination)  │
+     ██████╔╝         │ Memory: my memory sucks  │
                      │ Resolution: Any x Anything  │
-                     │ Theme: Matrix Green         │
-                     ╰─────────────────────────────╯
+                     │ Theme: like a blue? or something│
+                     ╰──────────────────────────────────╯
 
 System Information:
 • Developer: Alexander JD Conn

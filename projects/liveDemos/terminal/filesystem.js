@@ -25,9 +25,9 @@ class FileSystem
                                     {
                                         type: 'file',
                                         content:
-`# Welcome to Alexander Conn's Portfolio Terminal
+`# Welcome to my Portfolio Terminal
 
-This is an interactive terminal emulation.
+This is an interactive terminal (if it's missing anything just email me).
 
 ## Available Commands:
 - ls: List directory contents
@@ -42,7 +42,7 @@ This is an interactive terminal emulation.
 - tree: Show directory tree
 
 ## Navigation:
-Use 'cd projects' to explore my work!
+Use 'cd projects' to explore my projects.
 
 Visit my website: https://alexanderconn.com
 Contact: work@alexanderconn.com`
@@ -51,11 +51,11 @@ Contact: work@alexanderconn.com`
                                     {
                                         type: 'file',
                                         content:
-`Alexander JD Conn - Game Developer & Software Engineer
+`Alexander J.D. Conn - Game Developer & Software Engineer
 
 I enjoy RPGs, Card Games, and making those types of games.
-I'm usually working on some small project and writing wayyy too much 
-world building for the few characters there!
+I'm usually working on some small project and writing way too much 
+world building for the few characters there are!
 
 Current Focus:
 - Unity/Godot Game Development
@@ -63,9 +63,7 @@ Current Focus:
 - Making fun little projects on my ArchLinux laptop
 
 Skills: C, C++, C#, Unity, HTML/CSS/JavaScript, Git, Linux
-Education: Computer Games Programming at Kingston University
-
-"Built with too much time on my hands"`
+Education: Computer Games Programming at Kingston University"`
                                     },
                                     'contact.txt':
                                     {
@@ -84,9 +82,7 @@ Available for:
 - Game development projects
 - Web application development
 - Freelance programming
-- Collaboration opportunities
-
-Response time: Usually within 24-48 hours`
+- Most things, just reach out to be honest`
                                     },
                                     'projects':
                                     {
@@ -148,23 +144,20 @@ Implemented cooking mechanics and customer AI
                                                         type: 'file',
                                                         content:
 `# Blade of Roland
-Personal RPG project (Currently Suspended)
+Simple Fast-Paced Sekiro-like (Currently Suspended)
 
 ## Description:
-An ambitious RPG project featuring deep character customization
-and narrative-driven gameplay.
+An ambitious project where I planned to have a souls/sekiro style adventure through mythical lands of the fae.
 
 ## Planned Features:
 - Extensive character creation
-- Branching storylines
-- Combat system with strategic elements
-- Rich world-building
+- Branching storyline based on decisions (gameplay decisions)
+- Rhythmic souls/sekiro style combat system
 
 ## Status: Suspended
-Reason: Focusing on smaller projects to build skills
+Reason: Not what I was enjoying making at the time, may return to
 
-## Technologies: Unity, C#
-## Lessons Learned: Scope management is crucial!`
+## Technologies: Unity, C#`
                                                     }
                                                 }
                                             },
@@ -194,20 +187,16 @@ Web-based character creation tool for Dungeons & Dragons 5th Edition.
 - HTML5/CSS3
 - JSON data management
 - Local Storage API
-- Print CSS for character sheets
 
 ## Live Demo: Available on my portfolio site
-## Status: Active Development
-
-This project showcases my ability to create complex,
-data-driven web applications without frameworks.`
+## Status: Finished (? mostly at least)`
                                                     },
                                                     'pathfinder-tools.md':
                                                     {
                                                         type: 'file',
                                                         content:
 `# Pathfinder Character Tools
-Collection of character creation tools for Pathfinder RPG systems.
+Collection of character creation tools for Pathfinder RPG systems. Basically above, but retooled for when I wanted to play Pathfinder 1e/2e.
 
 ## Tools Include:
 - Pathfinder 1e Character Creator
@@ -243,10 +232,7 @@ Web applications for managing trading card collections.
 - Import/Export functionality
 
 ## Technologies:
-- RESTful API integration
-- JavaScript ES6+
-- Local Storage
-- Responsive design
+- ??? We'll see
 
 ## Status: Prototype Phase
 ## Goal: Help players organize their collections efficiently`
@@ -277,10 +263,7 @@ Web applications for managing trading card collections.
 3. Mathematics for Games
    - Vector calculations
    - Matrix transformations
-   - Physics simulations
-
-Key Learning: Foundation programming concepts
-Grade: First Class Honours`
+   - Physics simulations`
                                                     },
                                                     'year2-projects.txt':
                                                     {
@@ -301,10 +284,7 @@ Grade: First Class Honours`
 3. Graphics Programming
    - OpenGL basics
    - Shader programming
-   - 3D mathematics
-
-Key Learning: Advanced programming and engine concepts
-Grade: First Class Honours`
+   - 3D mathematics`
                                                     },
                                                     'year3-projects.txt':
                                                     {
@@ -328,8 +308,7 @@ Grade: First Class Honours`
    - Behavior trees
    - Machine learning basics
 
-Key Learning: Industry-standard practices and teamwork
-Expected Grade: First Class Honours`
+Final Grade: First Class, Honours`
                                                     }
                                                 }
                                             }
@@ -346,13 +325,13 @@ Expected Grade: First Class Honours`
                                                 content:
 `Programming Skills:
 
-Languages:
-★★★★★ C# (Unity, .NET)
-★★★★☆ JavaScript (ES6+, Node.js)
-★★★★☆ HTML5 & CSS3
-★★★☆☆ C++ (Game Engine Development)
-★★★☆☆ Python (Scripting, Tools)
-★★☆☆☆ SQL (Database Management)
+Languages (People always do "★★★★☆" style, and I don't think I'm qualified to say, I'm just listing the fields I'm confident in):
+- C# (Unity, .NET)
+- JavaScript (ES6+, Node.js)
+- HTML5 & CSS3
+- C++ (Game Engine Development)
+- Python (Scripting, Tools)
+- SQL (Database Management)
 
 Frameworks & Tools:
 - Unity 3D/2D Game Engine
@@ -425,10 +404,7 @@ Specialized:
 - File I/O in Browsers
 - Print Stylesheets
 - CSS Custom Properties
-- Mobile-First Design
-
-Philosophy:
-"Keep it simple, make it work, then make it better"`
+- Mobile-First Design`
                                             }
                                         }
                                     },
@@ -451,12 +427,8 @@ alias code='echo "Opening VS Code... (not really, this is just a simulation!)"'
 alias unity='echo "Starting Unity... (this terminal doesnt actually have Unity installed)"'
 
 # Welcome message
-echo "Welcome back, Alex! Ready to build something awesome?"
-echo "Current projects: D&D Character Creator, Terminal Emulation"
+echo "Current projects: This website, and That RPG"
 echo ""
-
-# Fun fact of the day
-echo "💡 Did you know? This terminal is built with vanilla JavaScript!"
 `
                                     },
                                     '.bashrc':
@@ -491,47 +463,7 @@ function gitlog() {
 alias portfolio='cd /home/alex && cat README.md'
 alias projects='cd /home/alex/projects && ls'
 alias contact='cat /home/alex/contact.txt'
-
-echo "Bash configuration loaded! ✅"
 `
-                                    },
-                                    'todo.txt':
-                                    {
-                                        type: 'file',
-                                        content:
-`Alex's TODO List:
-
-🎮 Game Development:
-[ ] Finish D&D 5e Character Creator
-[ ] Add spell selection to character creator
-[ ] Research new RPG mechanics for next project
-[ ] Study Unity networking for multiplayer features
-
-💻 Web Development:
-[ ] Improve terminal emulation (add more commands)
-[ ] Add dark/light theme support to all projects
-[ ] Optimize character creator performance
-[ ] Build portfolio API for dynamic content
-
-📚 Learning:
-[ ] Complete Advanced Unity course
-[ ] Study design patterns in game development
-[ ] Learn more about web accessibility
-[ ] Practice algorithm challenges
-
-🎯 Career:
-[ ] Update LinkedIn profile
-[ ] Apply to game development positions
-[ ] Prepare portfolio presentation
-[ ] Network with other developers
-
-💡 Ideas:
-[ ] Card game mechanics simulator
-[ ] Procedural dungeon generator
-[ ] Weather-based game mechanics
-[ ] AI-driven NPC conversation system
-
-Last updated: $(date)`
                                     }
                                 }
                             }

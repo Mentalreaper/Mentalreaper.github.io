@@ -2,57 +2,115 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Random Magical Effects - 10,000 Effects</title>
-    <script src="main.js" defer></script> 
-    <link rel="stylesheet" href="styles.css">
+    <script src="/static/javascript/random-magical-effect.js" defer></script> 
+    <link rel="stylesheet" href="/static/css/random-magical-effect.css">
 </head>
 <body>
-    <h1 class="title">Random Magical Effects - 10,000 Effects</h1>
-    <div class="subtitle">Suffering Awaits!</div>
+    <script defer></script>
+    <div id="starfield"></div>
     
-    <!-- Zoom container for wheel interaction -->
-    <div id="zoomContainer" class="zoom-container">
-        <div id="wheelsContainer" class="wheels-container">
-            <div class="main-wheel-wrapper wheel-wrapper">
-                <div class="pointer"></div>
-                <div id="mainWheel" class="wheel">
-                    <div class="wheel-numbers" id="mainWheelNumbers"></div>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">Random Magical Effects - 10,000 Effects</h1>
+            <div class="subtitle">Suffering Awaits!</div>
+        </div>
+
+        <!-- Characters Panel -->
+        <div class="panel characters-panel" id="charactersPanel">
+            <div class="panel-header">
+                <div class="panel-title">Characters</div>
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn btn-outline" onclick="importData()" style="padding: 6px 12px; font-size: 0.85rem;">Import</button>
+                    <button class="btn btn-outline" onclick="exportData()" style="padding: 6px 12px; font-size: 0.85rem;">Export</button>
                 </div>
             </div>
-            
-            <div id="conditionWheelWrapper" class="condition-wheel-wrapper wheel-wrapper">
-                <div class="pointer"></div>
-                <div id="conditionWheel" class="wheel">
-                    <div class="wheel-numbers" id="conditionWheelNumbers"></div>
+            <div class="character-list" id="characterList"></div>
+            <button class="btn btn-primary" onclick="openCharacterModal()" style="width: 100%;">
+                + Add Character
+            </button>
+        </div>
+
+        <!-- Spinner Section -->
+        <div class="spinner-section">
+            <!-- File Selector -->
+            <div class="file-selector">
+                <label class="file-label" style="color: var(--text-dim); font-size: 0.85rem;">Effect Set:</label>
+                <select class="file-select" id="effectSetSelect" onchange="changeEffectSet(this.value)">
+                    <option value="1">v1.2 (d10,000)</option>
+                    <option value="2">v2.0 (d10,000)</option>
+                </select>
+            </div>
+
+            <div class="spinner-container">
+                <div class="spinner-wrapper" id="spinnerWrapper">
+                    <!-- SVG spinner will be inserted here by JavaScript -->
+                    <div class="spinner gpu-accelerated" id="mainSpinner"></div>
+                    <div class="spinner-center" id="spinnerCenter">SPIN</div>
+                    <div class="spinner-pointer"></div>
+
                 </div>
             </div>
+
+            <div class="controls">
+                <button class="btn btn-primary" id="spinBtn" onclick="spinMainWheel()">
+                    SPIN
+                </button>
+                <button class="btn btn-accent" id="instantSpinBtn" onclick="instantSpin()">
+                    INSTANT SPIN
+                </button>
+            </div>
+        </div>
+
+        <!-- Effects Panel -->
+        <div class="panel effects-panel" id="effectsPanel">
+            <div class="panel-header">
+                <div class="panel-title">Active Effects</div>
+                <span id="effectCount" style="color: var(--text-dim);">0 effects</span>
+            </div>
+            <div class="effects-list" id="effectsList"></div>
         </div>
     </div>
 
-    <!-- Zoom hint -->
-    <div class="zoom-hint">
-        Scroll to zoom • Drag to pan • Double-click to reset • Keys: +/- to zoom, 0 to reset
-    </div>
-
-    <div class="below-hint">
-        <i>This uses <a href="https://centralia.aquest.com/downloads/NLRMEv2.pdf">The Net Libram of Random Magical Effects v2.0</a> By Orrex</i> 
-    </div>
-
-    <!-- Spin button fixed at bottom -->
-    <button id="spinButton" class="spin-button">SPIN</button>
-    
-    <!-- Result card -->
-    <div id="resultCard" class="result-card">
-        <div class="card-header">
-            <div class="roll-number" id="rollNumber"></div>
-            <div class="card-label">Random Magical Effect</div>
+    <!-- Character Modal -->
+    <div class="modal-overlay" id="characterModalOverlay" onclick="closeCharacterModal()"></div>
+    <div class="modal" id="characterModal">
+        <div class="modal-header">Create Character</div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="form-label">Character Name</label>
+                <input type="text" class="form-input" id="characterName" placeholder="Enter character name...">
+            </div>
         </div>
-        <div class="effect-text" id="effectText"></div>
-        <div id="conditionSection" class="condition-section" style="display: none;">
-            <div class="condition-title">To remove you must...</div>
-            <div class="condition-text" id="conditionText"></div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" onclick="closeCharacterModal()">Cancel</button>
+            <button class="btn btn-primary" onclick="createCharacter()">Create</button>
         </div>
     </div>
+
+    <!-- Result Modal -->
+    <div class="modal-overlay" id="resultModalOverlay" onclick="closeResultModal()"></div>
+    <div class="modal result-modal" id="resultModal">
+        <div class="result-number" id="resultNumber">#0000</div>
+        <div class="result-effect" id="resultEffect">Loading...</div>
+        <div class="effect-condition" id="resultCondition" style="display: none;">
+            <strong>Condition Required:</strong> Spin duration wheel to determine removal condition
+        </div>
+        <div class="modal-footer" style="justify-content: center;">
+            <button class="btn btn-primary" onclick="addEffectToCharacter()">Add to Character</button>
+            <button class="btn btn-outline" onclick="closeResultModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Loading -->
+    <div class="loading" id="loading" style="display: none;"></div>
+
+    <!-- Hidden file input for importing -->
+    <input type="file" id="importFileInput" accept=".json" style="display: none;">
 </body>
 </html>

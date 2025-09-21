@@ -1,0 +1,402 @@
+[
+  {
+    "roll": 1,
+    "effect": "10d100 hours have passed"
+  },
+  {
+    "roll": 2,
+    "effect": "1d4 turns have passed per level of the caster"
+  },
+  {
+    "roll": 3,
+    "effect": "The caster has attained fluency in 1d4 additional languages"
+  },
+  {
+    "roll": 4,
+    "effect": "The caster has attained fluency in one additional language"
+  },
+  {
+    "roll": 5,
+    "effect": "The caster has been awarded a title by royalty"
+  },
+  {
+    "roll": 6,
+    "effect": "The caster has been branded with a hot iron like a bull"
+  },
+  {
+    "roll": 7,
+    "effect": "The caster has been formally pardoned by the king"
+  },
+  {
+    "roll": 8,
+    "effect": "The caster has been reduced to one hit point"
+  },
+  {
+    "roll": 9,
+    "effect": "The caster has been resurrected"
+  },
+  {
+    "roll": 10,
+    "effect": "The caster has been stabbed by a silver weapon"
+  },
+  {
+    "roll": 11,
+    "effect": "The caster has been tried and imprisoned for heresy"
+  },
+  {
+    "roll": 12,
+    "effect": "The caster has bested 10d10 warriors in single combat"
+  },
+  {
+    "roll": 13,
+    "effect": "The caster has bought a hugely expensive home and burned it down"
+  },
+  {
+    "roll": 14,
+    "effect": "The caster has broken every finger on one of his hands"
+  },
+  {
+    "roll": 15,
+    "effect": "The caster has built 2d10 snowmen"
+  },
+  {
+    "roll": 16,
+    "effect": "The caster has burned down his current home"
+  },
+  {
+    "roll": 17,
+    "effect": "The caster has burned himself for 2d20 total hit points of fire damage"
+  },
+  {
+    "roll": 18,
+    "effect": "The caster has carried a gallon of water from the sea to this spot"
+  },
+  {
+    "roll": 19,
+    "effect": "The caster has carried a stone from this spot to the sea"
+  },
+  {
+    "roll": 20,
+    "effect": "The caster has carved his full name in 10d10 different trees"
+  },
+  {
+    "roll": 21,
+    "effect": "The caster has circumnavigated the globe without using magic to do so"
+  },
+  {
+    "roll": 22,
+    "effect": "The caster has composed 3d4 sonnets"
+  },
+  {
+    "roll": 23,
+    "effect": "The caster has cut off 1d4 fingers"
+  },
+  {
+    "roll": 24,
+    "effect": "The caster has cut off his own ear"
+  },
+  {
+    "roll": 25,
+    "effect": "The caster has destroyed every book that he owns"
+  },
+  {
+    "roll": 26,
+    "effect": "The caster has destroyed every table within 1d4 miles"
+  },
+  {
+    "roll": 27,
+    "effect": "The caster has destroyed his most prized possession"
+  },
+  {
+    "roll": 28,
+    "effect": "The caster has dug a functioning and productive well on this spot"
+  },
+  {
+    "roll": 29,
+    "effect": "The caster has eaten 1,000 gold pieces worth of gold"
+  },
+  {
+    "roll": 30,
+    "effect": "The caster has eaten 1d4 pounds of soil"
+  },
+  {
+    "roll": 31,
+    "effect": "The caster has eaten 1d4X his weight in squirrels"
+  },
+  {
+    "roll": 32,
+    "effect": "The caster has eaten 2d6 pounds of cured leather"
+  },
+  {
+    "roll": 33,
+    "effect": "The caster has eaten an entire, live chicken"
+  },
+  {
+    "roll": 34,
+    "effect": "The caster has extracted 1d4 of his own teeth"
+  },
+  {
+    "roll": 35,
+    "effect": "The caster has felled 3d6 trees older than he is"
+  },
+  {
+    "roll": 36,
+    "effect": "The caster has forged a sword from meteoric iron"
+  },
+  {
+    "roll": 37,
+    "effect": "The caster has found a lost city hidden in the desert"
+  },
+  {
+    "roll": 38,
+    "effect": "The caster has founded a cult"
+  },
+  {
+    "roll": 39,
+    "effect": "The caster has gained a level"
+  },
+  {
+    "roll": 40,
+    "effect": "The caster has gone 10d10 days and nights without speaking"
+  },
+  {
+    "roll": 41,
+    "effect": "The caster has gone 1d4 weeks without exposure to direct sunlight"
+  },
+  {
+    "roll": 42,
+    "effect": "The caster has gone one full month without using magic or any magic items"
+  },
+  {
+    "roll": 43,
+    "effect": "The caster has had a personal audience with 1d6 different deities"
+  },
+  {
+    "roll": 44,
+    "effect": "The caster has hand-carved a marble statue of himself"
+  },
+  {
+    "roll": 45,
+    "effect": "The caster has hidden a cursed ruby beneath a tall mountain"
+  },
+  {
+    "roll": 46,
+    "effect": "The caster has imbibed 1d4 pints of lamp oil"
+  },
+  {
+    "roll": 47,
+    "effect": "The caster has imbibed 1d8 pints of his own blood"
+  },
+  {
+    "roll": 48,
+    "effect": "The caster has located and destroyed an artifact"
+  },
+  {
+    "roll": 49,
+    "effect": "The caster has lost a level"
+  },
+  {
+    "roll": 50,
+    "effect": "The caster has lost a total of 3d10 hit points due to burns from acid"
+  },
+  {
+    "roll": 51,
+    "effect": "The caster has lost a total of 3d10 hit points due to electrical damage"
+  },
+  {
+    "roll": 52,
+    "effect": "The caster has manually unearthed a diamond larger than his head"
+  },
+  {
+    "roll": 53,
+    "effect": "The caster has married"
+  },
+  {
+    "roll": 54,
+    "effect": "The caster has married, divorced, and remarried 1d4 times"
+  },
+  {
+    "roll": 55,
+    "effect": "The caster has produced an heir"
+  },
+  {
+    "roll": 56,
+    "effect": "The caster has razed the nearest wooden structure"
+  },
+  {
+    "roll": 57,
+    "effect": "The caster has remained awake for 4d6 consecutive days and nights"
+  },
+  {
+    "roll": 58,
+    "effect": "The caster has restored the nearest undead creature to life"
+  },
+  {
+    "roll": 59,
+    "effect": "The caster has retrieved a particular gold coin from the bottom of the sea"
+  },
+  {
+    "roll": 60,
+    "effect": "The caster has rid himself of all magic items"
+  },
+  {
+    "roll": 61,
+    "effect": "The caster has rid the nearest town of mice and rats"
+  },
+  {
+    "roll": 62,
+    "effect": "The caster has rolled less than his weight on 1d1000, one attempt per day"
+  },
+  {
+    "roll": 63,
+    "effect": "The caster has rolled less than his Wisdom on 1d100, one attempt per day"
+  },
+  {
+    "roll": 64,
+    "effect": "The caster has scaled the tallest mountian on the continent"
+  },
+  {
+    "roll": 65,
+    "effect": "The caster has sharpened every blade within 1d10 miles"
+  },
+  {
+    "roll": 66,
+    "effect": "The caster has shaved his head completely bald"
+  },
+  {
+    "roll": 67,
+    "effect": "The caster has shed 2d10 pounds"
+  },
+  {
+    "roll": 68,
+    "effect": "The caster has single-handedly dammed the nearest river"
+  },
+  {
+    "roll": 69,
+    "effect": "The caster has slain 1d10 undead"
+  },
+  {
+    "roll": 70,
+    "effect": "The caster has slain 1d6 kings"
+  },
+  {
+    "roll": 71,
+    "effect": "The caster has spent 1,000,000 gold pieces with nothing to show for it"
+  },
+  {
+    "roll": 72,
+    "effect": "The caster has spent 1d4 days and nights at the bottom of a deep well"
+  },
+  {
+    "roll": 73,
+    "effect": "The caster has spent a night in a sty with at least 3d10 pigs"
+  },
+  {
+    "roll": 74,
+    "effect": "The caster has spent a night in each of 2d6 dragonsí lairs"
+  },
+  {
+    "roll": 75,
+    "effect": "The caster has spent an entire night at the bottom of a lake"
+  },
+  {
+    "roll": 76,
+    "effect": "The caster has spent an entire night naked and unprotected in snow"
+  },
+  {
+    "roll": 77,
+    "effect": "The caster has spent an entire night sealed in a barrel"
+  },
+  {
+    "roll": 78,
+    "effect": "The caster has spent an entire night up to his neck in offal"
+  },
+  {
+    "roll": 79,
+    "effect": "The caster has stabbed himself with a weapon that he forged"
+  },
+  {
+    "roll": 80,
+    "effect": "The caster has swallowed 4d10 gallons of water"
+  },
+  {
+    "roll": 81,
+    "effect": "The caster has swallowed a pint of molten lead"
+  },
+  {
+    "roll": 82,
+    "effect": "The caster has tattooed 10d100 cryptic runes on his skin"
+  },
+  {
+    "roll": 83,
+    "effect": "The caster has thwarted an assassination attempt against the king"
+  },
+  {
+    "roll": 84,
+    "effect": "The caster has triggered 1d4 additional wild surges"
+  },
+  {
+    "roll": 85,
+    "effect": "The caster has visited both of the worldís magnetic poles"
+  },
+  {
+    "roll": 86,
+    "effect": "The caster has waded along the shores of 1d4 oceans"
+  },
+  {
+    "roll": 87,
+    "effect": "The caster has walked 10d100 miles"
+  },
+  {
+    "roll": 88,
+    "effect": "The caster has walked on the floor of the ocean"
+  },
+  {
+    "roll": 89,
+    "effect": "The caster has walked on the surface of the moon"
+  },
+  {
+    "roll": 90,
+    "effect": "The caster has walked the shores of hell"
+  },
+  {
+    "roll": 91,
+    "effect": "The caster has woven a six foot length of rope from his own hair"
+  },
+  {
+    "roll": 92,
+    "effect": "The caster has written his full name in 10d10 different books"
+  },
+  {
+    "roll": 93,
+    "effect": "The caster unearths 1d4 pounds of gold"
+  },
+  {
+    "roll": 94,
+    "effect": "His next birthday"
+  },
+  {
+    "roll": 95,
+    "effect": "His son produces an heir"
+  },
+  {
+    "roll": 96,
+    "effect": "One year and one day have passed"
+  },
+  {
+    "roll": 97,
+    "effect": "The current king has died"
+  },
+  {
+    "roll": 98,
+    "effect": "The next total lunar eclipse occurs"
+  },
+  {
+    "roll": 99,
+    "effect": "He has performed an exorcism on a member of the royal family"
+  },
+  {
+    "roll": 100,
+    "effect": "He has been bitten by 1d6 different lycanthropes"
+  }
+]
