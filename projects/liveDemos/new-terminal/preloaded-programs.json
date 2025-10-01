@@ -2,7 +2,7 @@
   "SYS_BOOT": {
     "10": "REM IMAGE DEMO PROGRAM",
     "20": "SETCOL LEFT",
-    "30": "IMAGE \"/NEIZICON-GREEN-5PERCENT.png\" 9000 1",
+    "30": "IMAGE \"/NEIZICON-GREEN-5PERCENT.png\" 200 1",
     "40": "PRINT \"(tm) 3413 Systems \";h:\"N\";\"AVIGATIONAL \";h:\"E\";\"QUIPMENT \";h:\"I\";\"NTERFACE \";h:\"Z\";\"ETTA\"",
     "50": "PRINT h:\"N\";\".\";h:\"E\";\".\";h:\"I\";\".\";h:\"Z\";\".\";\" V1.8.23\"",
     "60": "PRINT \"- SERVER 3413 -\"",
