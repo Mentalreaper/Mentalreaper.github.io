@@ -1,0 +1,34 @@
+{
+  "SYS_BOOT": {
+    "10": "REM IMAGE DEMO PROGRAM",
+    "20": "SETCOL LEFT",
+    "30": "IMAGE \"/NEIZICON-GREEN-5PERCENT.png\" 9000 1",
+    "40": "PRINT \"(tm) 3413 Systems \";h:\"N\";\"AVIGATIONAL \";h:\"E\";\"QUIPMENT \";h:\"I\";\"NTERFACE \";h:\"Z\";\"ETTA\"",
+    "50": "PRINT h:\"N\";\".\";h:\"E\";\".\";h:\"I\";\".\";h:\"Z\";\".\";\" V1.8.23\"",
+    "60": "PRINT \"- SERVER 3413 -\"",
+    "70": "PRINT \"------------------------------------------------\"",
+    "80": "PRINT \"CONNECTED ONLINE NETWORKED-MESSAGE NODE SYSTEM (\";h:\"CONNS\";\")\"",
+    "90": "PRINT \"SYSTEM ADMINISTRATOR (\";h:\"SYSADM\";\") - J. POLLARD\"",
+    "100": "PRINT \"GSYS CEO (\";h:\"GSYSADM\";\") - N. LINDEMAN\"",
+    "110": "PRINT \"WELCOME TO THE CONNECTED ONLINE NETWORKED-MESSAGE NODE SYSTEM (\";h:\"CONNS\";\"). USE THE TERMINAL BELOW AT YOUR LEISURE, AND FEEL FREE TO CONTACT US WITH THE 'MESSAGE' COMMAND. THANK YOU FOR CONTACTING \";h:\"3413 SYSTEMS\";\", a \";h:\"GSYS INDUSTRIES\";\" SUBSIDIARY.\"",
+    "120": "END"
+  },
+  "DEMO_IMAGE": {
+    "10": "REM IMAGE DEMO PROGRAM",
+    "20": "SETCOL LEFT",
+    "30": "IMAGE \"/NEIZICON-GREEN-5PERCENT.png\" 300 10",
+    "40": "PRINT \"WELCOME TO THE DEMO\"",
+    "50": "PRINT \"\"",
+    "60": "PRINT \"THIS SHOWS HOW\"",
+    "70": "PRINT \"IMAGES CAN FLOAT\"",
+    "80": "PRINT \"WITH TEXT BESIDE\"",
+    "90": "CLEARCOL",
+    "100": "PRINT \"\"",
+    "110": "PRINT \"TEXT BELOW IMAGE\"",
+    "120": "END"
+  },
+  "HELLO": {
+    "10": "PRINT \"HELLO WORLD!\"",
+    "20": "END"
+  }
+}
