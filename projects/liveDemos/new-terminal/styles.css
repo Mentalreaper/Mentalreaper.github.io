@@ -403,15 +403,17 @@ a.button:hover {
     /* Hide the default caret */
     caret-color: transparent;
     position: relative;
+    /* Force uppercase input */
+    text-transform: uppercase;
 }
 
 /* Block cursor for contenteditable */
 .input-field::after {
     content: '';
     position: absolute;
-    left: var(--cursor-pos, 0);
+    left: var(--cursor-pos, 0) + 1rem;
     top: 0;
-    width: 0.6em;
+    width: 1em;
     height: 1.2em;
     background: #00FF00;
     animation: cursor-blink 1s step-end infinite;
@@ -743,6 +745,43 @@ header.site {
     content: "";
     display: table;
     clear: both;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* ///                                    GRAPHICS MODE (GR)                                                     /// */
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+.graphics-container {
+    display: grid;
+    grid-template-columns: repeat(40, 1fr);
+    grid-template-rows: repeat(48, 1fr);
+    width: 95%;
+    max-width: 800px;
+    aspect-ratio: 40 / 48;
+    margin: 10px auto;
+    gap: 0;
+    border: 2px solid #00FF00;
+    box-shadow:
+        0 0 10px rgba(0, 255, 0, 0.3),
+        inset 0 0 20px rgba(0, 0, 0, 0.5);
+    background: #000;
+}
+
+.graphics-pixel {
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    transition: background-color 0.05s ease;
+    box-shadow:
+        inset 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Add glow effect to non-black pixels */
+.graphics-pixel:not([style*="rgb(0, 0, 0)"]):not([style*="#000000"]) {
+    box-shadow:
+        0 0 3px currentColor,
+        0 0 5px currentColor,
+        inset 0 0 2px rgba(255, 255, 255, 0.2);
+    filter: brightness(1.1);
 }
 
 /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
